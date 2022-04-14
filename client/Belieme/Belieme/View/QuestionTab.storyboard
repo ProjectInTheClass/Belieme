@@ -12,18 +12,59 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SB_QuestionTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="FzI-g3-WZa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="gLr-Vh-MHl">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7b4-th-kmZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문의" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NBP-Md-akL">
+                                                <rect key="frame" x="8" y="88" width="35" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="NBP-Md-akL" firstAttribute="leading" secondItem="7b4-th-kmZ" secondAttribute="leadingMargin" id="3S8-O2-RLj"/>
+                                            <constraint firstAttribute="height" constant="120" id="KXS-cV-nZF"/>
+                                            <constraint firstItem="NBP-Md-akL" firstAttribute="bottom" secondItem="7b4-th-kmZ" secondAttribute="bottomMargin" id="bfM-fc-rrJ"/>
+                                            <constraint firstItem="NBP-Md-akL" firstAttribute="top" secondItem="7b4-th-kmZ" secondAttribute="top" constant="88" id="dI8-kd-QOm"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XYs-5Q-fOT">
+                                        <rect key="frame" x="0.0" y="120" width="414" height="685"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="XYs-5Q-fOT" firstAttribute="leading" secondItem="gLr-Vh-MHl" secondAttribute="leading" id="89Z-Yc-D76"/>
+                                    <constraint firstAttribute="trailing" secondItem="XYs-5Q-fOT" secondAttribute="trailing" id="8rG-CG-6PN"/>
+                                    <constraint firstAttribute="trailing" secondItem="7b4-th-kmZ" secondAttribute="trailing" id="QpA-Y9-hPR"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="AWs-Xk-JKE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="gLr-Vh-MHl" firstAttribute="top" secondItem="FzI-g3-WZa" secondAttribute="top" id="QdJ-iy-ArJ"/>
+                            <constraint firstAttribute="trailing" secondItem="gLr-Vh-MHl" secondAttribute="trailing" id="a6b-s1-LWW"/>
+                            <constraint firstItem="gLr-Vh-MHl" firstAttribute="centerX" secondItem="FzI-g3-WZa" secondAttribute="centerX" id="kEH-PA-kbI"/>
+                            <constraint firstItem="AWs-Xk-JKE" firstAttribute="bottom" secondItem="gLr-Vh-MHl" secondAttribute="bottom" constant="8" id="tT0-IL-PS8"/>
+                            <constraint firstItem="gLr-Vh-MHl" firstAttribute="leading" secondItem="FzI-g3-WZa" secondAttribute="leading" id="wqg-3O-TBA"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="문의" image="ellipsis.bubble" catalog="system" id="ZKB-BI-ynY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="20" y="92"/>
+            <point key="canvasLocation" x="18.840579710144929" y="91.741071428571431"/>
         </scene>
     </scenes>
     <resources>

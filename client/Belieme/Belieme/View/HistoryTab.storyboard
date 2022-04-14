@@ -12,11 +12,86 @@
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="SB_HistoryTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                    <view key="view" contentMode="scaleToFill" id="lNU-sD-A8l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Kde-do-rez">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="805"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idA-Nu-9ad">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대여 내역" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COS-U3-daY">
+                                                <rect key="frame" x="8" y="88" width="74" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstItem="COS-U3-daY" firstAttribute="bottom" secondItem="idA-Nu-9ad" secondAttribute="bottomMargin" id="NL6-tj-xJL"/>
+                                            <constraint firstItem="COS-U3-daY" firstAttribute="leading" secondItem="idA-Nu-9ad" secondAttribute="leadingMargin" id="ong-CC-WNq"/>
+                                            <constraint firstItem="COS-U3-daY" firstAttribute="top" secondItem="idA-Nu-9ad" secondAttribute="top" constant="88" id="umK-hN-yFu"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="eVO-qz-QAv">
+                                        <rect key="frame" x="0.0" y="120" width="414" height="685"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
+                                        <prototypes>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StuffCell" id="h2S-OP-6vc" customClass="HistoryCell" customModule="apple_client" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="414" height="39.5"/>
+                                                <autoresizingMask key="autoresizingMask"/>
+                                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h2S-OP-6vc" id="mD1-JY-WJo">
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="39.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pBg-kS-kBW">
+                                                            <rect key="frame" x="20" y="11" width="35.5" height="17.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYf-7j-ids">
+                                                            <rect key="frame" x="280.5" y="11" width="35.5" height="17.5"/>
+                                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="pBg-kS-kBW" firstAttribute="top" secondItem="mD1-JY-WJo" secondAttribute="topMargin" id="YDA-bR-Yut"/>
+                                                        <constraint firstItem="pBg-kS-kBW" firstAttribute="leading" secondItem="mD1-JY-WJo" secondAttribute="leadingMargin" id="hb4-fs-WeJ"/>
+                                                        <constraint firstItem="nYf-7j-ids" firstAttribute="baseline" secondItem="pBg-kS-kBW" secondAttribute="baseline" id="nCy-NU-nZU"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="nYf-7j-ids" secondAttribute="trailing" constant="78" id="q7z-AN-CV3"/>
+                                                        <constraint firstItem="pBg-kS-kBW" firstAttribute="bottom" secondItem="mD1-JY-WJo" secondAttribute="bottomMargin" id="s6e-IU-hKL"/>
+                                                        <constraint firstItem="pBg-kS-kBW" firstAttribute="centerY" secondItem="nYf-7j-ids" secondAttribute="centerY" id="xkK-Q6-47a"/>
+                                                    </constraints>
+                                                </tableViewCellContentView>
+                                                <connections>
+                                                    <outlet property="date" destination="pBg-kS-kBW" id="1cv-Ou-TKp"/>
+                                                    <outlet property="itemName" destination="nYf-7j-ids" id="U4c-Sb-ZiT"/>
+                                                </connections>
+                                            </tableViewCell>
+                                        </prototypes>
+                                    </tableView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="idA-Nu-9ad" firstAttribute="trailing" secondItem="eVO-qz-QAv" secondAttribute="trailing" id="fJ6-MN-mXz"/>
+                                    <constraint firstAttribute="trailing" secondItem="idA-Nu-9ad" secondAttribute="trailing" id="kmq-Ih-UaB"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="u1M-bb-sTk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Kde-do-rez" firstAttribute="leading" secondItem="lNU-sD-A8l" secondAttribute="leading" id="d0R-BG-uJC"/>
+                            <constraint firstAttribute="trailing" secondItem="Kde-do-rez" secondAttribute="trailing" id="i3h-xv-KYy"/>
+                            <constraint firstItem="u1M-bb-sTk" firstAttribute="bottom" secondItem="Kde-do-rez" secondAttribute="bottom" constant="8" id="icO-1U-pnQ"/>
+                            <constraint firstItem="Kde-do-rez" firstAttribute="top" secondItem="lNU-sD-A8l" secondAttribute="top" id="wJu-gj-7aC"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="기록" image="book" catalog="system" id="MWD-Zp-CJx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
