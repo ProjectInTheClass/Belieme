@@ -11,8 +11,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="30V-iR-qzQ">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkg-HZ-td2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="ecQ-Q0-gaL" userLabel="Exit" sceneMemberID="exit"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZNk-Hz-uam" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FRZ-dW-pdB">
@@ -43,25 +41,48 @@
                     </tabBar>
                     <connections>
                         <segue destination="vCv-Xf-5t8" kind="relationship" relationship="viewControllers" id="Osg-hc-6pC"/>
+                        <segue destination="P4G-MD-Isd" kind="relationship" relationship="viewControllers" id="O9z-6s-frh"/>
+                        <segue destination="GK6-S9-rJB" kind="relationship" relationship="viewControllers" id="Dlz-90-viA"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qkg-HZ-td2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ecQ-Q0-gaL" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-1068" y="1"/>
         </scene>
-        <!--StuffsStoryBoard-->
+        <!--SB_HistoryTab-->
+        <scene sceneID="2zI-Me-1ak">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="HistoryTab" storyboardName="HistoryTab" referencedIdentifier="SB_HistoryTab" id="P4G-MD-Isd" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="book" catalog="system" id="mpJ-eV-rad"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Pfh-z1-2bJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-190" y="1"/>
+        </scene>
+        <!--SB_StuffTab-->
         <scene sceneID="wI9-Jk-Db7">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="StuffsStoryBoard" storyboardName="Stuffs" referencedIdentifier="StuffsStoryBoard" id="vCv-Xf-5t8" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="g2o-Vh-KX8"/>
+                <viewControllerPlaceholder storyboardIdentifier="StuffTab" storyboardName="StuffTab" referencedIdentifier="SB_StuffTab" id="vCv-Xf-5t8" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="archivebox" catalog="system" id="g2o-Vh-KX8"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klb-sm-v3E" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-381" y="10"/>
+            <point key="canvasLocation" x="-199" y="-199"/>
+        </scene>
+        <!--SB_QuestionTab-->
+        <scene sceneID="cDM-f2-ou8">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="QuestionTab" storyboardName="QuestionTab" referencedIdentifier="SB_QuestionTab" id="GK6-S9-rJB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" image="ellipsis.bubble" catalog="system" id="U1Q-Vn-M60"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k6h-Tv-rRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183" y="212"/>
         </scene>
         <!--빌리미-->
         <scene sceneID="25W-fN-mYx">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rhB-sP-hzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="빌리미" id="mB4-es-pt7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zc-g4-7T2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -71,12 +92,16 @@
                         <segue destination="ZNk-Hz-uam" kind="relationship" relationship="rootViewController" id="9xf-Ba-WXZ"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rhB-sP-hzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2368" y="1"/>
         </scene>
     </scenes>
     <resources>
+        <image name="archivebox" catalog="system" width="128" height="106"/>
         <image name="belieme-logo" width="200" height="90"/>
+        <image name="book" catalog="system" width="128" height="99"/>
+        <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
