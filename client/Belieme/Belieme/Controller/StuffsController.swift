@@ -5,16 +5,14 @@
 //  Created by mac on 2022/04/14.
 //
 
-import SwiftUI
+import UIKit
 
-struct StuffsController: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+class StuffsController: UIViewController {
 
-struct StuffsController_Previews: PreviewProvider {
-    static var previews: some View {
-        StuffsController()
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
+
+
 }

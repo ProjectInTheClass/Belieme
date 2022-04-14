@@ -4,17 +4,15 @@
 //
 //  Created by mac on 2022/04/14.
 //
+import UIKit
 
-import SwiftUI
+class QuestionController: UIViewController {
 
-struct QuestionController: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
+
+
 }
 
-struct QuestionController_Previews: PreviewProvider {
-    static var previews: some View {
-        QuestionController()
-    }
-}
