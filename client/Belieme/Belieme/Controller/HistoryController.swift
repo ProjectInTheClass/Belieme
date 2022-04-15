@@ -5,16 +5,15 @@
 //  Created by mac on 2022/04/14.
 //
 
-import SwiftUI
 
-struct HistoryController: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import UIKit
 
-struct HistoryController_Previews: PreviewProvider {
-    static var previews: some View {
-        HistoryController()
+class HistoryController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view.
     }
+
+
 }

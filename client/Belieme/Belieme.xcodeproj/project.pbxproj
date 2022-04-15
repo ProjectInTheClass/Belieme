@@ -25,6 +25,8 @@
 		37BDEB3A280815DE00443075 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB39280815DE00443075 /* HistoryModel.swift */; };
 		37BDEB3C280815EA00443075 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3B280815EA00443075 /* QuestionModel.swift */; };
 		37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3D280815F600443075 /* StuffsModel.swift */; };
+		37BDEB402808768000443075 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3F2808768000443075 /* UserModel.swift */; };
+		37BDEB422808773B00443075 /* RequestFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB412808773B00443075 /* RequestFunction.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +69,8 @@
 		37BDEB39280815DE00443075 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		37BDEB3B280815EA00443075 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		37BDEB3D280815F600443075 /* StuffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffsModel.swift; sourceTree = "<group>"; };
+		37BDEB3F2808768000443075 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		37BDEB412808773B00443075 /* RequestFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFunction.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +194,8 @@
 				37BDEB39280815DE00443075 /* HistoryModel.swift */,
 				37BDEB3B280815EA00443075 /* QuestionModel.swift */,
 				37BDEB3D280815F600443075 /* StuffsModel.swift */,
+				37BDEB3F2808768000443075 /* UserModel.swift */,
+				37BDEB412808773B00443075 /* RequestFunction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,12 +336,14 @@
 			files = (
 				37BDEB2F2808157500443075 /* QuestionController.swift in Sources */,
 				37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */,
+				37BDEB422808773B00443075 /* RequestFunction.swift in Sources */,
 				37BDEB312808158600443075 /* StuffsController.swift in Sources */,
 				37BDEAED2808111B00443075 /* MainController.swift in Sources */,
 				37BDEAE92808111B00443075 /* AppDelegate.swift in Sources */,
 				37BDEB3A280815DE00443075 /* HistoryModel.swift in Sources */,
 				37BDEAEB2808111B00443075 /* SceneDelegate.swift in Sources */,
 				37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */,
+				37BDEB402808768000443075 /* UserModel.swift in Sources */,
 				37BDEB3C280815EA00443075 /* QuestionModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
