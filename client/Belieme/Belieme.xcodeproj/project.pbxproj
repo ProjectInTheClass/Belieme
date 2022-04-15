@@ -25,13 +25,8 @@
 		37BDEB3A280815DE00443075 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB39280815DE00443075 /* HistoryModel.swift */; };
 		37BDEB3C280815EA00443075 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3B280815EA00443075 /* QuestionModel.swift */; };
 		37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3D280815F600443075 /* StuffsModel.swift */; };
-<<<<<<< Updated upstream
-		37BDEB402808768000443075 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3F2808768000443075 /* UserModel.swift */; };
-		37BDEB422808773B00443075 /* RequestFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB412808773B00443075 /* RequestFunction.swift */; };
-=======
 		602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602FDF4E2809163D009F15D2 /* Setting.storyboard */; };
 		602FDF512809167A009F15D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FDF502809167A009F15D2 /* SettingController.swift */; };
->>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,13 +69,8 @@
 		37BDEB39280815DE00443075 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		37BDEB3B280815EA00443075 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		37BDEB3D280815F600443075 /* StuffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffsModel.swift; sourceTree = "<group>"; };
-<<<<<<< Updated upstream
-		37BDEB3F2808768000443075 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
-		37BDEB412808773B00443075 /* RequestFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFunction.swift; sourceTree = "<group>"; };
-=======
 		602FDF4E2809163D009F15D2 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		602FDF502809167A009F15D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
->>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
