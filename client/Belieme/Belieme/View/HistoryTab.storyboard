@@ -11,7 +11,7 @@
         <!--기록-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SB_HistoryTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SB_HistoryTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="HistoryController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lNU-sD-A8l">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,7 +41,7 @@
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="StuffCell" id="h2S-OP-6vc" customClass="HistoryCell" customModule="Belieme" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="historyCellId" id="h2S-OP-6vc" customClass="HistoryCell" customModule="Belieme" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="44.5" width="414" height="39.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="h2S-OP-6vc" id="mD1-JY-WJo">
@@ -60,22 +60,35 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Wp-c0-4HQ">
+                                                            <rect key="frame" x="342" y="4" width="67" height="31.5"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="1Wp-c0-4HQ" firstAttribute="top" secondItem="mD1-JY-WJo" secondAttribute="top" constant="4" id="TlC-S2-DYt"/>
                                                         <constraint firstItem="pBg-kS-kBW" firstAttribute="top" secondItem="mD1-JY-WJo" secondAttribute="topMargin" id="YDA-bR-Yut"/>
+                                                        <constraint firstAttribute="trailing" secondItem="1Wp-c0-4HQ" secondAttribute="trailing" constant="5" id="d2l-tM-Q48"/>
                                                         <constraint firstItem="pBg-kS-kBW" firstAttribute="leading" secondItem="mD1-JY-WJo" secondAttribute="leadingMargin" id="hb4-fs-WeJ"/>
                                                         <constraint firstItem="nYf-7j-ids" firstAttribute="baseline" secondItem="pBg-kS-kBW" secondAttribute="baseline" id="nCy-NU-nZU"/>
                                                         <constraint firstAttribute="trailingMargin" secondItem="nYf-7j-ids" secondAttribute="trailing" constant="78" id="q7z-AN-CV3"/>
                                                         <constraint firstItem="pBg-kS-kBW" firstAttribute="bottom" secondItem="mD1-JY-WJo" secondAttribute="bottomMargin" id="s6e-IU-hKL"/>
                                                         <constraint firstItem="pBg-kS-kBW" firstAttribute="centerY" secondItem="nYf-7j-ids" secondAttribute="centerY" id="xkK-Q6-47a"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1Wp-c0-4HQ" secondAttribute="bottom" constant="4" id="zJt-cT-GBI"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
-                                                    <outlet property="date" destination="pBg-kS-kBW" id="1cv-Ou-TKp"/>
-                                                    <outlet property="itemName" destination="nYf-7j-ids" id="U4c-Sb-ZiT"/>
+                                                    <outlet property="dateLabel" destination="pBg-kS-kBW" id="EpB-E8-sSo"/>
+                                                    <outlet property="detailButton" destination="1Wp-c0-4HQ" id="WfY-cP-TJx"/>
+                                                    <outlet property="nameLabel" destination="nYf-7j-ids" id="84m-i2-wcB"/>
                                                 </connections>
                                             </tableViewCell>
                                         </prototypes>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Y6W-OH-hqX" id="yd1-j0-0F8"/>
+                                            <outlet property="delegate" destination="Y6W-OH-hqX" id="boy-u0-I4i"/>
+                                        </connections>
                                     </tableView>
                                 </subviews>
                                 <constraints>
@@ -95,10 +108,13 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="기록" image="book" catalog="system" id="MWD-Zp-CJx"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="HistoryTable" destination="eVO-qz-QAv" id="mUq-VH-i5n"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="35" y="98"/>
+            <point key="canvasLocation" x="34.782608695652179" y="97.767857142857139"/>
         </scene>
     </scenes>
     <resources>

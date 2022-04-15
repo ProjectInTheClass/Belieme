@@ -11,7 +11,6 @@ import Foundation
 struct User {
     let student_id: String
     let name: String
-    let isAdmin: Bool // true, false
 }
 
 func login(id: String, password: String) {
