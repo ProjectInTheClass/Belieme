@@ -11,7 +11,7 @@
         <!--문의-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="SB_QuestionTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SB_QuestionTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="QuestionController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FzI-g3-WZa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,6 +48,100 @@
                                     <constraint firstAttribute="trailing" secondItem="7b4-th-kmZ" secondAttribute="trailing" id="QpA-Y9-hPR"/>
                                 </constraints>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="14" id="nZb-8h-huS">
+                                <rect key="frame" x="29" y="142" width="355" height="612"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8LC-MT-mCq">
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="79"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이메일주소" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2xK-ke-h10">
+                                                <rect key="frame" x="0.0" y="0.0" width="74" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="이메일 주소를 입력해주세요." translatesAutoresizingMaskIntoConstraints="NO" id="H8X-JS-fcy">
+                                                <rect key="frame" x="0.0" y="28.5" width="355" height="50.5"/>
+                                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="H8X-JS-fcy" firstAttribute="trailing" secondItem="8LC-MT-mCq" secondAttribute="trailingMargin" id="VEW-wK-0nw"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="W2d-fz-Dnm">
+                                        <rect key="frame" x="0.0" y="93" width="355" height="78.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="제목" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sM-DH-y2L">
+                                                <rect key="frame" x="0.0" y="0.0" width="29.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="제목을 입력해주세요." translatesAutoresizingMaskIntoConstraints="NO" id="hro-d7-hTq">
+                                                <rect key="frame" x="0.0" y="28.5" width="355" height="50"/>
+                                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="50" id="qJ0-6d-O1E"/>
+                                                </constraints>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="hro-d7-hTq" firstAttribute="trailing" secondItem="W2d-fz-Dnm" secondAttribute="trailingMargin" id="1sk-pF-NpP"/>
+                                        </constraints>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="q4h-qq-iKT">
+                                        <rect key="frame" x="0.0" y="185.5" width="355" height="369"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="문의내용" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMg-Vy-ung">
+                                                <rect key="frame" x="0.0" y="0.0" width="59" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="문의 내용을 입력해주세요.(최대 100자)" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6oA-6Q-IaZ">
+                                                <rect key="frame" x="0.0" y="28.5" width="355" height="340.5"/>
+                                                <color key="backgroundColor" red="0.90196078430000004" green="0.90196078430000004" blue="0.90196078430000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <color key="textColor" systemColor="systemGray2Color"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            </textView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="6oA-6Q-IaZ" firstAttribute="trailing" secondItem="q4h-qq-iKT" secondAttribute="trailingMargin" id="O8R-9w-JXf"/>
+                                        </constraints>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SE7-Mz-UL4">
+                                        <rect key="frame" x="120.5" y="568.5" width="114" height="43.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="SE7-Mz-UL4" secondAttribute="height" multiplier="123:47" id="rne-OM-gps"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="등록">
+                                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="25"/>
+                                            <color key="baseBackgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="SubmitButtonClicked:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="Qp9-d1-HEB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <viewLayoutGuide key="safeArea" id="7Mu-Un-5VL"/>
+                                <constraints>
+                                    <constraint firstItem="8LC-MT-mCq" firstAttribute="leading" secondItem="W2d-fz-Dnm" secondAttribute="leading" id="0JY-k6-XaM"/>
+                                    <constraint firstItem="q4h-qq-iKT" firstAttribute="top" secondItem="nZb-8h-huS" secondAttribute="top" constant="185.5" id="2sY-cR-NU1"/>
+                                    <constraint firstItem="W2d-fz-Dnm" firstAttribute="leading" secondItem="q4h-qq-iKT" secondAttribute="leading" id="67D-YS-sfH"/>
+                                    <constraint firstItem="8LC-MT-mCq" firstAttribute="leading" secondItem="nZb-8h-huS" secondAttribute="leadingMargin" id="gDM-B4-tic"/>
+                                    <constraint firstAttribute="bottom" secondItem="q4h-qq-iKT" secondAttribute="bottom" constant="57.5" id="qpN-JX-dlY"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AWs-Xk-JKE"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -61,6 +155,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="문의" image="ellipsis.bubble" catalog="system" id="ZKB-BI-ynY"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="AskContent" destination="6oA-6Q-IaZ" id="Ekx-z0-PNs"/>
+                        <outlet property="AskTitle" destination="hro-d7-hTq" id="5EQ-V2-I4o"/>
+                        <outlet property="AskUserEmail" destination="H8X-JS-fcy" id="oCo-I8-QLf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,6 +170,9 @@
         <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -31,6 +31,7 @@
                             <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
                             <connections>
                                 <action selector="tabSettingButton:" destination="ecQ-Q0-gaL" id="8e3-DC-xxf"/>
+                                <segue destination="TBy-kQ-dYv" kind="show" id="UEc-wS-9Lt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -79,6 +80,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k6h-Tv-rRx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-183" y="212"/>
+        </scene>
+        <!--SB_Setting-->
+        <scene sceneID="Rpy-fF-od6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Setting" referencedIdentifier="SB_Setting" id="TBy-kQ-dYv" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Jkt-rg-hl1"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H3g-ak-poW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1068" y="472"/>
         </scene>
         <!--빌리미-->
         <scene sceneID="25W-fN-mYx">

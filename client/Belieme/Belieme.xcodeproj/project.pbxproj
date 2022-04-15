@@ -25,8 +25,13 @@
 		37BDEB3A280815DE00443075 /* HistoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB39280815DE00443075 /* HistoryModel.swift */; };
 		37BDEB3C280815EA00443075 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3B280815EA00443075 /* QuestionModel.swift */; };
 		37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3D280815F600443075 /* StuffsModel.swift */; };
+<<<<<<< Updated upstream
 		37BDEB402808768000443075 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3F2808768000443075 /* UserModel.swift */; };
 		37BDEB422808773B00443075 /* RequestFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB412808773B00443075 /* RequestFunction.swift */; };
+=======
+		602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602FDF4E2809163D009F15D2 /* Setting.storyboard */; };
+		602FDF512809167A009F15D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FDF502809167A009F15D2 /* SettingController.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,8 +74,13 @@
 		37BDEB39280815DE00443075 /* HistoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryModel.swift; sourceTree = "<group>"; };
 		37BDEB3B280815EA00443075 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		37BDEB3D280815F600443075 /* StuffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffsModel.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		37BDEB3F2808768000443075 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		37BDEB412808773B00443075 /* RequestFunction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFunction.swift; sourceTree = "<group>"; };
+=======
+		602FDF4E2809163D009F15D2 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		602FDF502809167A009F15D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +182,7 @@
 				37BDEB2C2808154F00443075 /* HistoryController.swift */,
 				37BDEB2E2808157500443075 /* QuestionController.swift */,
 				37BDEB302808158600443075 /* StuffsController.swift */,
+				602FDF502809167A009F15D2 /* SettingController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -180,10 +191,11 @@
 			isa = PBXGroup;
 			children = (
 				37BDEAEE2808111B00443075 /* Main.storyboard */,
+				37BDEAF32808111C00443075 /* LaunchScreen.storyboard */,
 				37BDEB322808159900443075 /* HistoryTab.storyboard */,
 				37BDEB34280815A500443075 /* StuffTab.storyboard */,
 				37BDEB36280815AE00443075 /* QuestionTab.storyboard */,
-				37BDEAF32808111C00443075 /* LaunchScreen.storyboard */,
+				602FDF4E2809163D009F15D2 /* Setting.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -306,6 +318,7 @@
 			files = (
 				37BDEAF52808111C00443075 /* LaunchScreen.storyboard in Resources */,
 				37BDEAF22808111C00443075 /* Assets.xcassets in Resources */,
+				602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */,
 				37BDEB37280815AE00443075 /* QuestionTab.storyboard in Resources */,
 				37BDEAF02808111B00443075 /* Main.storyboard in Resources */,
 				37BDEB332808159900443075 /* HistoryTab.storyboard in Resources */,
@@ -334,6 +347,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				602FDF512809167A009F15D2 /* SettingController.swift in Sources */,
 				37BDEB2F2808157500443075 /* QuestionController.swift in Sources */,
 				37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */,
 				37BDEB422808773B00443075 /* RequestFunction.swift in Sources */,
