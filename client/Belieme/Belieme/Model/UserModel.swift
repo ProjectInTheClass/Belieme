@@ -13,6 +13,8 @@ struct User {
     let name: String
 }
 
+var isAdmin: Bool = false
+
 func login(id: String, password: String) {
     requestPost(url: "한양API", method: "POST", param: ["id": "user_id", "pw": "user_pw"], completionHandler: { (success, data) in
         // data 에서 어드민이면 어드민 전역변수 온~~

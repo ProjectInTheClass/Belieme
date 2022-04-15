@@ -65,6 +65,11 @@ struct HistoryObject {
     let status: String
 }
 
+struct HistorySection {
+    let name: String
+    var items: [HistoryObject]?
+}
+
 /*
  기록 전부 불러오기 -> 어드민 || 일반
  */
