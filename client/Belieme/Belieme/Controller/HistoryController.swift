@@ -11,14 +11,19 @@ import UIKit
 class HistoryCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var whosRequestLabel: UILabel!
+    @IBOutlet weak var userName: UILabel!
+    @IBOutlet weak var returnedButton: UIButton!
+    @IBOutlet weak var rejectButton: UIButton!
+    @IBOutlet weak var admitButton: UIButton!
 }
 
-let item1 = HistoryObject(item: ItemInfo(stuffName: "aso", stuffEmoji: "asdasd", num: 1), requester: User(student_id: "123213", name: "sdddd"), approveManager: User(student_id: "123", name: "asdasd"), returnManager: nil, lostManager: nil, cancelManager: nil, reservedTime: Date(), approvedTime: nil, returnedTime: nil, lostTime: nil, cancelTime: nil, status: "good")
+let item1 = HistoryObject(item: ItemInfo(stuffName: "aso", stuffEmoji: "asdasd", num: 1), requester: User(student_id: "123213", name: "sdddd"), approveManager: User(student_id: "123", name: "asdasd"), returnManager: nil, lostManager: nil, cancelManager: nil, reservedTime: Date(), approvedTime: nil, returnedTime: nil, lostTime: nil, cancelTime: nil, status: "good", isOpened: false)
 
 class HistoryController: UIViewController {
 
     @IBOutlet weak var HistoryTable: UITableView!
-    public var historySections: [HistorySection] = [ HistorySection(name: "승인대기"), HistorySection(name: "대여중", items: [item1, item1]), HistorySection(name: "대여중", items: [item1]), HistorySection(name: "반납완료")]
+    public var historySections: [HistorySection] = [ HistorySection(name: "승인대기", items: [item1, item1]), HistorySection(name: "대여중", items: [item1, item1]), HistorySection(name: "반납완료", items: [item1])]
     public let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
@@ -68,14 +73,35 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
         if (tableView.cellForRow(at: indexPath)!.isSelected) {
+            let section: Int = indexPath.section
+            let row: Int = indexPath.row
+            historySections[section].items![row].isOpened = false
+            tableView.reloadData()
             tableView.cellForRow(at: indexPath)!.setSelected(false, animated: false)
             return nil
         }
         return indexPath
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let section: Int = indexPath.section
+        let row: Int = indexPath.row
+        let isOpened = historySections[section].items![row].isOpened
+        if (isOpened) {
+            if (section == 2) {
+                return 108
+            }
+            return 150.0
+        }
+        return 45.0
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(tableView.cellForRow(at: indexPath)!.isSelected)
+        let section: Int = indexPath.section
+        let row: Int = indexPath.row
+        historySections[section].items![row].isOpened = true
+        tableView.reloadData()
+        tableView.cellForRow(at: indexPath)!.setSelected(true, animated: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -84,6 +110,32 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         let row: Int = indexPath.row
         
         let target = historySections[section].items![row]
+        cell.selectionStyle = .none
+        if (!target.isOpened) {
+            cell.whosRequestLabel.isHidden = true
+            cell.userName.isHidden = true
+            cell.rejectButton.isHidden = true
+            cell.admitButton.isHidden = true
+            cell.returnedButton.isHidden = true
+        } else {
+            cell.whosRequestLabel.isHidden = false
+            cell.userName.isHidden = false
+            cell.whosRequestLabel.text = "대여자"
+            cell.userName.text = target.requester.name
+            if (section == 0) {
+                cell.whosRequestLabel.text = "요청자"
+                cell.admitButton.titleLabel!.text = "승인"
+                cell.rejectButton.titleLabel!.text = "거절"
+                cell.rejectButton.isHidden = false
+                cell.admitButton.isHidden = false
+                cell.returnedButton.isHidden = true
+            } else if (section == 1) {
+                cell.returnedButton.titleLabel!.text = "반납완료"
+                cell.rejectButton.isHidden = true
+                cell.admitButton.isHidden = true
+                cell.returnedButton.isHidden = false
+            }
+        }
         cell.nameLabel.text = target.item.stuffName
         cell.dateLabel.text = dateFormatter.string(from: target.reservedTime)
     

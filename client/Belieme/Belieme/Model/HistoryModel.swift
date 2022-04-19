@@ -63,6 +63,7 @@ struct HistoryObject {
     let cancelTime: Date?
     
     let status: String
+    var isOpened: Bool
 }
 
 struct HistorySection {
