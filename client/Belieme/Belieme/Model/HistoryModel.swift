@@ -19,7 +19,7 @@ struct HistoryItem {
     var returned: Bool
     let startDate: Date
     var finishDate: Date?
-    let byWho: User
+//    let byWho: User
 }
 
 struct HistoryMenu: Identifiable {
