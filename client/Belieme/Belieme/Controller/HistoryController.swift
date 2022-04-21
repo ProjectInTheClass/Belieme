@@ -46,6 +46,22 @@ class HistoryController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         print("History view Did Disappear")
     }
+    
+    @IBAction func returnedButtonTouched(_ sender: UIButton) {
+        // 반납 처리
+        print("return \(sender.tag)")
+        HistoryTable.reloadData()
+    }
+    
+    @IBAction func rejectButtonTouched(_ sender: UIButton) {
+        print("reject \(sender.tag)")
+        HistoryTable.reloadData()
+    }
+    
+    @IBAction func adminButtonTouched(_ sender: UIButton) {
+        print("admit \(sender.tag)")
+        HistoryTable.reloadData()
+    }
 }
 
 extension HistoryController: UITableViewDelegate, UITableViewDataSource {
@@ -71,18 +87,6 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         return historySections[index].name
     }
     
-    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
-        if (tableView.cellForRow(at: indexPath)!.isSelected) {
-            let section: Int = indexPath.section
-            let row: Int = indexPath.row
-            historySections[section].items![row].isOpened = false
-            tableView.reloadData()
-            tableView.cellForRow(at: indexPath)!.setSelected(false, animated: false)
-            return nil
-        }
-        return indexPath
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section: Int = indexPath.section
         let row: Int = indexPath.row
@@ -99,18 +103,22 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let section: Int = indexPath.section
         let row: Int = indexPath.row
-        historySections[section].items![row].isOpened = true
+        historySections[section].items![row].isOpened = !(historySections[section].items![row].isOpened)
         tableView.reloadData()
         tableView.cellForRow(at: indexPath)!.setSelected(true, animated: false)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        print("Load Table data.")
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCellId", for: indexPath) as! HistoryCell
         let section: Int = (isAdmin == true) ? indexPath.section : indexPath.section + 1
         let row: Int = indexPath.row
         
         let target = historySections[section].items![row]
         cell.selectionStyle = .none
+        cell.returnedButton.tag = row
+        cell.rejectButton.tag = row
+        cell.admitButton.tag = row
         if (!target.isOpened) {
             cell.whosRequestLabel.isHidden = true
             cell.userName.isHidden = true

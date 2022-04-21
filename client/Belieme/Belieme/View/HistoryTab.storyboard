@@ -79,11 +79,17 @@
                                                                     <rect key="frame" x="0.0" y="0.0" width="134.5" height="31"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="rejectButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="813-oK-Wlx"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxj-ZS-cLy">
                                                                     <rect key="frame" x="153.5" y="0.0" width="134.5" height="31"/>
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                                    <connections>
+                                                                        <action selector="adminButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="4B2-DZ-ncy"/>
+                                                                    </connections>
                                                                 </button>
                                                             </subviews>
                                                             <constraints>
@@ -95,6 +101,9 @@
                                                             <rect key="frame" x="16" y="108" width="288" height="31"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                                            <connections>
+                                                                <action selector="returnedButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="eqR-cq-YVF"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <constraints>
