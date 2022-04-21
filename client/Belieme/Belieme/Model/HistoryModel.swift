@@ -13,34 +13,104 @@ let WAITING: Int = 2
 
 let IsAdmin = true
 
-struct HistoryItem {
-    let id: Int
+/*
+ {
+         "item" : {
+             "stuffName" : "우산",
+             "stuffEmoji" : "🌂",
+             "num" : 1
+         },
+         "num" : 5,
+         "requester" : {
+             "studentId" : "2018008886",
+             "name" : "이석환"
+         },
+         "approveManager" : {
+             "studentId" : "2018008886",
+             "name" : "이석환"
+         },
+         "returnManager" : null,
+         "lostManager" : null,
+         "cancelManager" : null,
+       "reservedTimeStamp" : 1649862523,
+       "approveTimeStamp" : 1649862735,
+       "returnTimeStamp" : 0,
+       "lostTimeStamp" : 0,
+         "cancelTiemStamp": 0,
+         "status" : "USING"
+     },
+ */
+
+struct ItemInfo {
+    let stuffName: String
+    let stuffEmoji: String
+    let num: Int
+}
+
+struct HistoryObject {
+    let item: ItemInfo
+    let requester: User
+    
+    let approveManager: User?
+    let returnManager: User?
+    let lostManager: User?
+    let cancelManager: User?
+    
+    let reservedTime: Date
+    let approvedTime: Date?
+    let returnedTime: Date?
+    let lostTime: Date?
+    let cancelTime: Date?
+    
+    let status: String
+    var isOpened: Bool
+}
+
+struct HistorySection {
     let name: String
-    var returned: Bool
-    let startDate: Date
-    var finishDate: Date?
-    let byWho: User
+    var items: [HistoryObject]?
 }
 
-struct HistoryMenu: Identifiable {
-    var id : Int
-    var name: String
-    var subItems: [HistoryItem] = []
-}
-
-func getHistoryItem() -> [HistoryMenu] {
-    // Server로 현재 나의 물품 내역 요청 , admin일경우와 admin이 아닐경우가 다르다~
+/*
+ 기록 전부 불러오기 -> 어드민 || 일반
+ */
+func getAllHistories() -> [HistoryObject] {
     return []
 }
 
-func returnItem(item: HistoryItem) {
-    // 제곧내 admin만 호출
+
+/*
+ 특정 기록 상세 불러오기 -> 어드민
+ */
+//func getHistory(item: HistoryObject) -> HistoryObject {
+//    return HistoryObject(item: <#T##ItemInfo#>, requester: <#T##User#>, approveManager: <#T##User?#>, returnManager: <#T##User?#>, lostManager: <#T##User?#>, cancelManager: <#T##User?#>, reservedTime: <#T##Date#>, approvedTime: <#T##Date?#>, returnedTime: <#T##Date?#>, lostTime: <#T##Date?#>, cancelTime: <#T##Date?#>, status: <#T##String#>)
+//}
+
+/*
+ 물건 반납 승인 -> 어드민
+ */
+func returnItem(item: HistoryObject) {
+    
 }
 
-func acceptRent(item: HistoryItem) {
-    // 제곧내 admin만 호출
+/*
+ 물건 예약 거절 -> 어드민
+ */
+func rejectReserve(item: HistoryObject) {
+    
 }
 
-func cancelRent(item: HistoryItem) {
-    // 제곧내 admmin만 호출
+
+/*
+ 물건 예약 승인 -> 어드민
+ */
+func approveReserve(item: HistoryObject) {
+    
+}
+
+/*
+ 물건 분실 -> 어드민
+ */
+func lostItem(item: HistoryObject) {
+    
 }

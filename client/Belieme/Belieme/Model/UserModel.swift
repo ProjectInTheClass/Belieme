@@ -11,8 +11,9 @@ import Foundation
 struct User {
     let student_id: String
     let name: String
-    let isAdmin: Bool // true, false
 }
+
+var isAdmin: Bool = true
 
 func login(id: String, password: String) {
     requestPost(url: "한양API", method: "POST", param: ["id": "user_id", "pw": "user_pw"], completionHandler: { (success, data) in
