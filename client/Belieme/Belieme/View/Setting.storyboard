@@ -16,64 +16,96 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="reH-Ja-FWS">
-                                <rect key="frame" x="9" y="453" width="395" height="324"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lv2-5Z-c88">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="834"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
-                                        <rect key="frame" x="8" y="8" width="71" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-uq-Lyd">
-                                        <rect key="frame" x="8" y="46" width="155" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="사용자 모드 전환">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
-                                        <rect key="frame" x="8" y="92" width="99" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="알림 설정">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-UE-GFX">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                        <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="tjV-z1-IEA"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agj-vW-Ctr">
+                                        <rect key="frame" x="0.0" y="120" width="414" height="714"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-PS-tKo">
+                                                <rect key="frame" x="10" y="10" width="395" height="124"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
+                                                        <rect key="frame" x="8" y="8" width="44" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oil-bN-zYt">
+                                                        <rect key="frame" x="8" y="46" width="94" height="38"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="로그아웃">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reH-Ja-FWS">
+                                                <rect key="frame" x="10" y="144" width="394" height="532"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
+                                                        <rect key="frame" x="8" y="8" width="71" height="30"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-uq-Lyd">
+                                                        <rect key="frame" x="8" y="46" width="155" height="38"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="사용자 모드 전환">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
+                                                        <rect key="frame" x="8" y="92" width="99" height="38"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="알림 설정">
+                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
+                                                        </buttonConfiguration>
+                                                    </button>
+                                                </subviews>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="reH-Ja-FWS" secondAttribute="bottom" constant="38" id="5Lc-4a-xxR"/>
+                                            <constraint firstItem="reH-Ja-FWS" firstAttribute="top" secondItem="agj-vW-Ctr" secondAttribute="top" constant="144" id="67r-Us-KqP"/>
+                                            <constraint firstAttribute="trailing" secondItem="reH-Ja-FWS" secondAttribute="trailing" constant="10" id="Dss-bk-t5q"/>
+                                            <constraint firstAttribute="trailing" secondItem="dNY-PS-tKo" secondAttribute="trailing" constant="9" id="Jxa-KQ-JjR"/>
+                                            <constraint firstItem="reH-Ja-FWS" firstAttribute="centerX" secondItem="agj-vW-Ctr" secondAttribute="centerX" id="Nef-QD-XKW"/>
+                                            <constraint firstItem="dNY-PS-tKo" firstAttribute="top" secondItem="agj-vW-Ctr" secondAttribute="top" constant="10" id="PvM-3H-EG2"/>
+                                            <constraint firstItem="reH-Ja-FWS" firstAttribute="leading" secondItem="agj-vW-Ctr" secondAttribute="leading" constant="10" id="U8u-GT-sac"/>
+                                            <constraint firstItem="dNY-PS-tKo" firstAttribute="leading" secondItem="agj-vW-Ctr" secondAttribute="leading" constant="10" id="aHd-IK-hch"/>
+                                            <constraint firstItem="reH-Ja-FWS" firstAttribute="top" secondItem="dNY-PS-tKo" secondAttribute="bottom" constant="10" id="nkc-2m-13g"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-UE-GFX">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="150"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-PS-tKo">
-                                <rect key="frame" x="9" y="181" width="395" height="241"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
-                                        <rect key="frame" x="8" y="8" width="44" height="30"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oil-bN-zYt">
-                                        <rect key="frame" x="8" y="46" width="94" height="38"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="로그아웃">
-                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                        </buttonConfiguration>
-                                    </button>
-                                </subviews>
-                            </view>
+                                <constraints>
+                                    <constraint firstItem="uVd-UE-GFX" firstAttribute="top" secondItem="Lv2-5Z-c88" secondAttribute="top" id="5eS-3U-nWt"/>
+                                    <constraint firstItem="uVd-UE-GFX" firstAttribute="leading" secondItem="Lv2-5Z-c88" secondAttribute="leading" id="FIC-Sg-6Z0"/>
+                                    <constraint firstAttribute="trailing" secondItem="uVd-UE-GFX" secondAttribute="trailing" id="tbg-iz-p7c"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qlE-UT-mFu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Lv2-5Z-c88" firstAttribute="leading" secondItem="qlE-UT-mFu" secondAttribute="leading" id="99n-fz-DYV"/>
+                            <constraint firstItem="Lv2-5Z-c88" firstAttribute="top" secondItem="Y0O-h4-Un7" secondAttribute="top" id="LV0-ji-e5t"/>
+                            <constraint firstItem="Lv2-5Z-c88" firstAttribute="trailing" secondItem="qlE-UT-mFu" secondAttribute="trailing" id="YLH-JD-Sjx"/>
+                            <constraint firstItem="qlE-UT-mFu" firstAttribute="bottom" secondItem="Lv2-5Z-c88" secondAttribute="bottom" constant="28" id="a9v-wI-lyz"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="설정" id="fvr-Se-8Hv"/>
                     <connections>
@@ -83,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5J-Ce-Pd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-228" y="322"/>
+            <point key="canvasLocation" x="-230.625" y="320"/>
         </scene>
     </scenes>
     <resources>
