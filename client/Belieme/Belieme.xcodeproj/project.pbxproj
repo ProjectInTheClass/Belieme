@@ -18,7 +18,7 @@
 		37BDEB0C2808111C00443075 /* BeliemeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB0B2808111C00443075 /* BeliemeUITestsLaunchTests.swift */; };
 		37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB2C2808154F00443075 /* HistoryController.swift */; };
 		37BDEB2F2808157500443075 /* QuestionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB2E2808157500443075 /* QuestionController.swift */; };
-		37BDEB312808158600443075 /* StuffsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB302808158600443075 /* StuffsController.swift */; };
+		37BDEB312808158600443075 /* StuffTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB302808158600443075 /* StuffTabController.swift */; };
 		37BDEB332808159900443075 /* HistoryTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEB322808159900443075 /* HistoryTab.storyboard */; };
 		37BDEB35280815A500443075 /* StuffTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEB34280815A500443075 /* StuffTab.storyboard */; };
 		37BDEB37280815AE00443075 /* QuestionTab.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37BDEB36280815AE00443075 /* QuestionTab.storyboard */; };
@@ -29,6 +29,8 @@
 		37CCB6D1280959670023D753 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCB6D0280959670023D753 /* UserModel.swift */; };
 		602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602FDF4E2809163D009F15D2 /* Setting.storyboard */; };
 		602FDF512809167A009F15D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FDF502809167A009F15D2 /* SettingController.swift */; };
+		9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */; };
+		9BC3B15D2811BEB4002E1313 /* StuffDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,7 +66,7 @@
 		37BDEB0B2808111C00443075 /* BeliemeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeliemeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		37BDEB2C2808154F00443075 /* HistoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryController.swift; sourceTree = "<group>"; };
 		37BDEB2E2808157500443075 /* QuestionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionController.swift; sourceTree = "<group>"; };
-		37BDEB302808158600443075 /* StuffsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffsController.swift; sourceTree = "<group>"; };
+		37BDEB302808158600443075 /* StuffTabController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffTabController.swift; sourceTree = "<group>"; };
 		37BDEB322808159900443075 /* HistoryTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = HistoryTab.storyboard; sourceTree = "<group>"; };
 		37BDEB34280815A500443075 /* StuffTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffTab.storyboard; sourceTree = "<group>"; };
 		37BDEB36280815AE00443075 /* QuestionTab.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = QuestionTab.storyboard; sourceTree = "<group>"; };
@@ -75,6 +77,8 @@
 		37CCB6D0280959670023D753 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		602FDF4E2809163D009F15D2 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		602FDF502809167A009F15D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
+		9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffDetail.storyboard; sourceTree = "<group>"; };
+		9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +168,7 @@
 		37BDEB1A2808122500443075 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				9BC3B15028118B71002E1313 /* Fonts */,
 				37BDEAF12808111C00443075 /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -175,8 +180,9 @@
 				37BDEAEC2808111B00443075 /* MainController.swift */,
 				37BDEB2C2808154F00443075 /* HistoryController.swift */,
 				37BDEB2E2808157500443075 /* QuestionController.swift */,
-				37BDEB302808158600443075 /* StuffsController.swift */,
+				37BDEB302808158600443075 /* StuffTabController.swift */,
 				602FDF502809167A009F15D2 /* SettingController.swift */,
+				9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +196,7 @@
 				37BDEB34280815A500443075 /* StuffTab.storyboard */,
 				37BDEB36280815AE00443075 /* QuestionTab.storyboard */,
 				602FDF4E2809163D009F15D2 /* Setting.storyboard */,
+				9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -204,6 +211,13 @@
 				37BDEB3D280815F600443075 /* StuffsModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		9BC3B15028118B71002E1313 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,6 +324,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */,
 				37BDEAF52808111C00443075 /* LaunchScreen.storyboard in Resources */,
 				37BDEAF22808111C00443075 /* Assets.xcassets in Resources */,
 				602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */,
@@ -345,8 +360,9 @@
 				37CCB6CF280959400023D753 /* RequestFunction.swift in Sources */,
 				602FDF512809167A009F15D2 /* SettingController.swift in Sources */,
 				37BDEB2F2808157500443075 /* QuestionController.swift in Sources */,
+				9BC3B15D2811BEB4002E1313 /* StuffDetailController.swift in Sources */,
 				37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */,
-				37BDEB312808158600443075 /* StuffsController.swift in Sources */,
+				37BDEB312808158600443075 /* StuffTabController.swift in Sources */,
 				37BDEAED2808111B00443075 /* MainController.swift in Sources */,
 				37BDEAE92808111B00443075 /* AppDelegate.swift in Sources */,
 				37BDEB3A280815DE00443075 /* HistoryModel.swift in Sources */,
