@@ -29,8 +29,23 @@ struct StuffInfo : Codable {
     let cancelManager: User?
 }
 
-func getDateFromTimestamp(unixTime: Int) -> Date {
-    let date = Date(timeIntervalSince1970: Double(unixTime))
-    return date
+func getDateFromTimestamp(unixTime: Int?) -> Date? {
+    guard let time = unixTime else {
+        return nil
+    }
+    return Date(timeIntervalSince1970: Double(time))
+}
+
+func getEnumStatusFromStringStatus(status: String) -> Status? {
+    switch (status) {
+    case "USING":
+        return .RENTING
+    case "REQUESTED":
+        return .WAITING
+    case "RETURNED":
+        return .RETURNED
+    default:
+        return nil
+    }
 }
 

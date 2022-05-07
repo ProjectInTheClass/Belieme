@@ -110,7 +110,7 @@
     </scenes>
     <resources>
         <image name="archivebox" catalog="system" width="128" height="106"/>
-        <image name="belieme-logo" width="200" height="90"/>
+        <image name="belieme-logo" width="67" height="31.333333969116211"/>
         <image name="book" catalog="system" width="128" height="99"/>
         <image name="ellipsis.bubble" catalog="system" width="128" height="110"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
