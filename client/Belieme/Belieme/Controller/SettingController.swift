@@ -12,7 +12,12 @@ class SettingController: UIViewController{
     
     @IBOutlet weak var AccountSetting: UIView!
     @IBOutlet weak var AppSetting: UIView!
-    
+    @IBOutlet weak var changeModeBtn: UIButton!
+   
+    @IBAction func changeMode(_ sender: UIButton) {
+        isAdmin = (!isAdmin)
+        sender.setTitle(getModeChageString(), for: .reserved)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,6 +30,16 @@ class SettingController: UIViewController{
         AppSetting.layer.cornerRadius = 10;
         AppSetting.layer.borderColor = UIColor.systemBlue.cgColor;
         AppSetting.layer.borderWidth = 1;
+        
+        changeModeBtn.setTitle(getModeChageString(), for: .reserved)
+    }
+    
+    func getModeChageString() -> String {
+        if(isAdmin) {
+            return "사용자 모드 전환"
+        } else {
+            return "관리자 모드 전환"
+        }
     }
     
 }

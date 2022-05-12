@@ -28,25 +28,11 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z57-J7-Z4v">
-                                                <rect key="frame" x="157" y="70" width="100" height="50"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="100" id="Pnl-rQ-YIl"/>
-                                                    <constraint firstAttribute="height" constant="50" id="fNG-uP-5w8"/>
-                                                </constraints>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="filled"/>
-                                                <connections>
-                                                    <action selector="modeChange:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="W7W-Xu-LIQ"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <constraints>
                                             <constraint firstItem="9iP-Qq-tZQ" firstAttribute="top" secondItem="I9j-Hm-IXv" secondAttribute="top" constant="88" id="4YN-4Q-Mva"/>
                                             <constraint firstItem="9iP-Qq-tZQ" firstAttribute="leading" secondItem="I9j-Hm-IXv" secondAttribute="leadingMargin" id="8A0-pY-kTq"/>
-                                            <constraint firstItem="Z57-J7-Z4v" firstAttribute="baseline" secondItem="I9j-Hm-IXv" secondAttribute="bottom" id="XQn-Qm-3rd"/>
-                                            <constraint firstItem="Z57-J7-Z4v" firstAttribute="centerX" secondItem="I9j-Hm-IXv" secondAttribute="centerX" id="lrM-tl-tkj"/>
                                             <constraint firstItem="9iP-Qq-tZQ" firstAttribute="bottom" secondItem="I9j-Hm-IXv" secondAttribute="bottomMargin" id="sDN-w3-Wfk"/>
                                         </constraints>
                                     </view>

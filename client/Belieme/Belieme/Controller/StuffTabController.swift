@@ -50,17 +50,6 @@ class StuffTabController: UIViewController {
         // TODO completion에 reloard Data 넣기
         present(alert, animated: true, completion: nil)
     }
-    
-    @IBAction func modeChange(_ sender: UIButton) {
-        isAdmin = (!isAdmin)
-        if(isAdmin) {
-            sender.setTitle("사용자 모드로", for: .normal)
-        }
-        else {
-            sender.setTitle("관리자 모드로", for: .normal)
-        }
-        reloadView()
-    }
 }
 
 // MARK: - Implemnts Deligate of TableView
