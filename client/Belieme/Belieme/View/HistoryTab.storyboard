@@ -80,7 +80,7 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                                     <connections>
-                                                                        <action selector="rejectButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="813-oK-Wlx"/>
+                                                                        <action selector="cancelButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="vGc-yQ-oD1"/>
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rxj-ZS-cLy">
@@ -88,7 +88,7 @@
                                                                     <state key="normal" title="Button"/>
                                                                     <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                                     <connections>
-                                                                        <action selector="adminButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="4B2-DZ-ncy"/>
+                                                                        <action selector="adminButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="tE2-eu-xQF"/>
                                                                     </connections>
                                                                 </button>
                                                             </subviews>
@@ -102,7 +102,7 @@
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                                             <connections>
-                                                                <action selector="returnedButtonTouched:" destination="Y6W-OH-hqX" eventType="touchDown" id="eqR-cq-YVF"/>
+                                                                <action selector="returnedButtonTouched:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="YHq-hV-Br1"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
