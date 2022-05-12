@@ -13,11 +13,13 @@ struct User : Codable {
     let name: String
 }
 
+
+var isAdmin: Bool = false
 let curUser : User = User(
     studentId: "2018008886",
     name: "이석환"
 )
-let IsAdmin : Bool = true
+
 
 func login(id: String, password: String) {
 //    requestPost(url: "한양API", method: "POST", param: ["id": "user_id", "pw": "user_pw"], completionHandler: { (success, data) in

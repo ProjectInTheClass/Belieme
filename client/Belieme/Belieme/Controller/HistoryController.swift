@@ -40,7 +40,7 @@ class HistoryController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        historySections = (IsAdmin)
+        historySections = (isAdmin)
             ? getAllHistoriesByAdmin()
             : getAllHistoriesOfUser(id: curUser.studentId)
         HistoryTable.reloadData()
@@ -109,7 +109,7 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         if #available(iOS 15, *) {
             tableView.sectionHeaderTopPadding = 1.0
         }
-        return (IsAdmin) ? 3 : 2
+        return (isAdmin) ? 3 : 2
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
@@ -118,12 +118,12 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let index: Int = (IsAdmin) ? section : section + 1
+        let index: Int = (isAdmin) ? section : section + 1
         return historySections[index].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let index: Int = (IsAdmin) ? section : section + 1
+        let index: Int = (isAdmin) ? section : section + 1
         let status = historySections[index].status
         let name = (status == .WAITING)
             ? "승인대기"
@@ -156,7 +156,7 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCellId", for: indexPath) as! HistoryCell
-        let section: Int = (IsAdmin) ? indexPath.section : indexPath.section + 1
+        let section: Int = (isAdmin) ? indexPath.section : indexPath.section + 1
         let row: Int = indexPath.row
         
         let target = historySections[section].items[row]
