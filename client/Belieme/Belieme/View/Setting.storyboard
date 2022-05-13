@@ -22,9 +22,6 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-UE-GFX">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="tjV-z1-IEA"/>
-                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agj-vW-Ctr">
                                         <rect key="frame" x="0.0" y="120" width="414" height="714"/>
@@ -97,6 +94,7 @@
                                 <constraints>
                                     <constraint firstItem="uVd-UE-GFX" firstAttribute="top" secondItem="Lv2-5Z-c88" secondAttribute="top" id="5eS-3U-nWt"/>
                                     <constraint firstItem="uVd-UE-GFX" firstAttribute="leading" secondItem="Lv2-5Z-c88" secondAttribute="leading" id="FIC-Sg-6Z0"/>
+                                    <constraint firstItem="uVd-UE-GFX" firstAttribute="height" secondItem="agj-vW-Ctr" secondAttribute="height" multiplier="0.168067" id="slb-lx-ZqQ"/>
                                     <constraint firstAttribute="trailing" secondItem="uVd-UE-GFX" secondAttribute="trailing" id="tbg-iz-p7c"/>
                                 </constraints>
                             </stackView>
