@@ -32,8 +32,13 @@
 		37BDEB3C280815EA00443075 /* QuestionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3B280815EA00443075 /* QuestionModel.swift */; };
 		37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3D280815F600443075 /* StuffsModel.swift */; };
 		37CCB6D1280959670023D753 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCB6D0280959670023D753 /* UserModel.swift */; };
+		37D1D3EA284891CD002435D5 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 37D1D3E9284891CD002435D5 /* SwiftSMTP */; };
 		602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602FDF4E2809163D009F15D2 /* Setting.storyboard */; };
 		602FDF512809167A009F15D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FDF502809167A009F15D2 /* SettingController.swift */; };
+		60B6D82128329B45000B28E1 /* StuffAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B6D82028329B45000B28E1 /* StuffAdd.storyboard */; };
+		60B6D82528329C07000B28E1 /* StuffAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6D82428329C07000B28E1 /* StuffAddController.swift */; };
+		60B6D82A28450EF8000B28E1 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 60B6D82928450EF8000B28E1 /* SwiftSMTP */; };
+		60B6D82D28450FCF000B28E1 /* SMTP_SET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */; };
 		9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */; };
 		9BC3B15D2811BEB4002E1313 /* StuffDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +92,9 @@
 		37CCB6D0280959670023D753 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		602FDF4E2809163D009F15D2 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		602FDF502809167A009F15D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
+		60B6D82028329B45000B28E1 /* StuffAdd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffAdd.storyboard; sourceTree = "<group>"; };
+		60B6D82428329C07000B28E1 /* StuffAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffAddController.swift; sourceTree = "<group>"; };
+		60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTP_SET.swift; sourceTree = "<group>"; };
 		9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffDetail.storyboard; sourceTree = "<group>"; };
 		9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37D1D3EA284891CD002435D5 /* SwiftSMTP in Frameworks */,
+				60B6D82A28450EF8000B28E1 /* SwiftSMTP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +159,7 @@
 		37BDEAE72808111B00443075 /* Belieme */ = {
 			isa = PBXGroup;
 			children = (
+				60B6D82B28450FC0000B28E1 /* SMTP */,
 				370549F62826BCED0012AE5D /* Request */,
 				37BDEB28280814DF00443075 /* Model */,
 				37BDEB27280814C200443075 /* View */,
@@ -205,6 +216,7 @@
 				602FDF502809167A009F15D2 /* SettingController.swift */,
 				9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */,
 				37831F8B282FDA990027B804 /* UserController.swift */,
+				60B6D82428329C07000B28E1 /* StuffAddController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -220,6 +232,7 @@
 				602FDF4E2809163D009F15D2 /* Setting.storyboard */,
 				9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */,
 				37831F8D282FDAA90027B804 /* Login.storyboard */,
+				60B6D82028329B45000B28E1 /* StuffAdd.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,6 +247,14 @@
 				370549F42826AEBB0012AE5D /* StuffInfoModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		60B6D82B28450FC0000B28E1 /* SMTP */ = {
+			isa = PBXGroup;
+			children = (
+				60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */,
+			);
+			path = SMTP;
 			sourceTree = "<group>";
 		};
 		9BC3B15028118B71002E1313 /* Fonts */ = {
@@ -259,6 +280,10 @@
 			dependencies = (
 			);
 			name = Belieme;
+			packageProductDependencies = (
+				60B6D82928450EF8000B28E1 /* SwiftSMTP */,
+				37D1D3E9284891CD002435D5 /* SwiftSMTP */,
+			);
 			productName = Belieme;
 			productReference = 37BDEAE52808111B00443075 /* Belieme.app */;
 			productType = "com.apple.product-type.application";
@@ -331,6 +356,10 @@
 				Base,
 			);
 			mainGroup = 37BDEADC2808111B00443075;
+			packageReferences = (
+				60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+				37D1D3E8284891CD002435D5 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+			);
 			productRefGroup = 37BDEAE62808111B00443075 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -350,6 +379,7 @@
 				9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */,
 				37BDEAF52808111C00443075 /* LaunchScreen.storyboard in Resources */,
 				37BDEAF22808111C00443075 /* Assets.xcassets in Resources */,
+				60B6D82128329B45000B28E1 /* StuffAdd.storyboard in Resources */,
 				602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */,
 				37BDEB37280815AE00443075 /* QuestionTab.storyboard in Resources */,
 				37BDEAF02808111B00443075 /* Main.storyboard in Resources */,
@@ -389,7 +419,9 @@
 				37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */,
 				37BDEB312808158600443075 /* StuffTabController.swift in Sources */,
 				370549F52826AEBB0012AE5D /* StuffInfoModel.swift in Sources */,
+				60B6D82D28450FCF000B28E1 /* SMTP_SET.swift in Sources */,
 				37BDEAED2808111B00443075 /* MainController.swift in Sources */,
+				60B6D82528329C07000B28E1 /* StuffAddController.swift in Sources */,
 				37BDEAE92808111B00443075 /* AppDelegate.swift in Sources */,
 				370549FA2826BD500012AE5D /* HistoryRequest.swift in Sources */,
 				370549F82826BD1A0012AE5D /* RequestFunc.swift in Sources */,
@@ -732,6 +764,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		37D1D3E8284891CD002435D5 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+		60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		37D1D3E9284891CD002435D5 /* SwiftSMTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			productName = SwiftSMTP;
+		};
+		60B6D82928450EF8000B28E1 /* SwiftSMTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			productName = SwiftSMTP;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 37BDEADD2808111B00443075 /* Project object */;
 }
