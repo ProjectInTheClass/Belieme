@@ -102,3 +102,10 @@ func requestPost(api: String, method: String, param: [String: Any]) -> Data? {
     semaphore.wait()
     return jsonData
 }
+
+func getDateFromTimestamp(unixTime: Int?) -> Date? {
+    guard let time = unixTime else {
+        return nil
+    }
+    return Date(timeIntervalSince1970: Double(time))
+}

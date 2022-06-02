@@ -29,12 +29,7 @@ struct StuffInfo : Codable {
     let cancelManager: User?
 }
 
-func getDateFromTimestamp(unixTime: Int?) -> Date? {
-    guard let time = unixTime else {
-        return nil
-    }
-    return Date(timeIntervalSince1970: Double(time))
-}
+
 
 func getEnumStatusFromStringStatus(status: String) -> Status? {
     switch (status) {
