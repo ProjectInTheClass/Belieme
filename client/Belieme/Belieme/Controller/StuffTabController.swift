@@ -22,16 +22,33 @@ class StuffCell : UITableViewCell {
             self.lentalBtn.isHidden = false
         }
     }
+    
+    
 }
 
 // MARK: - Outlet vars, functions and member vars
 class StuffTabController: UIViewController {
     @IBOutlet weak var stuffTableView: UITableView!
+    @IBOutlet weak var stuffAddButton: UIButton!
+    
     
     var stuffsData = [
         Stuff(name: "우산", emoji: "☂️", amount: 10, count: 2),
         Stuff(name: "축구공", emoji: "⚽️", amount: 3, count: 2),
         Stuff(name: "블루투스 스피커", emoji: "📻", amount: 2, count: 2)]
+    
+    func setButton(){
+        stuffAddButton.layer.cornerRadius = stuffAddButton.layer.frame.size.width / 2
+        stuffAddButton.clipsToBounds = true
+        stuffAddButton.setTitle("+", for: .normal)
+        
+        //폰트크기가 커지지가 않음...
+        stuffAddButton.titleLabel?.font = UIFont.systemFont(ofSize: 100)
+        stuffAddButton.layer.shadowColor = UIColor.gray.cgColor
+        stuffAddButton.layer.shadowOffset = CGSize.zero
+        stuffAddButton.layer.shadowOpacity = 1.0
+        stuffAddButton.layer.shadowRadius = 6
+    }
     
     @IBAction func lentalBtnClicked(_ sender: UIButton) {
         let data = stuffsData[sender.tag]
@@ -66,7 +83,7 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         
         cell.emoji.text = stuff.emoji
         cell.name.text = stuff.name
-        cell.lentalBtn.setTitle("\(stuff.amount)/\(stuff.count)", for: .normal)
+        cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
         cell.tag = indexPath.row
     
@@ -85,7 +102,15 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 extension StuffTabController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        setButton()
         reloadView()
+        
+        if (isAdmin == true){
+            stuffAddButton.isHidden = false
+        }
+        else{
+            stuffAddButton.isHidden = true
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -94,10 +119,9 @@ extension StuffTabController {
         else { return }
         
         let selectedStuff = stuffsData[stuffCell.tag]
-        targetViewController.stuff = Stuff(name: selectedStuff.name,
-                                           emoji: selectedStuff.emoji,
-                                           amount: selectedStuff.amount,
-                                           count: selectedStuff.count)
+        targetViewController.paramName = selectedStuff.name
+        targetViewController.paramImage = selectedStuff.emoji
+        targetViewController.paramCount = selectedStuff.amount
     }
 }
 

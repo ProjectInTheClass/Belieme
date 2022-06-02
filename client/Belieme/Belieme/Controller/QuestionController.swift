@@ -4,8 +4,9 @@
 //
 //  Created by mac on 2022/04/14.
 //
-import SwiftUI
+
 import UIKit
+import SwiftSMTP
 
 class QuestionController: UIViewController, UITextViewDelegate {
 
@@ -22,7 +23,25 @@ class QuestionController: UIViewController, UITextViewDelegate {
          print("UserEmail: "+AskUserEmail.text)
          print("Title: "+AskTitle.text)
          print("Question: "+AskContent.text)
+        
+        
+        let mail_to = Mail.User(name: "mail_to", email: "belieme.hyu@gmail.com")
 
+        let mail = Mail(
+            from: mail_from,
+            to: [mail_to],
+            subject: AskTitle.text,
+            text: AskContent.text + "\n" + AskUserEmail.text
+        
+        )
+        
+        
+        smtp.send(mail) { (error) in
+            if let error = error {
+                print(error)
+            }
+            
+        }
     
     }
     
