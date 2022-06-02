@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="SB_LoginTab" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="UserController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0hb-aL-h3Z">
+                                <rect key="frame" x="94.5" y="350" width="225" height="196"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="belieme-logo" translatesAutoresizingMaskIntoConstraints="NO" id="ayJ-74-7rg">
+                                        <rect key="frame" x="0.0" y="0.0" width="225" height="106"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="106" id="Frs-PV-C7M"/>
+                                        </constraints>
+                                    </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="S0Y-5p-5DR">
+                                        <rect key="frame" x="0.0" y="106" width="225" height="69"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="e2M-ZP-WzQ">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="69"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="포탈 아이디" textAlignment="natural" minimumFontSize="17" background="비밀번호" translatesAutoresizingMaskIntoConstraints="NO" id="N3B-mN-p1p">
+                                                        <rect key="frame" x="0.0" y="0.0" width="150" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="비밀번호" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1CA-ut-EdL">
+                                                        <rect key="frame" x="0.0" y="35" width="150" height="34"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                                    </textField>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="150" id="7O7-ty-575"/>
+                                                </constraints>
+                                            </stackView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jnr-SO-URc">
+                                                <rect key="frame" x="158" y="0.0" width="67" height="69"/>
+                                                <color key="backgroundColor" red="0.38940624930000001" green="0.65267858030000003" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Button">
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="touchLoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="KWd-4j-N83"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="한양대 포탈 아이디와 비밀번호로 로그인 해주세요." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rk8-Hf-yNt">
+                                        <rect key="frame" x="0.0" y="175" width="225" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="225" id="UAc-1J-Fj7"/>
+                                            <constraint firstAttribute="height" constant="21" id="gUA-1Q-tGB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zv1-2V-mbN">
+                                <rect key="frame" x="62" y="211" width="290" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Mxk-dI-U9h">
+                                <rect key="frame" x="15" y="304.5" width="384" height="287.5"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="belieme-logo" translatesAutoresizingMaskIntoConstraints="NO" id="aIH-vV-3Ah">
+                                        <rect key="frame" x="0.0" y="0.0" width="384" height="106"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="106" id="l5z-yA-Uh9"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보의 제 3자 제공동의 요청" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiL-Jg-AsY">
+                                        <rect key="frame" x="0.0" y="106" width="384" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="한양대학교 OPEN API는 아래와 같은 개인정보를 컴소 빌리미에 제공합니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-qI-tEO">
+                                        <rect key="frame" x="0.0" y="126.5" width="384" height="49.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="로그인한 사용자의 성명, 사용자ID, 학번(가입번호), 재학(재직) 여부, 소속대학, 소속명, 소속코드, 소속ID, 사용자 구분명의 정보" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kx7-Ld-oBT">
+                                        <rect key="frame" x="0.0" y="176" width="384" height="49.5"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <color key="textColor" systemColor="labelColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fzz-3u-1Io">
+                                        <rect key="frame" x="0.0" y="225.5" width="384" height="31"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HhF-va-0vV">
+                                                <rect key="frame" x="0.0" y="0.0" width="192" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="동의하지 않습니다.">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="touchAgreeOrDisagreeButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="GWU-Qf-82N"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OG8-g5-BSw">
+                                                <rect key="frame" x="192" y="0.0" width="192" height="31"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="동의합니다.">
+                                                    <color key="baseForegroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="touchAgreeOrDisagreeButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="NUB-ps-0gb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jtx-t6-IE6">
+                                        <rect key="frame" x="0.0" y="256.5" width="384" height="31"/>
+                                        <color key="tintColor" red="0.38940624930000001" green="0.65267858030000003" blue="0.96611279250000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="로그인 하기"/>
+                                        <connections>
+                                            <action selector="touchAgreeLoginButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="I0p-a4-BUm"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Mxk-dI-U9h" secondAttribute="trailing" constant="15" id="UJR-nu-mbE"/>
+                            <constraint firstItem="Mxk-dI-U9h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fjB-b7-E7O"/>
+                            <constraint firstItem="0hb-aL-h3Z" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kpB-Et-hmy"/>
+                            <constraint firstItem="0hb-aL-h3Z" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="mVh-CW-b1D"/>
+                            <constraint firstItem="Mxk-dI-U9h" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="15" id="ptS-tc-wTH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="agreeButton" destination="OG8-g5-BSw" id="2Wz-F6-mYv"/>
+                        <outlet property="agreeImage" destination="aIH-vV-3Ah" id="9CR-9U-XCZ"/>
+                        <outlet property="agreeLoginButton" destination="Jtx-t6-IE6" id="pH9-52-vfe"/>
+                        <outlet property="detailContent" destination="kx7-Ld-oBT" id="I5d-Wz-OwN"/>
+                        <outlet property="disagreeButton" destination="HhF-va-0vV" id="JpD-KJ-D2T"/>
+                        <outlet property="idField" destination="N3B-mN-p1p" id="A9q-p4-txZ"/>
+                        <outlet property="loginButton" destination="Jnr-SO-URc" id="tGV-mI-qik"/>
+                        <outlet property="loginImage" destination="ayJ-74-7rg" id="Ipx-BO-qZh"/>
+                        <outlet property="loginNoticeLabel" destination="rk8-Hf-yNt" id="D7D-PA-Ojs"/>
+                        <outlet property="pwField" destination="1CA-ut-EdL" id="q2S-73-ErD"/>
+                        <outlet property="titleContent" destination="Sfq-qI-tEO" id="hy6-2P-bA8"/>
+                        <outlet property="titleLabel" destination="CiL-Jg-AsY" id="EoD-IO-0YS"/>
+                        <outlet property="webView" destination="Zv1-2V-mbN" id="dGR-F3-eBt"/>
+                        <outletCollection property="infoButtons" destination="OG8-g5-BSw" collectionClass="NSMutableArray" id="wBo-ne-VPd"/>
+                        <outletCollection property="infoButtons" destination="HhF-va-0vV" collectionClass="NSMutableArray" id="UOv-zi-O8c"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-94.20289855072464" y="86.383928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="belieme-logo" width="67" height="31.333333969116211"/>
+        <image name="비밀번호" width="128" height="128"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
