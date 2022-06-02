@@ -7,7 +7,7 @@
 
 import UIKit
 
-let baseUrl = "https://belieme.herokuapp.com/"
+let baseUrl = "https://belieme.herokuapp.com/real/"
 
 struct Response: Codable {
     let success: Bool
@@ -24,7 +24,7 @@ func requestGet(api: String) -> Data? {
 
     var jsonData : Data? = nil
     var request = URLRequest(url: url)
-    request.addValue("test token", forHTTPHeaderField: "user-token")
+    request.addValue(curUser.token ?? "no token", forHTTPHeaderField: "user-token")
     request.httpMethod = "GET"
     
     let semaphore = DispatchSemaphore(value: 0)
@@ -69,7 +69,7 @@ func requestPost(api: String, method: String, param: [String: Any]) -> Data? {
     var request = URLRequest(url: url)
     request.httpMethod = method
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.addValue("test token", forHTTPHeaderField: "user-token")
+    request.addValue(curUser.token ?? "no token", forHTTPHeaderField: "user-token")
     request.httpBody = sendData
     let semaphore = DispatchSemaphore(value: 0)
     URLSession.shared.dataTask(with: request) { (data, response, error) in

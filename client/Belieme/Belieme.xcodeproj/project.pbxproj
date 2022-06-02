@@ -33,6 +33,7 @@
 		37BDEB3E280815F600443075 /* StuffsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BDEB3D280815F600443075 /* StuffsModel.swift */; };
 		37CCB6D1280959670023D753 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CCB6D0280959670023D753 /* UserModel.swift */; };
 		37D1D3EA284891CD002435D5 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 37D1D3E9284891CD002435D5 /* SwiftSMTP */; };
+		37D1D3EC28489BF1002435D5 /* StuffRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D1D3EB28489BF1002435D5 /* StuffRequest.swift */; };
 		602FDF4F2809163D009F15D2 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602FDF4E2809163D009F15D2 /* Setting.storyboard */; };
 		602FDF512809167A009F15D2 /* SettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602FDF502809167A009F15D2 /* SettingController.swift */; };
 		60B6D82128329B45000B28E1 /* StuffAdd.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60B6D82028329B45000B28E1 /* StuffAdd.storyboard */; };
@@ -90,6 +91,7 @@
 		37BDEB3B280815EA00443075 /* QuestionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionModel.swift; sourceTree = "<group>"; };
 		37BDEB3D280815F600443075 /* StuffsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffsModel.swift; sourceTree = "<group>"; };
 		37CCB6D0280959670023D753 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		37D1D3EB28489BF1002435D5 /* StuffRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffRequest.swift; sourceTree = "<group>"; };
 		602FDF4E2809163D009F15D2 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		602FDF502809167A009F15D2 /* SettingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingController.swift; sourceTree = "<group>"; };
 		60B6D82028329B45000B28E1 /* StuffAdd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffAdd.storyboard; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				370549F72826BD1A0012AE5D /* RequestFunc.swift */,
 				370549F92826BD500012AE5D /* HistoryRequest.swift */,
 				37BC00A02833C0D300E60364 /* LoginRequest.swift */,
+				37D1D3EB28489BF1002435D5 /* StuffRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -412,6 +415,7 @@
 			files = (
 				37CCB6D1280959670023D753 /* UserModel.swift in Sources */,
 				37BC00A12833C0D300E60364 /* LoginRequest.swift in Sources */,
+				37D1D3EC28489BF1002435D5 /* StuffRequest.swift in Sources */,
 				602FDF512809167A009F15D2 /* SettingController.swift in Sources */,
 				37831F8C282FDA990027B804 /* UserController.swift in Sources */,
 				37BDEB2F2808157500443075 /* QuestionController.swift in Sources */,
