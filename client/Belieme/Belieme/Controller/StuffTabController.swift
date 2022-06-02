@@ -32,10 +32,7 @@ class StuffTabController: UIViewController {
     @IBOutlet weak var stuffAddButton: UIButton!
     
     
-    var stuffsData = [
-        Stuff(name: "우산", emoji: "☂️", amount: 10, count: 2),
-        Stuff(name: "축구공", emoji: "⚽️", amount: 3, count: 2),
-        Stuff(name: "블루투스 스피커", emoji: "📻", amount: 2, count: 2)]
+    var stuffsData : [Stuff] = []
     
     func setButton(){
         stuffAddButton.layer.cornerRadius = stuffAddButton.layer.frame.size.width / 2
@@ -50,6 +47,18 @@ class StuffTabController: UIViewController {
         stuffAddButton.layer.shadowRadius = 6
     }
     
+    func touchOkButton(stuffName: String) -> Void {
+        let result : Bool = sendRentRequest(stuffName: stuffName)
+        let alert = UIAlertController(
+            title : (result) ? "요청에 성공하였습니다." : "요청에 실패하였습니다.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func lentalBtnClicked(_ sender: UIButton) {
         let data = stuffsData[sender.tag]
         let alert = UIAlertController(
@@ -58,8 +67,8 @@ class StuffTabController: UIViewController {
             preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "보내기", style: .default) { UIAlertAction in
-            print("ok alert is clicked : \(data.name)")
-        }
+            self.touchOkButton(stuffName: data.name)
+            }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancel)
@@ -102,7 +111,13 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 extension StuffTabController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let studentId = curUser.studentId else {
+            return
+        }
+        print(studentId)
         setButton()
+        stuffsData = getAllStuff()
         reloadView()
         
         if (isAdmin == true){
@@ -129,7 +144,6 @@ extension StuffTabController {
 // MARK: - Function that
 private extension StuffTabController {
     func reloadView() {
-        // TODO 서버에서 불러오기
         stuffTableView.reloadData()
     }
 }
