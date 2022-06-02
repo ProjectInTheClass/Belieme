@@ -40,6 +40,7 @@
 		60B6D82528329C07000B28E1 /* StuffAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6D82428329C07000B28E1 /* StuffAddController.swift */; };
 		60B6D82A28450EF8000B28E1 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 60B6D82928450EF8000B28E1 /* SwiftSMTP */; };
 		60B6D82D28450FCF000B28E1 /* SMTP_SET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */; };
+		9B4300712848B2CE007885A2 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4300702848B2CE007885A2 /* SwiftSMTP */; };
 		9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */; };
 		9BC3B15D2811BEB4002E1313 /* StuffDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -108,6 +109,7 @@
 			files = (
 				37D1D3EA284891CD002435D5 /* SwiftSMTP in Frameworks */,
 				60B6D82A28450EF8000B28E1 /* SwiftSMTP in Frameworks */,
+				9B4300712848B2CE007885A2 /* SwiftSMTP in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +288,7 @@
 			packageProductDependencies = (
 				60B6D82928450EF8000B28E1 /* SwiftSMTP */,
 				37D1D3E9284891CD002435D5 /* SwiftSMTP */,
+				9B4300702848B2CE007885A2 /* SwiftSMTP */,
 			);
 			productName = Belieme;
 			productReference = 37BDEAE52808111B00443075 /* Belieme.app */;
@@ -362,6 +365,7 @@
 			packageReferences = (
 				60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 				37D1D3E8284891CD002435D5 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
+				9B43006F2848B2CE007885A2 /* XCRemoteSwiftPackageReference "Swift-SMTP" */,
 			);
 			productRefGroup = 37BDEAE62808111B00443075 /* Products */;
 			projectDirPath = "";
@@ -786,6 +790,14 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		9B43006F2848B2CE007885A2 /* XCRemoteSwiftPackageReference "Swift-SMTP" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Kitura/Swift-SMTP";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -795,6 +807,11 @@
 			productName = SwiftSMTP;
 		};
 		60B6D82928450EF8000B28E1 /* SwiftSMTP */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
+			productName = SwiftSMTP;
+		};
+		9B4300702848B2CE007885A2 /* SwiftSMTP */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 60B6D82828450EF8000B28E1 /* XCRemoteSwiftPackageReference "Swift-SMTP" */;
 			productName = SwiftSMTP;
