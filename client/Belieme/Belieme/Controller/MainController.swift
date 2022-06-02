@@ -7,13 +7,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class TabBarController: UITabBarController {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        if (checkLogin()) {
+            return
+        }
+        performSegue(withIdentifier: "SG_LoginTab", sender: nil)
     }
-
-
 }
 

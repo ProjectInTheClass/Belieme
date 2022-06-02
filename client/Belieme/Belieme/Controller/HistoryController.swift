@@ -40,9 +40,15 @@ class HistoryController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        guard let studentId = curUser.studentId else {
+            // TODO : 로그인 되지 않았을 때.
+            return
+        }
+
+        print(isAdmin)
         historySections = (isAdmin)
             ? getAllHistoriesByAdmin()
-            : getAllHistoriesOfUser(id: curUser.studentId)
+            : getAllHistoriesOfUser(id: studentId)
         HistoryTable.reloadData()
     }
     
@@ -57,10 +63,7 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (!result) {
-            print("Why?")
-        } else {
-            print("Good.")
+        if (result) {
             viewWillAppear(false)
         }
     }
@@ -76,10 +79,7 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (!result) {
-            print("Why?")
-        } else {
-            print("Good.")
+        if (result) {
             viewWillAppear(false)
         }
     }
@@ -95,10 +95,7 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (!result) {
-            print("Why?")
-        } else {
-            print("Good.")
+        if (result) {
             viewWillAppear(false)
         }
     }
@@ -136,12 +133,14 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let section: Int = indexPath.section
         let row: Int = indexPath.row
-        let isOpened = historySections[section].items[row].isOpened
-        if (isOpened) {
-            if (section == 2) {
-                return 108
+        if (isAdmin) {
+            let isOpened = historySections[section].items[row].isOpened
+            if (isOpened) {
+                if (section == 2) {
+                    return 108
+                }
+                return 150.0
             }
-            return 150.0
         }
         return 45.0
     }

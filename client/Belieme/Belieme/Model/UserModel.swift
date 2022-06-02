@@ -13,21 +13,23 @@ struct User : Codable {
     let name: String
 }
 
-
-var isAdmin: Bool = false
-let curUser : User = User(
-    studentId: "2018008886",
-    name: "이석환"
-)
-
-
-func login(id: String, password: String) {
-//    requestPost(url: "한양API", method: "POST", param: ["id": "user_id", "pw": "user_pw"], completionHandler: { (success, data) in
-//        // data 에서 어드민이면 어드민 전역변수 온~~
-//        print(data)
-//    })
+struct CurrentUser : Codable {
+    var studentId: String?
+    var name : String?
+    var token : String?
+    var createTimeStamp : Int?
+    var approvalTimeStamp : Int?
+    var permission : String?
 }
 
-func logout() {
-    // logout 구현
+var isAdmin: Bool = false
+var curUser : CurrentUser = CurrentUser(studentId: nil, name: nil, token: nil, createTimeStamp: nil, approvalTimeStamp: nil, permission: nil)
+
+
+func checkLogin() -> Bool {
+    guard let token = UserDefaults.standard.string(forKey: "token") else {
+        return false
+    }
+    curUser.token = token
+    return true
 }
