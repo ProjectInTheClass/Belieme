@@ -153,13 +153,29 @@
                                     <constraint firstItem="I9j-Hm-IXv" firstAttribute="trailing" secondItem="9GJ-FA-1yX" secondAttribute="trailing" id="bZv-4U-7ZH"/>
                                 </constraints>
                             </stackView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjI-gy-BMN">
+                                <rect key="frame" x="324" y="597" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="5UT-es-nqL"/>
+                                    <constraint firstAttribute="width" constant="50" id="Qao-4E-rOY"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button"/>
+                                <connections>
+                                    <segue destination="neK-gt-cgO" kind="popoverPresentation" popoverAnchorView="tjI-gy-BMN" id="uGF-sL-xFp">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="L2I-Sk-oY8"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RKx-dq-cbQ" firstAttribute="top" secondItem="73V-BH-PKm" secondAttribute="top" id="21Z-ge-EoO"/>
                             <constraint firstItem="RKx-dq-cbQ" firstAttribute="leading" secondItem="73V-BH-PKm" secondAttribute="leading" id="3O3-M2-hcL"/>
+                            <constraint firstItem="L2I-Sk-oY8" firstAttribute="trailing" secondItem="tjI-gy-BMN" secondAttribute="trailing" constant="40" id="9gD-W2-u2Y"/>
                             <constraint firstItem="L2I-Sk-oY8" firstAttribute="bottom" secondItem="RKx-dq-cbQ" secondAttribute="bottom" constant="8" id="KYz-TP-nzz"/>
+                            <constraint firstItem="L2I-Sk-oY8" firstAttribute="bottom" secondItem="tjI-gy-BMN" secondAttribute="bottom" constant="40" id="uGM-0f-N9t"/>
                             <constraint firstAttribute="trailing" secondItem="RKx-dq-cbQ" secondAttribute="trailing" id="zAC-uW-aTM"/>
                         </constraints>
                     </view>
@@ -167,6 +183,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="stuffAddButton" destination="tjI-gy-BMN" id="YHc-si-RP5"/>
                         <outlet property="stuffTableView" destination="9GJ-FA-1yX" id="SUj-NH-UbW"/>
                         <segue destination="kt9-ru-drF" kind="show" identifier="SG_StuffTabToStuffDetail" id="7wH-dS-V3T"/>
                     </connections>
@@ -185,10 +202,18 @@
             </objects>
             <point key="canvasLocation" x="665" y="78"/>
         </scene>
+        <!--SB_StuffAdd-->
+        <scene sceneID="vq8-Yk-j6d">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="SB_StuffAdd" storyboardName="StuffAdd" referencedIdentifier="SB_StuffAdd" id="neK-gt-cgO" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0fv-4A-Hyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="633" y="223"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="archivebox" catalog="system" width="128" height="106"/>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="archivebox" catalog="system" width="32" height="32"/>
+        <image name="chevron.right" catalog="system" width="32" height="32"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

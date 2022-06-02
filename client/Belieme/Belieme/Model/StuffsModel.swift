@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Stuff {
+struct Stuff : Codable {
     let name : String
     let emoji : String
     let amount : Int

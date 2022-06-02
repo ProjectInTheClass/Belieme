@@ -11,7 +11,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="30V-iR-qzQ">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZNk-Hz-uam" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="ZNk-Hz-uam" customClass="TabBarController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="FRZ-dW-pdB">
                         <nil key="title"/>
@@ -44,6 +44,7 @@
                         <segue destination="vCv-Xf-5t8" kind="relationship" relationship="viewControllers" id="Osg-hc-6pC"/>
                         <segue destination="P4G-MD-Isd" kind="relationship" relationship="viewControllers" id="O9z-6s-frh"/>
                         <segue destination="GK6-S9-rJB" kind="relationship" relationship="viewControllers" id="Dlz-90-viA"/>
+                        <segue destination="0fa-zx-Uvx" kind="show" identifier="SG_LoginTab" id="seA-FK-abE"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qkg-HZ-td2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,7 +95,7 @@
         <!--빌리미-->
         <scene sceneID="25W-fN-mYx">
             <objects>
-                <navigationController title="빌리미" id="mB4-es-pt7" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SB_MainTab" title="빌리미" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mB4-es-pt7" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2zc-g4-7T2">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -106,6 +107,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rhB-sP-hzo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-2368" y="1"/>
+        </scene>
+        <!--SB_LoginTab-->
+        <scene sceneID="2fK-bY-SbS">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="SB_LoginTab" id="0fa-zx-Uvx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="PvD-eM-hy0"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yiv-mq-iCp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2367" y="471"/>
         </scene>
     </scenes>
     <resources>
