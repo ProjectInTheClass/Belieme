@@ -146,8 +146,12 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (!isAdmin) {
+            return
+        }
         let section: Int = indexPath.section
         let row: Int = indexPath.row
+        print(section, row)
         historySections[section].items[row].isOpened = !(historySections[section].items[row].isOpened)
         tableView.reloadData()
         tableView.cellForRow(at: indexPath)?.setSelected(true, animated: false)
