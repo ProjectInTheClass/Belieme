@@ -158,8 +158,7 @@ extension UserController: WKUIDelegate {
                         return
                     }
                     loginState = .success
-//                    UserDefaults.standard.set(serverToken, forKey: "token")
-//                    NotificationCenter.default.post(name: .authStateDidChange, object: nil)
+                    UserDefaults.standard.set(serverToken, forKey: "user-token")
                     self.navigationController?.isNavigationBarHidden = false
                     self.navigationController?.popToRootViewController(animated: true)
                     return
