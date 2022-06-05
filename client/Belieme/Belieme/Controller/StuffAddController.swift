@@ -21,18 +21,40 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var stuffNum: UITextField!
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
-        
         self.presentingViewController?.dismiss(animated: true)
-        
     }
+    
     @IBAction func doneButtonClicked(_ sender: Any) {
-        
-        //물품 추가
-        print("물품아이콘:"+stuffIcon.text!)
-        print("물품이름:"+stuffLabel.text!)
-        print("물품개수:"+numTextField.text!)
-        
-        self.presentingViewController?.dismiss(animated: true)
+        guard let emoji = stuffIcon.text else {
+            return
+        }
+        guard let name = stuffLabel.text else {
+            return
+        }
+        guard let numText = numTextField.text else {
+            return
+        }
+        guard let amount = Int(numText) else {
+            return
+        }
+        let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount)
+        let alert = UIAlertController(
+            title : (result) ? "물품이 성공적으로 생성되었습니다." : "물품 생성에 실패하였습니다. 잠시후 다시 시도해주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.presentingViewController?.dismiss(animated: true)
+            }
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.viewDidLoad()
     }
 
     
@@ -62,19 +84,14 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     func Init(){
         numPicker.delegate = self
         numPicker.dataSource = self
-        
         for i in 1..<100 {
                   num.append(String(i))
                }
-        
         numTextField.inputView = numPicker
-        
         
         stuffIcon.placeholder = "이모지 등록"
         stuffLabel.placeholder = "물품이름 등록"
         stuffNum.placeholder = "물품개수 등록"
-    
-        
     }
     
     func setToolbar() { // toolbar를 만들어준다.
@@ -104,21 +121,21 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         self.numPicker.selectRow(row, inComponent: 0, animated: false)
         self.numTextField.text = self.num[row]
         self.numTextField.resignFirstResponder()
-        
     }
     
-  
-
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        Init()
+        setToolbar()
+    }
+    
+    func addDoneButton() {
+        stuffLabel.addDoneButtonOnKeyboard()
+        stuffIcon.addDoneButtonOnKeyboard()
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        Init()
-        setToolbar()
-       
+        addDoneButton()
     }
-    
-
-
 }

@@ -33,23 +33,35 @@ class HistoryController: UIViewController {
     ]
     public let dateFormatter = DateFormatter()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        print("History view Did Load")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+    func refreshAction() {
         guard let studentId = curUser.studentId else {
-            // TODO : 로그인 되지 않았을 때.
             return
         }
-
-        print(isAdmin)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         historySections = (isAdmin)
             ? getAllHistoriesByAdmin()
             : getAllHistoriesOfUser(id: studentId)
         HistoryTable.reloadData()
+    }
+    
+    @objc private func pullToRefresh(_ sender: Any) {
+        refreshAction()
+        HistoryTable.refreshControl?.endRefreshing()
+    }
+    
+    func initView() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        HistoryTable.refreshControl = refresh
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        guard let studentId = curUser.studentId else {
+            return
+        }
+        refreshAction()
+        initView()
     }
     
     @IBAction func returnedButtonTouched(_ sender: UIButton) {
@@ -63,9 +75,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "반납처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTouched(_ sender: UIButton) {
@@ -79,9 +100,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "취소처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func adminButtonTouched(_ sender: UIButton) {
@@ -95,9 +125,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "승인처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
@@ -146,6 +185,9 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (!isAdmin) {
+            return
+        }
         let section: Int = indexPath.section
         let row: Int = indexPath.row
         historySections[section].items[row].isOpened = !(historySections[section].items[row].isOpened)

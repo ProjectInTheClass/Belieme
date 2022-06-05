@@ -16,13 +16,13 @@ class SettingController: UIViewController{
    
     @IBAction func changeMode(_ sender: UIButton) {
         isAdmin = (!isAdmin)
-        sender.setTitle(getModeChageString(), for: .reserved)
+        sender.setTitle(getModeChageString(), for: .normal)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-    
+        changeModeBtn.setTitle(getModeChageString(), for: .normal)
         AccountSetting.layer.cornerRadius = 10;
         AccountSetting.layer.borderColor = UIColor.systemBlue.cgColor;
         AccountSetting.layer.borderWidth = 1;
