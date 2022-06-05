@@ -21,10 +21,9 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     @IBOutlet weak var stuffNum: UITextField!
     
     @IBAction func cancelButtonClicked(_ sender: Any) {
-        
         self.presentingViewController?.dismiss(animated: true)
-        
     }
+    
     @IBAction func doneButtonClicked(_ sender: Any) {
         guard let emoji = stuffIcon.text else {
             return
@@ -38,9 +37,19 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         guard let amount = Int(numText) else {
             return
         }
-        createNewStuff(name: name, emoji: emoji, amount: amount)
-        
-        self.presentingViewController?.dismiss(animated: true)
+        let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount)
+        let alert = UIAlertController(
+            title : (result) ? "물품이 성공적으로 생성되었습니다." : "물품 생성에 실패하였습니다. 잠시후 다시 시도해주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.presentingViewController?.dismiss(animated: true)
+            }
+        }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

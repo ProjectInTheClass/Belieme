@@ -60,9 +60,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "반납처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.viewWillAppear(false)
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTouched(_ sender: UIButton) {
@@ -76,9 +85,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "취소처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.viewWillAppear(false)
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func adminButtonTouched(_ sender: UIButton) {
@@ -92,9 +110,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "승인처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.viewWillAppear(false)
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
