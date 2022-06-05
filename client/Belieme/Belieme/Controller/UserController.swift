@@ -150,7 +150,6 @@ extension UserController: WKUIDelegate {
                 }
                 let startIndex = stringUrl.index(after: beforeStartIndex)
                 let accessToken = String(stringUrl[startIndex..<lastIndex])
-                print(accessToken)
                 let loginResult = postAccessToken(accessToken: accessToken)
                 if (loginResult) {
                     guard let serverToken = curUser.token else {

@@ -36,7 +36,6 @@ class HistoryController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        print("History view Did Load")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,8 +43,6 @@ class HistoryController: UIViewController {
             // TODO : 로그인 되지 않았을 때.
             return
         }
-
-        print(isAdmin)
         historySections = (isAdmin)
             ? getAllHistoriesByAdmin()
             : getAllHistoriesOfUser(id: studentId)
@@ -151,7 +148,6 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         }
         let section: Int = indexPath.section
         let row: Int = indexPath.row
-        print(section, row)
         historySections[section].items[row].isOpened = !(historySections[section].items[row].isOpened)
         tableView.reloadData()
         tableView.cellForRow(at: indexPath)?.setSelected(true, animated: false)

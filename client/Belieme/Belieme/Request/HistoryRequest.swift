@@ -33,7 +33,7 @@ private func getAllHistory(api : String) -> [HistorySection] {
             itemNum: data.item.num,
             historyNum: data.num,
             requestTime: requestTime,
-            requester: data.requester.name,
+            requester: data.requester?.name ?? "UNKNOWN",
             returnedTime: returnedTime
         )
         switch (status) {

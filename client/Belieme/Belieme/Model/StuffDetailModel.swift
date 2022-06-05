@@ -12,7 +12,7 @@ struct StuffHistory : Codable {
     let status: String
     let reservedTimeStamp: Int?
     let requester: User?
-    let approvedTimeStamp: Int?
+    let approveTimeStamp: Int?
     let approveManager: User?
     let lostTimeStamp: Int?
     let lostManager: User?

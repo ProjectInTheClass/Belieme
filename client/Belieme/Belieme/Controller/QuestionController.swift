@@ -18,13 +18,6 @@ class QuestionController: UIViewController, UITextViewDelegate {
     
     //등록 버튼 눌렀을 때 사용자가 입력한 정보 출력
     @IBAction func SubmitButtonClicked(_ sender: Any) {
-    
-        // print("button clicked")
-         print("UserEmail: "+AskUserEmail.text)
-         print("Title: "+AskTitle.text)
-         print("Question: "+AskContent.text)
-        
-        
         let mail_to = Mail.User(name: "mail_to", email: "belieme.hyu@gmail.com")
 
         let mail = Mail(
@@ -40,7 +33,6 @@ class QuestionController: UIViewController, UITextViewDelegate {
             if let error = error {
                 print(error)
             }
-            
         }
     
     }
