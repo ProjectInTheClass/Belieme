@@ -62,19 +62,14 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     func Init(){
         numPicker.delegate = self
         numPicker.dataSource = self
-        
         for i in 1..<100 {
                   num.append(String(i))
                }
-        
         numTextField.inputView = numPicker
-        
         
         stuffIcon.placeholder = "이모지 등록"
         stuffLabel.placeholder = "물품이름 등록"
         stuffNum.placeholder = "물품개수 등록"
-    
-        
     }
     
     func setToolbar() { // toolbar를 만들어준다.
@@ -104,21 +99,15 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         self.numPicker.selectRow(row, inComponent: 0, animated: false)
         self.numTextField.text = self.num[row]
         self.numTextField.resignFirstResponder()
-        
     }
     
-  
-
-   
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(false)
+        Init()
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        Init()
         setToolbar()
-       
     }
-    
-
-
 }

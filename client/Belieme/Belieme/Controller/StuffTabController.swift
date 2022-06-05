@@ -111,11 +111,9 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 extension StuffTabController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        guard let studentId = curUser.studentId else {
+        guard curUser.studentId != nil else {
             return
         }
-        print(studentId)
         setButton()
         stuffsData = getAllStuff()
         reloadView()
@@ -140,8 +138,6 @@ extension StuffTabController {
     }
 }
 
-
-// MARK: - Function that
 private extension StuffTabController {
     func reloadView() {
         stuffTableView.reloadData()

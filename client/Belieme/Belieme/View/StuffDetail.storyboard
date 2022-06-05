@@ -38,6 +38,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <connections>
+                                                    <action selector="stuffNameChanged:" destination="nFT-PB-ZMv" eventType="editingDidEnd" id="9Dy-1k-wrw"/>
+                                                </connections>
                                             </textField>
                                         </subviews>
                                     </stackView>
