@@ -54,6 +54,10 @@ func lostStuff(name: String, itemNum : Int) -> Bool {
     return true
 }
 
-func createNewStuff(name : String, emoji : String, amount : Int) {
-    
+func createNewStuff(name : String, emoji : String, amount : Int) -> Bool {
+    let api : String = "stuffs/"
+    guard requestPost(api: api, method: "POST", param: ["name" : name, "emoji" : emoji, "amount" : amount]) != nil else {
+        return false
+    }
+    return true
 }

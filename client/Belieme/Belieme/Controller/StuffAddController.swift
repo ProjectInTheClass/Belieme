@@ -26,13 +26,26 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         
     }
     @IBAction func doneButtonClicked(_ sender: Any) {
-        
-        //물품 추가
-        print("물품아이콘:"+stuffIcon.text!)
-        print("물품이름:"+stuffLabel.text!)
-        print("물품개수:"+numTextField.text!)
+        guard let emoji = stuffIcon.text else {
+            return
+        }
+        guard let name = stuffLabel.text else {
+            return
+        }
+        guard let numText = numTextField.text else {
+            return
+        }
+        guard let amount = Int(numText) else {
+            return
+        }
+        createNewStuff(name: name, emoji: emoji, amount: amount)
         
         self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        presentingViewController?.viewWillAppear(true)
     }
 
     
@@ -104,10 +117,16 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         Init()
+        setToolbar()
+    }
+    
+    func addDoneButton() {
+        stuffLabel.addDoneButtonOnKeyboard()
+        stuffIcon.addDoneButtonOnKeyboard()
     }
    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setToolbar()
+        addDoneButton()
     }
 }
