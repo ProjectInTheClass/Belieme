@@ -30,8 +30,6 @@ class StuffCell : UITableViewCell {
 class StuffTabController: UIViewController {
     @IBOutlet weak var stuffTableView: UITableView!
     @IBOutlet weak var stuffAddButton: UIButton!
-    
-    
     var stuffsData : [Stuff] = []
     
     func setButton(){
@@ -109,21 +107,30 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 
 // MARK: - Override functions of UIViewController
 extension StuffTabController {
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    @objc private func pullToRefresh(_ sender: Any) {
+        setButton()
+        stuffsData = getAllStuff()
+        reloadView()
+        stuffAddButton.isHidden = !isAdmin
+        stuffTableView.refreshControl?.endRefreshing()
+    }
+    
+    func initView() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        stuffTableView.refreshControl = refresh
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         guard curUser.studentId != nil else {
             return
         }
         setButton()
         stuffsData = getAllStuff()
         reloadView()
-        
-        if (isAdmin == true){
-            stuffAddButton.isHidden = false
-        }
-        else{
-            stuffAddButton.isHidden = true
-        }
+        stuffAddButton.isHidden = !isAdmin
+        initView()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
