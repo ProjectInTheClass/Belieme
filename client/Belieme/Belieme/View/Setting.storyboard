@@ -43,6 +43,10 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="로그아웃">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="logoutAction:" destination="qp6-5J-KL7" eventType="touchUpInside" id="eu0-mw-wke"/>
+                                                            <segue destination="EKP-Rl-Bhg" kind="show" identifier="SG_LoginTab" id="PoI-WM-ETX"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </view>
@@ -66,14 +70,6 @@
                                                         <connections>
                                                             <action selector="changeMode:" destination="qp6-5J-KL7" eventType="touchUpInside" id="IAF-9b-OEj"/>
                                                         </connections>
-                                                    </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
-                                                        <rect key="frame" x="8" y="92" width="99" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="알림 설정">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                        </buttonConfiguration>
                                                     </button>
                                                 </subviews>
                                             </view>
@@ -113,11 +109,22 @@
                         <outlet property="AccountSetting" destination="dNY-PS-tKo" id="opd-Si-Yys"/>
                         <outlet property="AppSetting" destination="reH-Ja-FWS" id="JeS-Yg-TBs"/>
                         <outlet property="changeModeBtn" destination="WkB-uq-Lyd" id="MUr-oF-22B"/>
+                        <outlet property="logoutButton" destination="oil-bN-zYt" id="ECv-TG-mAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5J-Ce-Pd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-230.625" y="320"/>
+        </scene>
+        <!--SB_LoginTab-->
+        <scene sceneID="Rwb-ZY-wQc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="SB_LoginTab" id="EKP-Rl-Bhg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ar1-pS-ETS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NZP-Py-Hw8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1113" y="247"/>
         </scene>
     </scenes>
     <resources>
