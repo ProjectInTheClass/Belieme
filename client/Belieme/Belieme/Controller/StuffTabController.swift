@@ -133,6 +133,17 @@ extension StuffTabController {
         initView()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (changedFlag > 0) {
+            changedFlag -= 1
+            setButton()
+            stuffsData = getAllStuff()
+            reloadView()
+            stuffAddButton.isHidden = !isAdmin
+        }
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let targetViewController = segue.destination as? StuffDetailController,
             let stuffCell = sender as? StuffCell
