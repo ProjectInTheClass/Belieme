@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+var changedFlag : Int = 3
+
 class SettingController: UIViewController{
     
     @IBOutlet weak var AccountSetting: UIView!
@@ -16,8 +18,10 @@ class SettingController: UIViewController{
    
     @IBAction func changeMode(_ sender: UIButton) {
         isAdmin = (!isAdmin)
+        changedFlag = 2
         sender.setTitle(getModeChageString(), for: .normal)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.

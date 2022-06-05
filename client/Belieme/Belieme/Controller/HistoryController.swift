@@ -57,11 +57,16 @@ class HistoryController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard let studentId = curUser.studentId else {
-            return
-        }
         refreshAction()
         initView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (changedFlag > 0) {
+            changedFlag -= 1
+            refreshAction()
+        }
     }
     
     @IBAction func returnedButtonTouched(_ sender: UIButton) {
