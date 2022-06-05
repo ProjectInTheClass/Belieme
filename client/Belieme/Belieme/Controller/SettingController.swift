@@ -15,11 +15,24 @@ class SettingController: UIViewController{
     @IBOutlet weak var AccountSetting: UIView!
     @IBOutlet weak var AppSetting: UIView!
     @IBOutlet weak var changeModeBtn: UIButton!
-   
+    @IBOutlet weak var logoutButton: UIButton!
+    
     @IBAction func changeMode(_ sender: UIButton) {
         isAdmin = (!isAdmin)
         changedFlag = 2
         sender.setTitle(getModeChageString(), for: .normal)
+    }
+    
+    @IBAction func logoutAction(_ sender: UIButton) {
+        curUser.studentId = nil
+        curUser.token = nil
+        curUser.name = nil
+        curUser.approvalTimeStamp = nil
+        curUser.createTimeStamp = nil
+        curUser.permission = nil
+        UserDefaults.standard.removeObject(forKey: "user-token")
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        return
     }
     
     override func viewDidLoad() {
