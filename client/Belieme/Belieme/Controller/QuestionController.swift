@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftSMTP
+import LoggerAPI
 
 class QuestionController: UIViewController, UITextViewDelegate {
 
@@ -34,17 +35,23 @@ class QuestionController: UIViewController, UITextViewDelegate {
         smtp.send(mail) { (error) in
             if let error = error {
                 print(error)
-                message = "Error:문의전송실패"
+                //message = Log.error(description)
             }
+            
         }
         
         let alert = UIAlertController(
             title: message ,
             message: "",
             preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default)
+        let okAction = UIAlertAction(title: "확인", style: .default){ _ in
+            self.navigationController?.popViewController(animated: true)
+        }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+        
+       
+        
     
     }
     
