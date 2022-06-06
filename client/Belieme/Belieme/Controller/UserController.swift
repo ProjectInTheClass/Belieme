@@ -150,7 +150,6 @@ extension UserController: WKUIDelegate {
                 }
                 let startIndex = stringUrl.index(after: beforeStartIndex)
                 let accessToken = String(stringUrl[startIndex..<lastIndex])
-                print(accessToken)
                 let loginResult = postAccessToken(accessToken: accessToken)
                 if (loginResult) {
                     guard let serverToken = curUser.token else {
@@ -158,8 +157,7 @@ extension UserController: WKUIDelegate {
                         return
                     }
                     loginState = .success
-//                    UserDefaults.standard.set(serverToken, forKey: "token")
-//                    NotificationCenter.default.post(name: .authStateDidChange, object: nil)
+                    UserDefaults.standard.set(serverToken, forKey: "user-token")
                     self.navigationController?.isNavigationBarHidden = false
                     self.navigationController?.popToRootViewController(animated: true)
                     return

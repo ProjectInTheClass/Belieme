@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,25 +11,37 @@
         <!--설정-->
         <scene sceneID="BMY-J8-WCb">
             <objects>
-                <viewController storyboardIdentifier="SB_Setting" title="설정" id="qp6-5J-KL7" customClass="SettingController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SB_SettingTab" title="설정" id="qp6-5J-KL7" customClass="SettingController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y0O-h4-Un7">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lv2-5Z-c88">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="834"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="511"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-UE-GFX">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환경설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP5-9O-e3u">
+                                                <rect key="frame" x="8" y="44" width="69.5" height="24"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <color key="backgroundColor" red="0.33333333329999998" green="0.65098039220000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="ZP5-9O-e3u" secondAttribute="bottom" constant="8" id="SIr-vk-QNK"/>
+                                            <constraint firstItem="ZP5-9O-e3u" firstAttribute="leading" secondItem="uVd-UE-GFX" secondAttribute="leading" constant="8" id="hg9-k0-ZGr"/>
+                                        </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agj-vW-Ctr">
-                                        <rect key="frame" x="0.0" y="120" width="414" height="714"/>
+                                        <rect key="frame" x="0.0" y="76" width="320" height="435"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-PS-tKo">
-                                                <rect key="frame" x="10" y="10" width="395" height="124"/>
+                                                <rect key="frame" x="10" y="10" width="301" height="124"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
                                                         <rect key="frame" x="8" y="8" width="44" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
@@ -43,13 +55,17 @@
                                                         <buttonConfiguration key="configuration" style="plain" title="로그아웃">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="logoutAction:" destination="qp6-5J-KL7" eventType="touchUpInside" id="eu0-mw-wke"/>
+                                                            <segue destination="EKP-Rl-Bhg" kind="show" identifier="SG_LoginTab" id="PoI-WM-ETX"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reH-Ja-FWS">
-                                                <rect key="frame" x="10" y="144" width="394" height="532"/>
+                                                <rect key="frame" x="10" y="144" width="300" height="253"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
                                                         <rect key="frame" x="8" y="8" width="71" height="30"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
@@ -68,12 +84,15 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
-                                                        <rect key="frame" x="8" y="92" width="99" height="38"/>
+                                                        <rect key="frame" x="8" y="92" width="94" height="38"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="알림 설정">
+                                                        <buttonConfiguration key="configuration" style="plain" title="문의하기">
                                                             <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <segue destination="5MD-Ly-HQy" kind="show" id="n0w-e9-82z"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </view>
@@ -94,7 +113,7 @@
                                 <constraints>
                                     <constraint firstItem="uVd-UE-GFX" firstAttribute="top" secondItem="Lv2-5Z-c88" secondAttribute="top" id="5eS-3U-nWt"/>
                                     <constraint firstItem="uVd-UE-GFX" firstAttribute="leading" secondItem="Lv2-5Z-c88" secondAttribute="leading" id="FIC-Sg-6Z0"/>
-                                    <constraint firstItem="uVd-UE-GFX" firstAttribute="height" secondItem="agj-vW-Ctr" secondAttribute="height" multiplier="0.168067" id="slb-lx-ZqQ"/>
+                                    <constraint firstItem="uVd-UE-GFX" firstAttribute="height" secondItem="agj-vW-Ctr" secondAttribute="height" multiplier="0.175182" id="tD1-YU-JD3"/>
                                     <constraint firstAttribute="trailing" secondItem="uVd-UE-GFX" secondAttribute="trailing" id="tbg-iz-p7c"/>
                                 </constraints>
                             </stackView>
@@ -105,22 +124,47 @@
                             <constraint firstItem="Lv2-5Z-c88" firstAttribute="leading" secondItem="qlE-UT-mFu" secondAttribute="leading" id="99n-fz-DYV"/>
                             <constraint firstItem="Lv2-5Z-c88" firstAttribute="top" secondItem="Y0O-h4-Un7" secondAttribute="top" id="LV0-ji-e5t"/>
                             <constraint firstItem="Lv2-5Z-c88" firstAttribute="trailing" secondItem="qlE-UT-mFu" secondAttribute="trailing" id="YLH-JD-Sjx"/>
-                            <constraint firstItem="qlE-UT-mFu" firstAttribute="bottom" secondItem="Lv2-5Z-c88" secondAttribute="bottom" constant="28" id="a9v-wI-lyz"/>
+                            <constraint firstItem="qlE-UT-mFu" firstAttribute="bottom" secondItem="Lv2-5Z-c88" secondAttribute="bottom" constant="8" id="zJv-ZU-RAf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="설정" id="fvr-Se-8Hv"/>
+                    <tabBarItem key="tabBarItem" title="설정" image="gearshape" catalog="system" id="uxg-Ny-pOC">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="-2"/>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="AccountSetting" destination="dNY-PS-tKo" id="opd-Si-Yys"/>
                         <outlet property="AppSetting" destination="reH-Ja-FWS" id="JeS-Yg-TBs"/>
                         <outlet property="changeModeBtn" destination="WkB-uq-Lyd" id="MUr-oF-22B"/>
+                        <outlet property="logoutButton" destination="oil-bN-zYt" id="ECv-TG-mAR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a5J-Ce-Pd3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-230.625" y="320"/>
+            <point key="canvasLocation" x="-230.625" y="319.01408450704224"/>
+        </scene>
+        <!--SB_Question-->
+        <scene sceneID="pEy-7n-EJo">
+            <objects>
+                <viewControllerPlaceholder storyboardName="QuestionTab" referencedIdentifier="SB_Question" id="5MD-Ly-HQy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lvO-v2-oxG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rIc-03-QMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="482" y="392"/>
+        </scene>
+        <!--SB_LoginTab-->
+        <scene sceneID="Rwb-ZY-wQc">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" referencedIdentifier="SB_LoginTab" id="EKP-Rl-Bhg" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ar1-pS-ETS"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NZP-Py-Hw8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1113" y="247"/>
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
