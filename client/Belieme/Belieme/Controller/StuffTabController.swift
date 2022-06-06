@@ -95,6 +95,8 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
         cell.tag = indexPath.row
+       
+        cell.selectionStyle = .none
     
         return cell
     }

@@ -104,7 +104,7 @@ class HistoryController: UIViewController {
 extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if #available(iOS 15, *) {
-            tableView.sectionHeaderTopPadding = 1.0
+            tableView.sectionHeaderTopPadding = 0
         }
         return (isAdmin) ? 3 : 2
     }
@@ -112,6 +112,8 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         (view as! UITableViewHeaderFooterView).textLabel!.textColor = UIColor.systemGray5
+        view.layer.addBorder([.top], color: UIColor.black, width: 1.0)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -194,3 +196,34 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension CALayer {
+    func addBorder(_ arr_edge: [UIRectEdge], color: UIColor, width: CGFloat) {
+        for edge in arr_edge {
+            let border = CALayer()
+            switch edge {
+            case UIRectEdge.top:
+                border.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: width)
+                break
+            case UIRectEdge.bottom:
+                border.frame = CGRect.init(x: 0, y: frame.height - width, width: frame.width, height: width)
+                break
+            case UIRectEdge.left:
+                border.frame = CGRect.init(x: 0, y: 0, width: width, height: frame.height)
+                break
+            case UIRectEdge.right:
+                border.frame =  CGRect.init(x: frame.width - width, y: 0, width: width, height: frame.height)
+                break
+            default:
+                break
+                
+            }
+            border.backgroundColor = color.cgColor;
+            self.addSublayer(border)
+    
+        }
+        
+    }
+    
+}
+
