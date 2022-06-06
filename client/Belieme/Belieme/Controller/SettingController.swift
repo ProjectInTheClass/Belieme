@@ -60,15 +60,16 @@ class SettingController: UIViewController{
         AppSetting.layer.borderWidth = 1;
         
         changeModeBtn.setTitle(getModeChageString(), for: .reserved)
-        
+     
+        //backbutton 색상 변경
         self.navigationController?.navigationBar.tintColor = .black
     }
     
     func getModeChageString() -> String {
         if(isAdmin) {
-            return "사용자 모드 전환"
+            return "사용자 모드로 전환"
         } else {
-            return "관리자 모드 전환"
+            return "관리자 모드로 전환"
         }
     }
     
