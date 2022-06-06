@@ -163,9 +163,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button"/>
                                 <connections>
-                                    <segue destination="neK-gt-cgO" kind="popoverPresentation" popoverAnchorView="tjI-gy-BMN" id="uGF-sL-xFp">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <action selector="goToAdd:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cJg-iL-gdv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -189,6 +187,9 @@
                         <outlet property="stuffAddButton" destination="tjI-gy-BMN" id="YHc-si-RP5"/>
                         <outlet property="stuffTableView" destination="9GJ-FA-1yX" id="SUj-NH-UbW"/>
                         <segue destination="kt9-ru-drF" kind="show" identifier="SG_StuffTabToStuffDetail" id="7wH-dS-V3T"/>
+                        <segue destination="neK-gt-cgO" kind="popoverPresentation" popoverAnchorView="tjI-gy-BMN" id="Rg6-Cl-d3D">
+                            <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                        </segue>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -208,7 +209,9 @@
         <!--SB_StuffAdd-->
         <scene sceneID="vq8-Yk-j6d">
             <objects>
-                <viewControllerPlaceholder storyboardIdentifier="SB_StuffAdd" storyboardName="StuffAdd" referencedIdentifier="SB_StuffAdd" id="neK-gt-cgO" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="SB_StuffAdd" storyboardName="StuffAdd" referencedIdentifier="SB_StuffAdd" id="neK-gt-cgO" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="xIh-6n-AFZ"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0fv-4A-Hyh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="633" y="223"/>

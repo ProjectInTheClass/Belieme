@@ -7,6 +7,8 @@
 
 import UIKit
 
+var modifyFlag : Bool = false
+
 class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     var stuffArray: Array<StuffDetail> = []
     var paramCount: Int = 0
@@ -111,7 +113,9 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
             message: nil,
             preferredStyle : .alert
         )
-        let okAction = UIAlertAction(title: "확인", style: .default)
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            modifyFlag = true
+        }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }

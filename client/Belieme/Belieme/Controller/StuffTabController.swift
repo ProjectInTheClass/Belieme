@@ -144,10 +144,26 @@ extension StuffTabController {
 
     }
     
+    @IBAction func goToAdd(_ sender: UIButton) {
+        guard let secPage = self.storyboard?.instantiateViewController(withIdentifier: "SB_StuffAdd") as? StuffAddController else {
+            return
+        }
+        secPage.modalPresentationStyle = .fullScreen
+        self.present(secPage, animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (changedFlag > 0) {
-            changedFlag -= 1
+        if (changedFlag > 0 || addFlag || modifyFlag) {
+            if (changedFlag > 0) {
+                changedFlag -= 1
+            }
+            if (addFlag) {
+                addFlag = false
+            }
+            if (modifyFlag) {
+                modifyFlag = false
+            }
             setButton()
             stuffsData = getAllStuff()
             reloadView()
