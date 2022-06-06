@@ -138,6 +138,10 @@ extension StuffTabController {
         reloadView()
         stuffAddButton.isHidden = !isAdmin
         initView()
+        
+        //backbutton 색상변경
+        self.navigationController?.navigationBar.tintColor = .black
+
     }
     
     override func viewWillAppear(_ animated: Bool) {
