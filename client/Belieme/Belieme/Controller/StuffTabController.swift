@@ -52,7 +52,12 @@ class StuffTabController: UIViewController {
             message: nil,
             preferredStyle : .alert
         )
-        let okAction = UIAlertAction(title: "확인", style: .default)
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            self.setButton()
+            self.stuffsData = getAllStuff()
+            self.reloadView()
+            self.stuffAddButton.isHidden = !isAdmin
+        }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
@@ -66,7 +71,7 @@ class StuffTabController: UIViewController {
         
         let okAction = UIAlertAction(title: "보내기", style: .default) { UIAlertAction in
             self.touchOkButton(stuffName: data.name)
-            }
+        }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancel)
@@ -76,7 +81,7 @@ class StuffTabController: UIViewController {
     }
 }
 
-// MARK: - Implemnts Deligate of TableView
+
 extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stuffsData.count

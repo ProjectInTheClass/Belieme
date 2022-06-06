@@ -46,6 +46,7 @@ class UserController: UIViewController, WKNavigationDelegate {
         webView.isHidden = true
         togleAgree(flag: true)
         loginButton.setTitle("LOGIN", for: .normal)
+        addDoneButton()
         navigationController?.isNavigationBarHidden = true
         loadWebPage(LOGIN_URL)
     }
@@ -83,6 +84,11 @@ class UserController: UIViewController, WKNavigationDelegate {
             self.loadWebPage(self.LOGIN_URL)
         }))
         present(alert, animated: true)
+    }
+    
+    func addDoneButton() {
+        idField.addDoneButtonOnKeyboard()
+        pwField.addDoneButtonOnKeyboard()
     }
     
     @IBAction func touchAgreeOrDisagreeButton(_ sender: UIButton) {

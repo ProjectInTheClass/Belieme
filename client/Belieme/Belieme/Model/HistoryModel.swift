@@ -20,6 +20,7 @@ struct HistoryInfo {
     let requestTime: Date
     let requester: String
     let returnedTime: Date?
+    let approveTime: Date?
     var isOpened: Bool = false
 }
 
