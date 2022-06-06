@@ -163,6 +163,7 @@ extension UserController: WKUIDelegate {
                         return
                     }
                     loginState = .success
+                    changedFlag += 1
                     UserDefaults.standard.set(serverToken, forKey: "user-token")
                     self.navigationController?.isNavigationBarHidden = false
                     self.navigationController?.popToRootViewController(animated: true)

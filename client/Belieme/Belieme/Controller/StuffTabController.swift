@@ -168,6 +168,7 @@ extension StuffTabController {
             stuffsData = getAllStuff()
             reloadView()
             stuffAddButton.isHidden = !isAdmin
+            initView()
         }
     }
     
