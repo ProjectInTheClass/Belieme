@@ -17,9 +17,20 @@ class SettingController: UIViewController{
     @IBOutlet weak var changeModeBtn: UIButton!
    
     @IBAction func changeMode(_ sender: UIButton) {
+        let str = getModeChageString()
         isAdmin = (!isAdmin)
         changedFlag = 2
         sender.setTitle(getModeChageString(), for: .normal)
+        let startIndex = str.index(str.startIndex,offsetBy: 0)
+        let endIndex = str.index(str.startIndex,offsetBy: 5)
+        let title = String(str[startIndex ... endIndex])
+        let alert = UIAlertController(
+            title: title ,
+            message: "모드가 변경되었습니다.",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -36,6 +47,8 @@ class SettingController: UIViewController{
         AppSetting.layer.borderWidth = 1;
         
         changeModeBtn.setTitle(getModeChageString(), for: .reserved)
+        
+        self.navigationController?.navigationBar.tintColor = .black
     }
     
     func getModeChageString() -> String {
