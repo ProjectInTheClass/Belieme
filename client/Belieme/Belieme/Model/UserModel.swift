@@ -22,14 +22,5 @@ struct CurrentUser : Codable {
     var permission : String?
 }
 
-var isAdmin: Bool = false
+var isAdmin: Bool = true
 var curUser : CurrentUser = CurrentUser(studentId: nil, name: nil, token: nil, createTimeStamp: nil, approvalTimeStamp: nil, permission: nil)
-
-
-func checkLogin() -> Bool {
-    guard let token = UserDefaults.standard.string(forKey: "token") else {
-        return false
-    }
-    curUser.token = token
-    return true
-}

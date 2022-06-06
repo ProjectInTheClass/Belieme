@@ -7,19 +7,13 @@
 
 import Foundation
 
-struct Item : Codable {
-    let stuffName: String
-    let stuffEmoji: String
-    let num: Int
-}
-
 struct StuffInfo : Codable {
-    let item: Item
+    let item: StuffDetail
     let num: Int
     let status: String
-    let reservedTimeStamp: Int
-    let requester: User
-    let approvedTimeStamp: Int?
+    let reservedTimeStamp: Int?
+    let requester: User?
+    let approveTimeStamp: Int?
     let approveManager: User?
     let lostTimeStamp: Int?
     let lostManager: User?

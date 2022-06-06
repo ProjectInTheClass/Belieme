@@ -33,7 +33,7 @@ private func getAllHistory(api : String) -> [HistorySection] {
             itemNum: data.item.num,
             historyNum: data.num,
             requestTime: requestTime,
-            requester: data.requester.name,
+            requester: data.requester?.name ?? "UNKNOWN",
             returnedTime: returnedTime
         )
         switch (status) {
@@ -58,27 +58,27 @@ func getAllHistoriesOfUser(id: String) -> [HistorySection] {
     return getAllHistory(api: "histories/?studentId=\(id)")
 }
 
-private func changeHistory(api: String) -> Bool {
+private func changeHistory(api : String, status : String) -> Bool {
     guard let jsonData = requestPost(api: api, method: "PATCH", param: [:]) else {
         return false
     }
     guard let data : StuffInfo = try? JSONDecoder().decode(StuffInfo.self, from: jsonData) else {
         return false
     }
-    return (data.status == "RETURNED")
+    return (data.status == status)
 }
 
 func changeRequestToRenting(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/approve/"
-    return changeHistory(api: api)
+    return changeHistory(api: api, status: "USING")
 }
 
 func changeRentingToReturn(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/return/"
-    return changeHistory(api: api)
+    return changeHistory(api: api, status: "RETURNED")
 }
 
 func changeRentingToCancel(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/cancel/"
-    return changeHistory(api: api)
+    return changeHistory(api: api, status: "EXPIRED")
 }

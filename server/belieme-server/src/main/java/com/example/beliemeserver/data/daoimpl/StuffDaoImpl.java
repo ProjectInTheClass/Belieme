@@ -23,7 +23,10 @@ public class StuffDaoImpl implements StuffDao {
         Iterator<StuffEntity> iterator = stuffRepository.findAll().iterator();
         List<StuffDto> stuffDtoList = new ArrayList<>();
         while(iterator.hasNext()) {
-            stuffDtoList.add(iterator.next().toStuffDto());
+            StuffEntity tmp = iterator.next();
+//            tmp.setNextItemNum(tmp.getItems().size()+1);
+            stuffDtoList.add(tmp.toStuffDto());
+//            stuffRepository.save(tmp);
         }
         return stuffDtoList;
     }
@@ -49,7 +52,10 @@ public class StuffDaoImpl implements StuffDao {
                 .nextItemNum(1)
                 .build();
 
-        return stuffRepository.save(newStuffEntity).toStuffDto();
+        StuffEntity savedStuff = stuffRepository.save(newStuffEntity);
+        stuffRepository.refresh(savedStuff);
+
+        return savedStuff.toStuffDto();
     }
 
     @Override
@@ -61,6 +67,10 @@ public class StuffDaoImpl implements StuffDao {
         }
         target.setName(newStuff.getName());
         target.setEmoji(newStuff.getEmoji());
-        return stuffRepository.save(target).toStuffDto();
+
+        StuffEntity savedStuff = stuffRepository.save(target);
+        stuffRepository.refresh(savedStuff);
+
+        return savedStuff.toStuffDto();
     }
 }

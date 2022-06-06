@@ -11,6 +11,7 @@ import SwiftSMTP
 class QuestionController: UIViewController, UITextViewDelegate {
 
    
+    @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var AskUserEmail: UITextView!
     @IBOutlet weak var AskTitle: UITextView!
     @IBOutlet weak var AskContent: UITextView!
@@ -18,13 +19,6 @@ class QuestionController: UIViewController, UITextViewDelegate {
     
     //등록 버튼 눌렀을 때 사용자가 입력한 정보 출력
     @IBAction func SubmitButtonClicked(_ sender: Any) {
-    
-        // print("button clicked")
-         print("UserEmail: "+AskUserEmail.text)
-         print("Title: "+AskTitle.text)
-         print("Question: "+AskContent.text)
-        
-        
         let mail_to = Mail.User(name: "mail_to", email: "belieme.hyu@gmail.com")
 
         let mail = Mail(
@@ -35,13 +29,22 @@ class QuestionController: UIViewController, UITextViewDelegate {
         
         )
         
+        var message = "문의등록완료"
         
         smtp.send(mail) { (error) in
             if let error = error {
                 print(error)
+                message = "Error:문의전송실패"
             }
-            
         }
+        
+        let alert = UIAlertController(
+            title: message ,
+            message: "",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "확인", style: .default)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     
     }
     
@@ -59,8 +62,8 @@ class QuestionController: UIViewController, UITextViewDelegate {
         
         TextRadius()     //textView 모서리 둥글게
         addDoneButton()  //키보드 위에 '완료' 버튼 추가
-
-
+       // TitleLabel.adjustsFontSizeToFitWidth = true
+        
     }
        
     //textview 모서리 둥글게

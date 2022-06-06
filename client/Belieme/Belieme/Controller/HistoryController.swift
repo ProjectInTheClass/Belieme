@@ -33,23 +33,40 @@ class HistoryController: UIViewController {
     ]
     public let dateFormatter = DateFormatter()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        print("History view Did Load")
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
+    func refreshAction() {
         guard let studentId = curUser.studentId else {
-            // TODO : 로그인 되지 않았을 때.
             return
         }
-
-        print(isAdmin)
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         historySections = (isAdmin)
             ? getAllHistoriesByAdmin()
             : getAllHistoriesOfUser(id: studentId)
         HistoryTable.reloadData()
+    }
+    
+    @objc private func pullToRefresh(_ sender: Any) {
+        refreshAction()
+        HistoryTable.refreshControl?.endRefreshing()
+    }
+    
+    func initView() {
+        let refresh = UIRefreshControl()
+        refresh.addTarget(self, action: #selector(pullToRefresh(_:)), for: .valueChanged)
+        HistoryTable.refreshControl = refresh
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        refreshAction()
+        initView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if (changedFlag > 0) {
+            changedFlag -= 1
+            refreshAction()
+        }
     }
     
     @IBAction func returnedButtonTouched(_ sender: UIButton) {
@@ -63,9 +80,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "반납처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func cancelButtonTouched(_ sender: UIButton) {
@@ -79,9 +105,18 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "취소처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func adminButtonTouched(_ sender: UIButton) {
@@ -95,32 +130,43 @@ class HistoryController: UIViewController {
             stuffNum: item.itemNum,
             historyNum: item.historyNum
         )
-        if (result) {
-            viewWillAppear(false)
+        let alert = UIAlertController(
+            title : (result) ? "승인처리 되었습니다." : "다시 시도해 주세요.",
+            message: nil,
+            preferredStyle : .alert
+        )
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            if (result) {
+                self.refreshAction()
+            }
         }
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
 }
 
 extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         if #available(iOS 15, *) {
-            tableView.sectionHeaderTopPadding = 1.0
+            tableView.sectionHeaderTopPadding = 0
         }
-        return (isAdmin) ? 3 : 2
+        return 3
     }
 
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         (view as! UITableViewHeaderFooterView).textLabel!.textColor = UIColor.systemGray5
+        view.layer.addBorder([.top], color: UIColor.black, width: 1.0)
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let index: Int = (isAdmin) ? section : section + 1
+        let index: Int = section
         return historySections[index].items.count
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let index: Int = (isAdmin) ? section : section + 1
+        let index: Int = section
         let status = historySections[index].status
         let name = (status == .WAITING)
             ? "승인대기"
@@ -146,6 +192,9 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if (!isAdmin) {
+            return
+        }
         let section: Int = indexPath.section
         let row: Int = indexPath.row
         historySections[section].items[row].isOpened = !(historySections[section].items[row].isOpened)
@@ -155,7 +204,7 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "historyCellId", for: indexPath) as! HistoryCell
-        let section: Int = (isAdmin) ? indexPath.section : indexPath.section + 1
+        let section: Int = indexPath.section
         let row: Int = indexPath.row
         
         let target = historySections[section].items[row]
@@ -194,3 +243,34 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
 }
+
+extension CALayer {
+    func addBorder(_ arr_edge: [UIRectEdge], color: UIColor, width: CGFloat) {
+        for edge in arr_edge {
+            let border = CALayer()
+            switch edge {
+            case UIRectEdge.top:
+                border.frame = CGRect.init(x: 0, y: 0, width: frame.width, height: width)
+                break
+            case UIRectEdge.bottom:
+                border.frame = CGRect.init(x: 0, y: frame.height - width, width: frame.width, height: width)
+                break
+            case UIRectEdge.left:
+                border.frame = CGRect.init(x: 0, y: 0, width: width, height: frame.height)
+                break
+            case UIRectEdge.right:
+                border.frame =  CGRect.init(x: frame.width - width, y: 0, width: width, height: frame.height)
+                break
+            default:
+                break
+                
+            }
+            border.backgroundColor = color.cgColor;
+            self.addSublayer(border)
+    
+        }
+        
+    }
+    
+}
+

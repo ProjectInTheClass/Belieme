@@ -17,11 +17,12 @@ public class StuffDto {
     private String name;
     private String emoji;
     private List<ItemDto> items;
+    private int nextItemNum;
 
     public int getAmount() {
         int amount = 0;
         for(int i = 0; i < items.size(); i++) {
-            if(items.get(i).getState() == ItemDto.ItemStatus.USABLE || items.get(i).getState() == ItemDto.ItemStatus.UNUSABLE) {
+            if(items.get(i).getStatus() == ItemDto.ItemStatus.USABLE || items.get(i).getStatus() == ItemDto.ItemStatus.UNUSABLE) {
                 amount++;
             }
         }
@@ -31,7 +32,7 @@ public class StuffDto {
     public int getCount() {
         int count = 0;
         for(int i = 0; i < items.size(); i++) {
-            if(items.get(i).getState() == ItemDto.ItemStatus.USABLE) {
+            if(items.get(i).getStatus() == ItemDto.ItemStatus.USABLE) {
                 count++;
             }
         }
