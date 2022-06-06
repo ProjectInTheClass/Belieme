@@ -66,6 +66,7 @@ class HistoryController: UIViewController {
         if (changedFlag > 0) {
             changedFlag -= 1
             refreshAction()
+            initView()
         }
     }
     

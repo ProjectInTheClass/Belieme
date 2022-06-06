@@ -8,12 +8,12 @@
 import Foundation
 import UIKit
 
+var addFlag : Bool = false
+
 class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDataSource,UITextFieldDelegate
 {
     var num: [String] = []
     let numPicker = UIPickerView()
-    
-    
     
     @IBOutlet weak var numTextField: UITextField!
     @IBOutlet weak var stuffIcon: UITextField!
@@ -45,6 +45,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         )
         let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
             if (result) {
+                addFlag = true
                 self.presentingViewController?.dismiss(animated: true)
             }
         }
@@ -61,7 +62,6 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         return 1
         
     }
-    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return num[row]
