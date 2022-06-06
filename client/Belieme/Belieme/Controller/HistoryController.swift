@@ -157,7 +157,6 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         (view as! UITableViewHeaderFooterView).contentView.backgroundColor = UIColor.black.withAlphaComponent(0.4)
         (view as! UITableViewHeaderFooterView).textLabel!.textColor = UIColor.systemGray5
         view.layer.addBorder([.top], color: UIColor.black, width: 1.0)
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -168,11 +167,12 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let index: Int = section
         let status = historySections[index].status
+        let count = historySections[index].items.count
         let name = (status == .WAITING)
-            ? "승인대기"
+            ? "승인대기 (\(count))"
             : (status == .RENTING)
-                ? "대여중"
-                : "반납완료"
+                ? "대여중 (\(count))"
+                : "반납완료 (\(count))"
         return name
     }
     
@@ -212,6 +212,18 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
         cell.returnedButton.tag = row
         cell.rejectButton.tag = row
         cell.admitButton.tag = row
+        cell.returnedButton.setTitle("반납완료", for: .normal)
+        cell.rejectButton.setTitle("거절", for: .normal)
+        cell.admitButton.setTitle("승인", for: .normal)
+        
+        if (section == 0) {
+            cell.dateLabel.text = dateFormatter.string(from: target.requestTime)
+        } else if (section == 1) {
+            cell.dateLabel.text = dateFormatter.string(from: target.approveTime!)
+        } else {
+            cell.dateLabel.text = dateFormatter.string(from: target.returnedTime!)
+        }
+        
         if (!target.isOpened) {
             cell.whosRequestLabel.isHidden = true
             cell.userName.isHidden = true
@@ -225,20 +237,16 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
             cell.userName.text = target.requester
             if (section == 0) {
                 cell.whosRequestLabel.text = "요청자"
-                cell.admitButton.titleLabel!.text = "승인"
-                cell.rejectButton.titleLabel!.text = "거절"
                 cell.rejectButton.isHidden = false
                 cell.admitButton.isHidden = false
                 cell.returnedButton.isHidden = true
             } else if (section == 1) {
-                cell.returnedButton.titleLabel!.text = "반납완료"
                 cell.rejectButton.isHidden = true
                 cell.admitButton.isHidden = true
                 cell.returnedButton.isHidden = false
             }
         }
         cell.nameLabel.text = target.stuffName
-        cell.dateLabel.text = dateFormatter.string(from: target.requestTime)
     
         return cell
     }
@@ -265,7 +273,7 @@ extension CALayer {
                 break
                 
             }
-            border.backgroundColor = color.cgColor;
+            border.backgroundColor = color.cgColor;
             self.addSublayer(border)
     
         }

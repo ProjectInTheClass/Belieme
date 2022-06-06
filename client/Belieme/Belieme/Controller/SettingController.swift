@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-var changedFlag : Int = 3
+var changedFlag : Int = 0
 
 class SettingController: UIViewController{
     
