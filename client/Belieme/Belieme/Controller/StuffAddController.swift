@@ -92,6 +92,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         stuffIcon.placeholder = "이모지 등록"
         stuffLabel.placeholder = "물품이름 등록"
         stuffNum.placeholder = "물품개수 등록"
+        stuffIcon.delegate = self
     }
     
     func setToolbar() { // toolbar를 만들어준다.
@@ -138,4 +139,10 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         super.viewDidLoad()
         addDoneButton()
     }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+            return newLength <= 1
+        }
+
 }

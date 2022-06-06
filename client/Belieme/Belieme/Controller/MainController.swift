@@ -20,4 +20,3 @@ class TabBarController: UITabBarController {
         performSegue(withIdentifier: "SG_LoginTab", sender: nil)
     }
 }
-

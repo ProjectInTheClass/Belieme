@@ -89,20 +89,20 @@
                                             <constraint firstAttribute="height" constant="106" id="l5z-yA-Uh9"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보의 제 3자 제공동의 요청" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiL-Jg-AsY">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="개인정보의 제 3자 제공동의 요청" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CiL-Jg-AsY">
                                         <rect key="frame" x="0.0" y="106" width="384" height="20.5"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="한양대학교 OPEN API는 아래와 같은 개인정보를 컴소 빌리미에 제공합니다." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-qI-tEO">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="한양대학교 OPEN API는 아래와 같은 개인정보를 컴소 빌리미에 제공합니다." textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Sfq-qI-tEO">
                                         <rect key="frame" x="0.0" y="126.5" width="384" height="49.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="로그인한 사용자의 성명, 사용자ID, 학번(가입번호), 재학(재직) 여부, 소속대학, 소속명, 소속코드, 소속ID, 사용자 구분명의 정보" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kx7-Ld-oBT">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="로그인한 사용자의 성명, 사용자ID, 학번(가입번호), 재학(재직) 여부, 소속대학, 소속명, 소속코드, 소속ID, 사용자 구분명의 정보" textAlignment="natural" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kx7-Ld-oBT">
                                         <rect key="frame" x="0.0" y="176" width="384" height="49.5"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <color key="textColor" systemColor="labelColor"/>
