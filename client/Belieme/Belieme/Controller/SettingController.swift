@@ -15,7 +15,8 @@ class SettingController: UIViewController{
     @IBOutlet weak var AccountSetting: UIView!
     @IBOutlet weak var AppSetting: UIView!
     @IBOutlet weak var changeModeBtn: UIButton!
-   
+    @IBOutlet weak var logoutButton: UIButton!
+    
     @IBAction func changeMode(_ sender: UIButton) {
         let str = getModeChageString()
         isAdmin = (!isAdmin)
@@ -31,6 +32,18 @@ class SettingController: UIViewController{
         let okAction = UIAlertAction(title: "확인", style: .default)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func logoutAction(_ sender: UIButton) {
+        curUser.studentId = nil
+        curUser.token = nil
+        curUser.name = nil
+        curUser.approvalTimeStamp = nil
+        curUser.createTimeStamp = nil
+        curUser.permission = nil
+        UserDefaults.standard.removeObject(forKey: "user-token")
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        return
     }
     
     override func viewDidLoad() {
