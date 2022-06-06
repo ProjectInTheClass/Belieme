@@ -7,7 +7,7 @@
 
 import UIKit
 
-let baseUrl = "https://belieme.herokuapp.com/real/"
+let baseUrl = "https://belieme.herokuapp.com/"
 
 struct Response: Codable {
     let success: Bool
