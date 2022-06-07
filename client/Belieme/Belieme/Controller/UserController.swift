@@ -22,6 +22,7 @@ class UserController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var loginNoticeLabel: UILabel!
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var agreeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleContent: UITextView!
@@ -41,6 +42,8 @@ class UserController: UIViewController, WKNavigationDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.style = .large
+        indicator.color = .systemBlue
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.isHidden = true
@@ -89,6 +92,14 @@ class UserController: UIViewController, WKNavigationDelegate {
     func addDoneButton() {
         idField.addDoneButtonOnKeyboard()
         pwField.addDoneButtonOnKeyboard()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        indicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicator.stopAnimating()
     }
     
     @IBAction func touchAgreeOrDisagreeButton(_ sender: UIButton) {
