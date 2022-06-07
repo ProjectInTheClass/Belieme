@@ -14,12 +14,46 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
 {
     var num: [String] = []
     let numPicker = UIPickerView()
+    var fCurTextfieldBottom: CGFloat = 0.0 //키보드가 텍스트필드 가리는지 확인하기 위한 변수
+    
     
     @IBOutlet weak var numTextField: UITextField!
     @IBOutlet weak var stuffIcon: UITextField!
     @IBOutlet weak var stuffLabel: UITextField!
     @IBOutlet weak var stuffNum: UITextField!
     
+    @IBOutlet weak var stackIcon: UIStackView!
+    @IBOutlet weak var stackLabel: UIStackView!
+    @IBOutlet weak var stackNum: UIStackView!
+    @IBOutlet weak var finalStack: UIStackView!
+    @IBOutlet weak var downView: UIView!
+    
+    @IBAction func iconClicked(_ sender: UITextField) {
+        fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackIcon.frame.origin.y + sender.frame.height
+        
+        print( stackIcon.frame.origin.y)
+        print(sender.frame.height)
+        print(fCurTextfieldBottom)
+    }
+    @IBAction func labelClicked(_ sender: UITextField) {
+        fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackLabel.frame.origin.y + sender.frame.height
+        
+        print( stackLabel.frame.origin.y)
+        print(sender.frame.height)
+        print(fCurTextfieldBottom)
+    }
+   
+    @IBAction func numClicked(_ sender: UITextField) {
+        fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackNum.frame.origin.y + sender.frame.height
+        print(downView.frame.origin.y)
+        print(finalStack.frame.origin.y)
+        print(stackNum.frame.origin.y)
+      //  print( stackNum.frame.origin.y)
+      //  print(sender.frame.height)
+        print(fCurTextfieldBottom)
+    }
+    
+
     @IBAction func cancelButtonClicked(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
     }
@@ -64,6 +98,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        removeKeyboardNotifications()
     }
 
     
@@ -88,9 +123,13 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         
     }
 
-    @IBOutlet weak var addView: UIView!
+   
     func Init(){
         numPicker.delegate = self
+        stuffIcon.delegate = self
+        stuffLabel.delegate = self
+        stuffNum.delegate = self
+        
         numPicker.dataSource = self
         for i in 1..<100 {
                   num.append(String(i))
@@ -136,6 +175,8 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         super.viewWillAppear(false)
         Init()
         setToolbar()
+        addKeyboardNotifications()
+
     }
     
     func addDoneButton() {
@@ -146,11 +187,53 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     override func viewDidLoad() {
         super.viewDidLoad()
         addDoneButton()
+        addKeyboardNotifications()
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
             guard let text = textField.text else { return true }
         let newLength = text.count + string.count - range.length
             return newLength <= 1
         }
+    
+    // 노티피케이션을 추가하는 메서드
+    func addKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
+           // 키보드가 사라질 때 앱에게 알리는 메서드 추가
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+     
+    }
+
+    // 노티피케이션을 제거하는 메서드
+    func removeKeyboardNotifications(){
+        // 키보드가 나타날 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
+        // 키보드가 사라질 때 앱에게 알리는 메서드 제거
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+   
+    // 키보드가 나타났다는 알림을 받으면 실행할 메서드
+    @objc func keyboardWillShow(_ noti: NSNotification){
+        // 키보드의 높이만큼 화면을 올려준다.
+        if let keyboardSize = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                   if fCurTextfieldBottom <= self.view.frame.height - keyboardSize.height {
+                       return
+                   }
+                   if self.view.frame.origin.y == 0 {
+                       self.view.frame.origin.y += 20
+                       self.view.frame.origin.y -= keyboardSize.height
+                   }
+               }
+    }
+
+    // 키보드가 사라졌다는 알림을 받으면 실행할 메서드
+    @objc func keyboardWillHide(_ noti: NSNotification){
+        // 키보드의 높이만큼 화면을 내려준다.
+        if self.view.frame.origin.y != 0 {
+                    self.view.frame.origin.y = 0
+                }
+    }
+   
+
 
 }
