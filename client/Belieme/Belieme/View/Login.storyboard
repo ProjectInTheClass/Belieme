@@ -145,10 +145,15 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="p4K-8Q-GTo">
+                                <rect key="frame" x="197" y="438" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="p4K-8Q-GTo" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="ASD-nB-Lbc"/>
+                            <constraint firstItem="p4K-8Q-GTo" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="STW-yW-6AH"/>
                             <constraint firstAttribute="trailing" secondItem="Mxk-dI-U9h" secondAttribute="trailing" constant="15" id="UJR-nu-mbE"/>
                             <constraint firstItem="Mxk-dI-U9h" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="fjB-b7-E7O"/>
                             <constraint firstItem="0hb-aL-h3Z" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="kpB-Et-hmy"/>
@@ -163,6 +168,7 @@
                         <outlet property="detailContent" destination="kx7-Ld-oBT" id="I5d-Wz-OwN"/>
                         <outlet property="disagreeButton" destination="HhF-va-0vV" id="JpD-KJ-D2T"/>
                         <outlet property="idField" destination="N3B-mN-p1p" id="A9q-p4-txZ"/>
+                        <outlet property="indicator" destination="p4K-8Q-GTo" id="M3C-1y-8Ia"/>
                         <outlet property="loginButton" destination="Jnr-SO-URc" id="tGV-mI-qik"/>
                         <outlet property="loginImage" destination="ayJ-74-7rg" id="Ipx-BO-qZh"/>
                         <outlet property="loginNoticeLabel" destination="rk8-Hf-yNt" id="D7D-PA-Ojs"/>
