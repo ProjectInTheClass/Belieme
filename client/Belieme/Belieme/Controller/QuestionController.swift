@@ -11,6 +11,9 @@ import LoggerAPI
 
 class QuestionController: UIViewController, UITextViewDelegate {
 
+    var isError : Bool = false
+    var alertTitle = "문의등록완료"
+    var message = ""
    
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var AskUserEmail: UITextView!
@@ -33,29 +36,26 @@ class QuestionController: UIViewController, UITextViewDelegate {
             text: AskContent.text + "\n" + AskUserEmail.text
         )
         
-        let message = "문의 등록 완료"
         
         smtp.send(mail) { (error) in
             if let error = error {
                 print(error)
-                //message = Log.error(description)
             }
             
         }
         
-        let alert = UIAlertController(
-            title: message ,
-            message: "",
+            
+        let alertMessage = UIAlertController(
+            title: self.alertTitle ,
+            message: self.message,
             preferredStyle: .alert)
         let okAction = UIAlertAction(title: "확인", style: .default){ _ in
             self.navigationController?.popViewController(animated: true)
         }
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-        
+        alertMessage.addAction(okAction)
+        self.present(alertMessage, animated: true, completion: nil)
        
         
-    
     }
     
     override func viewDidLoad() {
