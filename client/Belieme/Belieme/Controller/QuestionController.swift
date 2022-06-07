@@ -20,6 +20,10 @@ class QuestionController: UIViewController, UITextViewDelegate {
     
     //등록 버튼 눌렀을 때 사용자가 입력한 정보 출력
     @IBAction func SubmitButtonClicked(_ sender: Any) {
+        if (!AskUserEmail.text.isValidEmail) {
+            showToast(message: "이메일 형식을 맞춰주세요.", font: .systemFont(ofSize: 10.0))
+            return
+        }
         let mail_to = Mail.User(name: "mail_to", email: "belieme.hyu@gmail.com")
 
         let mail = Mail(
@@ -27,10 +31,9 @@ class QuestionController: UIViewController, UITextViewDelegate {
             to: [mail_to],
             subject: AskTitle.text,
             text: AskContent.text + "\n" + AskUserEmail.text
-        
         )
         
-        var message = "문의등록완료"
+        let message = "문의 등록 완료"
         
         smtp.send(mail) { (error) in
             if let error = error {
