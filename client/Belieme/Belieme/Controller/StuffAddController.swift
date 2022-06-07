@@ -35,6 +35,15 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             return
         }
         guard let amount = Int(numText) else {
+            self.showToast(message: "숫자를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
+            return
+        }
+        if (!emoji.isSingleEmoji) {
+            self.showToast(message: "이모지를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
+            return
+        }
+        if (name.count <= 0 || name.count >= 10) {
+            self.showToast(message: "물품명을 등록해 주세요.", font: .systemFont(ofSize: 12.0))
             return
         }
         let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount)

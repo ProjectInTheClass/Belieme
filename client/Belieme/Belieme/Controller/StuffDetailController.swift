@@ -9,7 +9,7 @@ import UIKit
 
 var modifyFlag : Bool = false
 
-class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
     var stuffArray: Array<StuffDetail> = []
     var paramCount: Int = 0
     var paramImage: String = ""
@@ -121,6 +121,21 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
     }
     
     @IBAction func saveButtonClicked(_ sender: Any) {
+        guard stuffImage.text != nil else {
+            return
+        }
+        guard stuffName.text != nil else {
+            return
+        }
+        if (!stuffImage.text!.isSingleEmoji) {
+            self.showToast(message: "이모지를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
+            return
+        }
+        if (stuffName.text!.count <= 0 || stuffName.text!.count >= 10) {
+            self.showToast(message: "물품명을 등록해 주세요.", font: .systemFont(ofSize: 12.0))
+            return
+        }
+        
         let alert = UIAlertController(
             title: "변경 사항을 저장하시겠습니까?",
             message: nil,
@@ -213,11 +228,16 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         super.viewDidLoad()
         addDoneButton()
         
+        stuffImage.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
     }
 
-
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            guard let text = textField.text else { return true }
+        let newLength = text.count + string.count - range.length
+            return newLength <= 1
+    }
 }
 
 extension UITextField{
