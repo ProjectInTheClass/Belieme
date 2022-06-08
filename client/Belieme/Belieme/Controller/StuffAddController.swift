@@ -30,27 +30,22 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     
     @IBAction func iconClicked(_ sender: UITextField) {
         fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackIcon.frame.origin.y + sender.frame.height
+        stuffLabel.isUserInteractionEnabled = false
+        stuffNum.isUserInteractionEnabled = false
         
-        print( stackIcon.frame.origin.y)
-        print(sender.frame.height)
-        print(fCurTextfieldBottom)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    
     }
     @IBAction func labelClicked(_ sender: UITextField) {
         fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackLabel.frame.origin.y + sender.frame.height
-        
-        print( stackLabel.frame.origin.y)
-        print(sender.frame.height)
-        print(fCurTextfieldBottom)
+      //  stackIcon.isUserInteractionEnabled = false
+        stuffNum.isUserInteractionEnabled = false
     }
    
     @IBAction func numClicked(_ sender: UITextField) {
         fCurTextfieldBottom = downView.frame.origin.y+finalStack.frame.origin.y+stackNum.frame.origin.y + sender.frame.height
-        print(downView.frame.origin.y)
-        print(finalStack.frame.origin.y)
-        print(stackNum.frame.origin.y)
-      //  print( stackNum.frame.origin.y)
-      //  print(sender.frame.height)
-        print(fCurTextfieldBottom)
+     //   stackIcon.isUserInteractionEnabled = false
+        stuffLabel.isUserInteractionEnabled = false
     }
     
 
@@ -140,6 +135,11 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         stuffLabel.placeholder = "물품이름 등록"
         stuffNum.placeholder = "물품개수 등록"
         stuffIcon.delegate = self
+        
+        
+//        stuffNum.returnKeyType = .done
+//        stuffIcon.returnKeyType = .done
+//        stuffLabel.returnKeyType = .done
     }
     
     func setToolbar() { // toolbar를 만들어준다.
@@ -171,6 +171,15 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         self.numTextField.resignFirstResponder()
     }
     
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//
+//        textField.resignFirstResponder()  //if desired
+//
+//        return true
+//    }
+
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
         Init()
@@ -190,9 +199,14 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         addKeyboardNotifications()
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            guard let text = textField.text else { return true }
-        let newLength = text.count + string.count - range.length
-            return newLength <= 1
+        stuffIcon.isUserInteractionEnabled = true
+        if(textField == stuffIcon){
+                guard let text = textField.text else { return true }
+                let newLength = text.count + string.count - range.length
+                    return newLength <= 1
+            }else{
+                return true
+            }
         }
     
     // 노티피케이션을 추가하는 메서드
@@ -222,8 +236,10 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
                    if self.view.frame.origin.y == 0 {
                        self.view.frame.origin.y += 20
                        self.view.frame.origin.y -= keyboardSize.height
+                      // self.view.frame.origin.y -= 200
                    }
-               }
+        }
+               
     }
 
     // 키보드가 사라졌다는 알림을 받으면 실행할 메서드
@@ -232,6 +248,22 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         if self.view.frame.origin.y != 0 {
                     self.view.frame.origin.y = 0
                 }
+        
+    }
+    
+    @objc func keyboardDidChangeFrame(_ noti: NSNotification) {
+        //if let keyboard = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] {
+            
+            self.view.frame.origin.y -= 25
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    //화면 터치시 키보드 내려가게끔
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.view.endEditing(true)
+        stuffIcon.isUserInteractionEnabled = true
+        stuffNum.isUserInteractionEnabled = true
+        stuffLabel.isUserInteractionEnabled = true
     }
    
 
