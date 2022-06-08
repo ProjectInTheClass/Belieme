@@ -178,9 +178,11 @@
                         <outlet property="webView" destination="Zv1-2V-mbN" id="dGR-F3-eBt"/>
                         <outletCollection property="infoButtons" destination="OG8-g5-BSw" collectionClass="NSMutableArray" id="wBo-ne-VPd"/>
                         <outletCollection property="infoButtons" destination="HhF-va-0vV" collectionClass="NSMutableArray" id="UOv-zi-O8c"/>
+                        <segue destination="BiL-ZE-1By" kind="unwind" identifier="SG_backToMain" unwindAction="backToMain:" id="j4z-NS-3LQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="BiL-ZE-1By" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-94.20289855072464" y="86.383928571428569"/>
         </scene>

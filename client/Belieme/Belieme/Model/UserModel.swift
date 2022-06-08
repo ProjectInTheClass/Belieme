@@ -22,5 +22,6 @@ struct CurrentUser : Codable {
     var permission : String?
 }
 
-var isAdmin: Bool = true
+var isAdmin: Bool = false
 var curUser : CurrentUser = CurrentUser(studentId: nil, name: nil, token: nil, createTimeStamp: nil, approvalTimeStamp: nil, permission: nil)
+var tokenExpired : Bool = false

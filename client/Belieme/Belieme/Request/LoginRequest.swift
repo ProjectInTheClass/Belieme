@@ -7,8 +7,8 @@
 
 import Foundation
 
-func postAccessToken(accessToken : String) -> Bool {
-    guard let jsonData = requestPost(api: "login/", method: "PATCH", param: ["apiToken": accessToken]) else {
+func postAccessToken(accessToken : String, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
+    guard let jsonData = requestPost(api: "login/", method: "PATCH", param: ["apiToken": accessToken], exceptionHandler: exceptionHandler) else {
         return false
     }
     guard let data : CurrentUser = try? JSONDecoder().decode(CurrentUser.self, from: jsonData) else {
@@ -24,8 +24,8 @@ func postAccessToken(accessToken : String) -> Bool {
     return true
 }
 
-func getUserInfo() -> Bool {
-    guard let jsonData = requestGet(api: "auth/") else {
+func getUserInfo(exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
+    guard let jsonData = requestGet(api: "auth/", exceptionHandler: exceptionHandler) else {
         return false
     }
     guard let data : CurrentUser = try? JSONDecoder().decode(CurrentUser.self, from: jsonData) else {
@@ -39,10 +39,10 @@ func getUserInfo() -> Bool {
     return true
 }
 
-func checkLogin() -> Bool {
+func checkLogin(exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
     guard let token = UserDefaults.standard.string(forKey: "user-token") else {
         return false
     }
     curUser.token = token
-    return getUserInfo()
+    return getUserInfo(exceptionHandler: exceptionHandler)
 }

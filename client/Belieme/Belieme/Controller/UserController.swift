@@ -137,7 +137,6 @@ class UserController: UIViewController, WKNavigationDelegate {
         webView.evaluateJavaScript(loginQuery)
     }
     
-    
     @IBAction func touchLoginButton(_ sender: UIButton) {
         guard let id = idField.text else {
             return
@@ -147,25 +146,36 @@ class UserController: UIViewController, WKNavigationDelegate {
         }
         if id == DEV_ID && password == DEV_PW {
             loginState = .tried
-            let loginResult = postAccessToken(accessToken: DEV_API_TOKEN)
-            if (loginResult) {
-                guard let serverToken = curUser.token else {
-                    presentLoginFailAlert()
-                    return
-                }
-                loginState = .success
-                changedFlag += 1
-                UserDefaults.standard.set(serverToken, forKey: "user-token")
-                self.navigationController?.isNavigationBarHidden = false
-                self.navigationController?.popToRootViewController(animated: true)
-                return
-            }
-            presentLoginFailAlert()
-            return
+            return tryLoginWithAccessToken(accessToken: self.DEV_API_TOKEN)
         }
         loginState = .tried
         let loginQuery : String = "$('#uid').val('\(String(describing: id))');\n$('#upw').val('\(String(describing: password))');\n$('#login_btn').click();"
         webView.evaluateJavaScript(loginQuery)
+    }
+    
+    private func tryLoginWithAccessToken(accessToken : String) {
+        stuffNeedUpdate = true
+        historyNeedToUpdate = true
+        let loginResult = postAccessToken(accessToken : accessToken, exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
+        if (loginResult) {
+            guard let serverToken = curUser.token else {
+                presentLoginFailAlert()
+                return
+            }
+            loginState = .success
+            UserDefaults.standard.set(serverToken, forKey: "user-token")
+            UserDefaults.standard.set(false, forKey: "login-to-admin-mode")
+            self.navigationController?.isNavigationBarHidden = false
+            performSegue(withIdentifier: "SG_backToMain", sender: nil)
+            return
+        }
+        presentLoginFailAlert()
+        return
     }
 }
 
@@ -189,19 +199,8 @@ extension UserController: WKUIDelegate {
                 }
                 let startIndex = stringUrl.index(after: beforeStartIndex)
                 let accessToken = String(stringUrl[startIndex..<lastIndex])
-                let loginResult = postAccessToken(accessToken: accessToken)
-                if (loginResult) {
-                    guard let serverToken = curUser.token else {
-                        presentLoginFailAlert()
-                        return
-                    }
-                    loginState = .success
-                    changedFlag += 1
-                    UserDefaults.standard.set(serverToken, forKey: "user-token")
-                    self.navigationController?.isNavigationBarHidden = false
-                    self.navigationController?.popToRootViewController(animated: true)
-                    return
-                }
+                tryLoginWithAccessToken(accessToken: accessToken)
+                return
             }
             presentLoginFailAlert()
             return

@@ -75,7 +75,12 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             self.showToast(message: "물품명을 등록해 주세요.", font: .systemFont(ofSize: 12.0))
             return
         }
-        let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount)
+        let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount, exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         let alert = UIAlertController(
             title : (result) ? "물품이 성공적으로 생성되었습니다." : "물품 생성에 실패하였습니다. 잠시후 다시 시도해주세요.",
             message: nil,
@@ -265,7 +270,4 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         stuffNum.isUserInteractionEnabled = true
         stuffLabel.isUserInteractionEnabled = true
     }
-   
-
-
 }

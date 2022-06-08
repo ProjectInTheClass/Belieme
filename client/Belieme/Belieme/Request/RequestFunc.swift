@@ -15,7 +15,7 @@ struct Response: Codable {
     let message: String
 }
 
-func requestGet(api: String) -> Data? {
+func requestGet(api: String, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Data? {
     let newUrl = baseUrl + (api.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? api)
     guard let url = URL(string: newUrl) else {
         print("Error: cannot create URL")
@@ -40,25 +40,24 @@ func requestGet(api: String) -> Data? {
             semaphore.signal()
             return
         }
-        guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-            print("error : ", (response as? HTTPURLResponse)?.statusCode ?? 0)
-            print("msg : ", (response as? HTTPURLResponse)?.description ?? "")
-            semaphore.signal()
-            return
-        }
         guard let stringData : String = String(data: data, encoding: .utf8) else {
             print("Error: data to string failed.")
             semaphore.signal()
             return
         }
+        guard exceptionHandler(response) else {
+            semaphore.signal()
+            return
+        }
         jsonData = stringData.data(using: .utf8)
         semaphore.signal()
+        return
     }.resume()
     semaphore.wait()
     return jsonData
 }
 
-func requestPost(api: String, method: String, param: [String: Any]) -> Data? {
+func requestPost(api: String, method: String, param: [String: Any], exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Data? {
     let newUrl = baseUrl + (api.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? api)
     let sendData = try! JSONSerialization.data(withJSONObject: param, options: [])
     guard let url = URL(string: newUrl) else {
@@ -85,20 +84,18 @@ func requestPost(api: String, method: String, param: [String: Any]) -> Data? {
             semaphore.signal()
             return
         }
-        guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-            print("error : ", (response as? HTTPURLResponse)?.statusCode ?? 0)
-            print("msg : ", (response as? HTTPURLResponse)?.description ?? "")
-            semaphore.signal()
-            return
-        }
         guard let stringData : String = String(data: data, encoding: .utf8) else {
             print("Error: data to string failed.")
             semaphore.signal()
             return
         }
+        guard exceptionHandler(response) else {
+            semaphore.signal()
+            return
+        }
         jsonData = stringData.data(using: .utf8)
         semaphore.signal()
-        
+        return
     }.resume()
     semaphore.wait()
     return jsonData
@@ -109,4 +106,36 @@ func getDateFromTimestamp(unixTime: Int?) -> Date? {
         return nil
     }
     return Date(timeIntervalSince1970: Double(time))
+}
+
+
+func basicHttpExceptionHandler() -> (_ response : URLResponse?) -> Bool {
+    return {response in
+        if let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode {
+            return true
+        }
+        if let response = response as? HTTPURLResponse, response.statusCode == 401 {
+            curUser.studentId = nil
+            curUser.token = nil
+            curUser.name = nil
+            curUser.approvalTimeStamp = nil
+            curUser.createTimeStamp = nil
+            curUser.permission = nil
+            UserDefaults.standard.removeObject(forKey: "user-token")
+            
+            tokenExpired = true
+        }
+        return false
+    }
+}
+
+func logingHttpExceptionHandler() -> (_ response : URLResponse?) -> Bool {
+    return {response in
+        if let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode {
+            return true
+        }
+        print("error : ", (response as? HTTPURLResponse)?.statusCode ?? 0)
+        print("msg : ", (response as? HTTPURLResponse)?.description ?? "")
+        return false
+    }
 }
