@@ -8,23 +8,36 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    var fromLogin : Bool = false
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(false)
-        if fromLogin {
-            self.selectedIndex = 0
-            fromLogin = false
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        fromLogin = true
-        if (checkLogin()) {
+        self.selectedIndex = 0
+//        print("BREAK3")
+        stuffNeedUpdate = true
+        historyNeedToUpdate = true
+        if (checkLogin(exceptionHandler: logingHttpExceptionHandler())) {
+            isAdmin = UserDefaults.standard.bool(forKey: "login-to-admin-mode")
+      
+            let stuffController = self.viewControllers?[0] as? StuffTabController
+            stuffController?.stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+            stuffController?.reloadView()
+            stuffController?.initView()
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
+            
+            isAdmin = UserDefaults.standard.bool(forKey: "login-to-admin-mode")
             return
         }
         performSegue(withIdentifier: "SG_LoginTab", sender: nil)
+//        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+//        let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_LoginTab")
+//        targetViewController.modalPresentationStyle = .fullScreen
+//        viewController.present(targetViewController, animated : false)
+    }
+    
+    @IBAction func backToMain(_ sender: UIStoryboardSegue) {
+        self.selectedIndex = 0
     }
 }
 

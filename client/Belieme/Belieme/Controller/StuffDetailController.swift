@@ -31,7 +31,12 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
     @IBOutlet weak var saveButton: UIButton!
     
     func Init(){
-        self.stuffArray = getStuffDetail(name: paramName)
+        self.stuffArray = getStuffDetail(name: paramName, exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         if (self.stuffArray.count > 0) {
             stuffName.text = stuffArray[0].stuffName
             stuffImage.text = stuffArray[0].stuffEmoji
@@ -65,7 +70,12 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         
         
         if (addedCount > 0) {
-            result = addAmountOfStuff(name: paramName, amount: addedCount)
+            result = addAmountOfStuff(name: paramName, amount: addedCount, exceptionHandler: basicHttpExceptionHandler())
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
+            
             if (!result) {
                 for _ in 0..<addedCount {
                     stuffArray.removeLast()
@@ -75,7 +85,12 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         }
         
         if (result && ((stuffImage.text! != paramImage) || (stuffName.text! != paramName))) {
-            result = changeStuffInfo(existingName: paramName, name: stuffName.text!, emoji: stuffImage.text!)
+            result = changeStuffInfo(existingName: paramName, name: stuffName.text!, emoji: stuffImage.text!, exceptionHandler: basicHttpExceptionHandler())
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
+            
             if (result) {
                 paramName = stuffName.text!
                 paramImage = stuffImage.text!
@@ -88,7 +103,12 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
                 guard let hisNum = itemNumHistoryNum[itemNum] else {
                     continue
                 }
-                result = findStuff(name: paramName, itemNum: itemNum, historyNum: hisNum)
+                result = findStuff(name: paramName, itemNum: itemNum, historyNum: hisNum, exceptionHandler: basicHttpExceptionHandler())
+                if(tokenExpired) {
+                    checkTokenExpiredAndSendAlert(viewController : self)
+                    return
+                }
+                
                 if (!result) {
                     break
                 }
@@ -98,7 +118,12 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         if (result) {
             let realLostSet = newlostNumSet.subtracting(alreadylostNumSet)
             for itemNum in realLostSet {
-                result = lostStuff(name: paramName, itemNum: itemNum)
+                result = lostStuff(name: paramName, itemNum: itemNum, exceptionHandler: basicHttpExceptionHandler())
+                if(tokenExpired) {
+                    checkTokenExpiredAndSendAlert(viewController : self)
+                    return
+                }
+                
                 if (!result) {
                     break
                 }

@@ -75,7 +75,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-uq-Lyd">
-                                                        <rect key="frame" x="15" y="46" width="131" height="36"/>
+                                                        <rect key="frame" x="15" y="90" width="131" height="36"/>
                                                         <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="사용자 모드 전환"/>
@@ -84,7 +84,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
-                                                        <rect key="frame" x="15" y="90" width="70" height="36"/>
+                                                        <rect key="frame" x="15" y="46" width="70" height="36"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                         <state key="normal" title="문의하기"/>
@@ -94,9 +94,9 @@
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="jJH-CI-nlO" firstAttribute="top" secondItem="WkB-uq-Lyd" secondAttribute="bottom" constant="8" id="1Io-I2-A5D"/>
+                                                    <constraint firstItem="jJH-CI-nlO" firstAttribute="top" secondItem="5dK-pr-2Aa" secondAttribute="bottom" constant="8" id="1Io-I2-A5D"/>
                                                     <constraint firstItem="5dK-pr-2Aa" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="8" id="6NX-vj-r0E"/>
-                                                    <constraint firstItem="WkB-uq-Lyd" firstAttribute="top" secondItem="5dK-pr-2Aa" secondAttribute="bottom" constant="8" id="auv-sp-xdq"/>
+                                                    <constraint firstItem="WkB-uq-Lyd" firstAttribute="top" secondItem="jJH-CI-nlO" secondAttribute="bottom" constant="8" id="auv-sp-xdq"/>
                                                     <constraint firstItem="jJH-CI-nlO" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="15" id="cbj-qR-G6r"/>
                                                     <constraint firstItem="5dK-pr-2Aa" firstAttribute="top" secondItem="reH-Ja-FWS" secondAttribute="top" constant="8" id="dbW-D4-pc6"/>
                                                     <constraint firstItem="WkB-uq-Lyd" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="15" id="fb6-ff-43a"/>

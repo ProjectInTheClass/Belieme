@@ -22,8 +22,6 @@ class StuffCell : UITableViewCell {
             self.lentalBtn.isHidden = false
         }
     }
-    
-    
 }
 
 // MARK: - Outlet vars, functions and member vars
@@ -46,7 +44,12 @@ class StuffTabController: UIViewController {
     }
     
     func touchOkButton(stuffName: String) -> Void {
-        let result : Bool = sendRentRequest(stuffName: stuffName)
+        let result : Bool = sendRentRequest(stuffName: stuffName, exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         let alert = UIAlertController(
             title : (result) ? "요청에 성공하였습니다." : "요청에 실패하였습니다.",
             message: nil,
@@ -54,7 +57,12 @@ class StuffTabController: UIViewController {
         )
         let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
             self.setButton()
-            self.stuffsData = getAllStuff()
+            self.stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
+            
             self.reloadView()
             self.stuffAddButton.isHidden = !isAdmin
         }
@@ -107,7 +115,15 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView.cellForRow(at: indexPath) as! StuffCell
         if(isAdmin == true) {
-            performSegue(withIdentifier: "SG_StuffTabToStuffDetail", sender: cell)
+            let selectedStuff = stuffsData[cell.tag]
+            
+            let storyboard = UIStoryboard(name: "StuffDetail", bundle: nil)
+            let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_StuffDetail") as! StuffDetailController
+            targetViewController.paramName = selectedStuff.name
+            targetViewController.paramImage = selectedStuff.emoji
+            targetViewController.paramCount = selectedStuff.amount
+            
+            self.navigationController?.pushViewController(targetViewController, animated: false)
         }
     }
 }
@@ -116,7 +132,12 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 extension StuffTabController {
     @objc private func pullToRefresh(_ sender: Any) {
         setButton()
-        stuffsData = getAllStuff()
+        stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         reloadView()
         stuffAddButton.isHidden = !isAdmin
         stuffTableView.refreshControl?.endRefreshing()
@@ -128,20 +149,23 @@ extension StuffTabController {
         stuffTableView.refreshControl = refresh
     }
     
+    func reloadView() {
+        stuffTableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        guard curUser.studentId != nil else {
-            return
-        }
-        setButton()
-        stuffsData = getAllStuff()
-        reloadView()
-        stuffAddButton.isHidden = !isAdmin
-        initView()
         
+//        print("BREAK1")
         //backbutton 색상변경
         self.navigationController?.navigationBar.tintColor = .black
+        setButton()
+        stuffAddButton.isHidden = !isAdmin
+        
 
+        reloadView()
+        initView()
+//        print("BREAK2")
     }
     
     @IBAction func goToAdd(_ sender: UIButton) {
@@ -154,9 +178,9 @@ extension StuffTabController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (changedFlag > 0 || addFlag || modifyFlag) {
-            if (changedFlag > 0) {
-                changedFlag -= 1
+        if (stuffNeedUpdate || addFlag || modifyFlag) {
+            if (stuffNeedUpdate) {
+                stuffNeedUpdate = false
             }
             if (addFlag) {
                 addFlag = false
@@ -165,27 +189,14 @@ extension StuffTabController {
                 modifyFlag = false
             }
             setButton()
-            stuffsData = getAllStuff()
+            stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
             reloadView()
             stuffAddButton.isHidden = !isAdmin
             initView()
         }
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard let targetViewController = segue.destination as? StuffDetailController,
-            let stuffCell = sender as? StuffCell
-        else { return }
-        
-        let selectedStuff = stuffsData[stuffCell.tag]
-        targetViewController.paramName = selectedStuff.name
-        targetViewController.paramImage = selectedStuff.emoji
-        targetViewController.paramCount = selectedStuff.amount
-    }
-}
-
-private extension StuffTabController {
-    func reloadView() {
-        stuffTableView.reloadData()
     }
 }
