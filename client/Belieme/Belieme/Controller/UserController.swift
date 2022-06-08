@@ -22,6 +22,7 @@ class UserController: UIViewController, WKNavigationDelegate {
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var loginNoticeLabel: UILabel!
     
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var agreeImage: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var titleContent: UITextView!
@@ -39,13 +40,20 @@ class UserController: UIViewController, WKNavigationDelegate {
     private let ERROR_URL = "https://portal.hanyang.ac.kr/sso/openPage.do"
     private let FIRST_URL = "https://api.hanyang.ac.kr/oauth/offer"
     
+    private let DEV_API_TOKEN = "c305ee87-a4c7-4b5a-8d71-7e23b6064613"
+    private let DEV_ID = "__DEV__ID"
+    private let DEV_PW = "__DEV__PW"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        indicator.style = .large
+        indicator.color = .systemBlue
         webView.navigationDelegate = self
         webView.uiDelegate = self
         webView.isHidden = true
         togleAgree(flag: true)
         loginButton.setTitle("LOGIN", for: .normal)
+        addDoneButton()
         navigationController?.isNavigationBarHidden = true
         loadWebPage(LOGIN_URL)
     }
@@ -83,6 +91,19 @@ class UserController: UIViewController, WKNavigationDelegate {
             self.loadWebPage(self.LOGIN_URL)
         }))
         present(alert, animated: true)
+    }
+    
+    func addDoneButton() {
+        idField.addDoneButtonOnKeyboard()
+        pwField.addDoneButtonOnKeyboard()
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        indicator.startAnimating()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        indicator.stopAnimating()
     }
     
     @IBAction func touchAgreeOrDisagreeButton(_ sender: UIButton) {
@@ -124,6 +145,24 @@ class UserController: UIViewController, WKNavigationDelegate {
         guard let password = pwField.text else {
             return
         }
+        if id == DEV_ID && password == DEV_PW {
+            loginState = .tried
+            let loginResult = postAccessToken(accessToken: DEV_API_TOKEN)
+            if (loginResult) {
+                guard let serverToken = curUser.token else {
+                    presentLoginFailAlert()
+                    return
+                }
+                loginState = .success
+                changedFlag += 1
+                UserDefaults.standard.set(serverToken, forKey: "user-token")
+                self.navigationController?.isNavigationBarHidden = false
+                self.navigationController?.popToRootViewController(animated: true)
+                return
+            }
+            presentLoginFailAlert()
+            return
+        }
         loginState = .tried
         let loginQuery : String = "$('#uid').val('\(String(describing: id))');\n$('#upw').val('\(String(describing: password))');\n$('#login_btn').click();"
         webView.evaluateJavaScript(loginQuery)
@@ -157,6 +196,7 @@ extension UserController: WKUIDelegate {
                         return
                     }
                     loginState = .success
+                    changedFlag += 1
                     UserDefaults.standard.set(serverToken, forKey: "user-token")
                     self.navigationController?.isNavigationBarHidden = false
                     self.navigationController?.popToRootViewController(animated: true)

@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-var changedFlag : Int = 3
+var changedFlag : Int = 0
 
 class SettingController: UIViewController{
     
@@ -42,6 +42,10 @@ class SettingController: UIViewController{
         curUser.createTimeStamp = nil
         curUser.permission = nil
         UserDefaults.standard.removeObject(forKey: "user-token")
+        
+        if let tabBarController = self.tabBarController as? TabBarController {
+            tabBarController.fromLogin = true
+        }
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         return
     }
@@ -60,15 +64,16 @@ class SettingController: UIViewController{
         AppSetting.layer.borderWidth = 1;
         
         changeModeBtn.setTitle(getModeChageString(), for: .reserved)
-        
+     
+        //backbutton 색상 변경
         self.navigationController?.navigationBar.tintColor = .black
     }
     
     func getModeChageString() -> String {
         if(isAdmin) {
-            return "사용자 모드 전환"
+            return "사용자 모드로 전환"
         } else {
-            return "관리자 모드 전환"
+            return "관리자 모드로 전환"
         }
     }
     

@@ -7,9 +7,13 @@
 
 import UIKit
 import SwiftSMTP
+import LoggerAPI
 
 class QuestionController: UIViewController, UITextViewDelegate {
 
+    var isError : Bool = false
+    var alertTitle = "문의등록완료"
+    var message = ""
    
     @IBOutlet weak var TitleLabel: UILabel!
     @IBOutlet weak var AskUserEmail: UITextView!
@@ -19,6 +23,10 @@ class QuestionController: UIViewController, UITextViewDelegate {
     
     //등록 버튼 눌렀을 때 사용자가 입력한 정보 출력
     @IBAction func SubmitButtonClicked(_ sender: Any) {
+        if (!AskUserEmail.text.isValidEmail) {
+            showToast(message: "이메일 형식을 맞춰주세요.", font: .systemFont(ofSize: 10.0))
+            return
+        }
         let mail_to = Mail.User(name: "mail_to", email: "belieme.hyu@gmail.com")
 
         let mail = Mail(
@@ -26,26 +34,28 @@ class QuestionController: UIViewController, UITextViewDelegate {
             to: [mail_to],
             subject: AskTitle.text,
             text: AskContent.text + "\n" + AskUserEmail.text
-        
         )
         
-        var message = "문의등록완료"
         
         smtp.send(mail) { (error) in
             if let error = error {
                 print(error)
-                message = "Error:문의전송실패"
             }
+            
         }
         
-        let alert = UIAlertController(
-            title: message ,
-            message: "",
+            
+        let alertMessage = UIAlertController(
+            title: self.alertTitle ,
+            message: self.message,
             preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "확인", style: .default)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    
+        let okAction = UIAlertAction(title: "확인", style: .default){ _ in
+            self.navigationController?.popViewController(animated: true)
+        }
+        alertMessage.addAction(okAction)
+        self.present(alertMessage, animated: true, completion: nil)
+       
+        
     }
     
     override func viewDidLoad() {

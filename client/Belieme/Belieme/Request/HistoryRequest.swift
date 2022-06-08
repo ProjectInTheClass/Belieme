@@ -26,6 +26,7 @@ private func getAllHistory(api : String) -> [HistorySection] {
         guard let requestTime = getDateFromTimestamp(unixTime: data.reservedTimeStamp) else {
             continue
         }
+        let approveTime = getDateFromTimestamp(unixTime: data.approveTimeStamp)
         let returnedTime = getDateFromTimestamp(unixTime: data.returnTimeStamp)
         let historyInfo : HistoryInfo = HistoryInfo(
             status: status,
@@ -34,7 +35,8 @@ private func getAllHistory(api : String) -> [HistorySection] {
             historyNum: data.num,
             requestTime: requestTime,
             requester: data.requester?.name ?? "UNKNOWN",
-            returnedTime: returnedTime
+            returnedTime: returnedTime,
+            approveTime: approveTime
         )
         switch (status) {
         case .WAITING:
