@@ -42,6 +42,10 @@ class SettingController: UIViewController{
         curUser.createTimeStamp = nil
         curUser.permission = nil
         UserDefaults.standard.removeObject(forKey: "user-token")
+        
+        if let tabBarController = self.tabBarController as? TabBarController {
+            tabBarController.fromLogin = true
+        }
         self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         return
     }

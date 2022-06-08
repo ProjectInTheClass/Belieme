@@ -40,6 +40,10 @@ class UserController: UIViewController, WKNavigationDelegate {
     private let ERROR_URL = "https://portal.hanyang.ac.kr/sso/openPage.do"
     private let FIRST_URL = "https://api.hanyang.ac.kr/oauth/offer"
     
+    private let DEV_API_TOKEN = "c305ee87-a4c7-4b5a-8d71-7e23b6064613"
+    private let DEV_ID = "__DEV__ID"
+    private let DEV_PW = "__DEV__PW"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         indicator.style = .large
@@ -139,6 +143,24 @@ class UserController: UIViewController, WKNavigationDelegate {
             return
         }
         guard let password = pwField.text else {
+            return
+        }
+        if id == DEV_ID && password == DEV_PW {
+            loginState = .tried
+            let loginResult = postAccessToken(accessToken: DEV_API_TOKEN)
+            if (loginResult) {
+                guard let serverToken = curUser.token else {
+                    presentLoginFailAlert()
+                    return
+                }
+                loginState = .success
+                changedFlag += 1
+                UserDefaults.standard.set(serverToken, forKey: "user-token")
+                self.navigationController?.isNavigationBarHidden = false
+                self.navigationController?.popToRootViewController(animated: true)
+                return
+            }
+            presentLoginFailAlert()
             return
         }
         loginState = .tried

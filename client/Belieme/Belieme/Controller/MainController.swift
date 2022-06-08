@@ -8,12 +8,19 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    var fromLogin : Bool = false
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
+        if fromLogin {
+            self.selectedIndex = 0
+            fromLogin = false
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fromLogin = true
         if (checkLogin()) {
             return
         }

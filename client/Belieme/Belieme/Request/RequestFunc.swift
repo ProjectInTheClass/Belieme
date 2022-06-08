@@ -41,7 +41,8 @@ func requestGet(api: String) -> Data? {
             return
         }
         guard let response = response as? HTTPURLResponse, (200 ..< 300) ~= response.statusCode else {
-            print("Error: HTTP request failed")
+            print("error : ", (response as? HTTPURLResponse)?.statusCode ?? 0)
+            print("msg : ", (response as? HTTPURLResponse)?.description ?? "")
             semaphore.signal()
             return
         }
