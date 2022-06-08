@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,17 +13,17 @@
             <objects>
                 <viewController storyboardIdentifier="SB_SettingTab" title="설정" id="qp6-5J-KL7" customClass="SettingController" customModule="Belieme" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y0O-h4-Un7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Lv2-5Z-c88">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="511"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="610"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVd-UE-GFX">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="91"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="환경설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZP5-9O-e3u">
-                                                <rect key="frame" x="8" y="44" width="69.5" height="24"/>
+                                                <rect key="frame" x="8" y="59" width="69.5" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -36,65 +36,71 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="agj-vW-Ctr">
-                                        <rect key="frame" x="0.0" y="76" width="320" height="435"/>
+                                        <rect key="frame" x="0.0" y="91" width="375" height="519"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dNY-PS-tKo">
-                                                <rect key="frame" x="10" y="10" width="301" height="124"/>
+                                                <rect key="frame" x="10" y="10" width="356" height="124"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
-                                                        <rect key="frame" x="8" y="8" width="44" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="계정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Fq-Ap-6bo">
+                                                        <rect key="frame" x="8" y="8" width="43.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oil-bN-zYt">
-                                                        <rect key="frame" x="8" y="46" width="94" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="로그아웃">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                        </buttonConfiguration>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oil-bN-zYt">
+                                                        <rect key="frame" x="15" y="46" width="70" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="로그아웃"/>
                                                         <connections>
                                                             <action selector="logoutAction:" destination="qp6-5J-KL7" eventType="touchUpInside" id="eu0-mw-wke"/>
                                                             <segue destination="EKP-Rl-Bhg" kind="show" identifier="SG_LoginTab" id="PoI-WM-ETX"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="1Fq-Ap-6bo" firstAttribute="top" secondItem="dNY-PS-tKo" secondAttribute="top" constant="8" id="Gqg-gH-atp"/>
+                                                    <constraint firstItem="oil-bN-zYt" firstAttribute="leading" secondItem="dNY-PS-tKo" secondAttribute="leading" constant="15" id="Xlh-Wh-4QB"/>
+                                                    <constraint firstItem="1Fq-Ap-6bo" firstAttribute="leading" secondItem="dNY-PS-tKo" secondAttribute="leading" constant="8" id="bNi-uY-84j"/>
+                                                    <constraint firstItem="oil-bN-zYt" firstAttribute="top" secondItem="1Fq-Ap-6bo" secondAttribute="bottom" constant="8" id="wNN-o6-2nG"/>
+                                                </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="reH-Ja-FWS">
-                                                <rect key="frame" x="10" y="144" width="300" height="253"/>
+                                                <rect key="frame" x="10" y="144" width="355" height="337"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
-                                                        <rect key="frame" x="8" y="8" width="71" height="30"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="앱 설정" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dK-pr-2Aa">
+                                                        <rect key="frame" x="8" y="8" width="70.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-uq-Lyd">
-                                                        <rect key="frame" x="8" y="46" width="155" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="사용자 모드 전환">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                        </buttonConfiguration>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WkB-uq-Lyd">
+                                                        <rect key="frame" x="15" y="46" width="131" height="36"/>
+                                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="20"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="사용자 모드 전환"/>
                                                         <connections>
                                                             <action selector="changeMode:" destination="qp6-5J-KL7" eventType="touchUpInside" id="IAF-9b-OEj"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
-                                                        <rect key="frame" x="8" y="92" width="94" height="38"/>
-                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="문의하기">
-                                                            <fontDescription key="titleFontDescription" type="system" pointSize="20"/>
-                                                        </buttonConfiguration>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jJH-CI-nlO">
+                                                        <rect key="frame" x="15" y="90" width="70" height="36"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <state key="normal" title="문의하기"/>
                                                         <connections>
                                                             <segue destination="5MD-Ly-HQy" kind="show" id="n0w-e9-82z"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="jJH-CI-nlO" firstAttribute="top" secondItem="WkB-uq-Lyd" secondAttribute="bottom" constant="8" id="1Io-I2-A5D"/>
+                                                    <constraint firstItem="5dK-pr-2Aa" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="8" id="6NX-vj-r0E"/>
+                                                    <constraint firstItem="WkB-uq-Lyd" firstAttribute="top" secondItem="5dK-pr-2Aa" secondAttribute="bottom" constant="8" id="auv-sp-xdq"/>
+                                                    <constraint firstItem="jJH-CI-nlO" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="15" id="cbj-qR-G6r"/>
+                                                    <constraint firstItem="5dK-pr-2Aa" firstAttribute="top" secondItem="reH-Ja-FWS" secondAttribute="top" constant="8" id="dbW-D4-pc6"/>
+                                                    <constraint firstItem="WkB-uq-Lyd" firstAttribute="leading" secondItem="reH-Ja-FWS" secondAttribute="leading" constant="15" id="fb6-ff-43a"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <constraints>

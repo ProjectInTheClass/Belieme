@@ -52,7 +52,12 @@ class StuffTabController: UIViewController {
             message: nil,
             preferredStyle : .alert
         )
-        let okAction = UIAlertAction(title: "확인", style: .default)
+        let okAction = UIAlertAction(title: "확인", style: .default) { UIAlertAction in
+            self.setButton()
+            self.stuffsData = getAllStuff()
+            self.reloadView()
+            self.stuffAddButton.isHidden = !isAdmin
+        }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
     }
@@ -66,7 +71,7 @@ class StuffTabController: UIViewController {
         
         let okAction = UIAlertAction(title: "보내기", style: .default) { UIAlertAction in
             self.touchOkButton(stuffName: data.name)
-            }
+        }
         let cancel = UIAlertAction(title: "취소하기", style: .cancel, handler: nil)
         alert.addAction(okAction)
         alert.addAction(cancel)
@@ -76,7 +81,7 @@ class StuffTabController: UIViewController {
     }
 }
 
-// MARK: - Implemnts Deligate of TableView
+
 extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return stuffsData.count
@@ -133,16 +138,37 @@ extension StuffTabController {
         reloadView()
         stuffAddButton.isHidden = !isAdmin
         initView()
+        
+        //backbutton 색상변경
+        self.navigationController?.navigationBar.tintColor = .black
+
+    }
+    
+    @IBAction func goToAdd(_ sender: UIButton) {
+        guard let secPage = self.storyboard?.instantiateViewController(withIdentifier: "SB_StuffAdd") as? StuffAddController else {
+            return
+        }
+        secPage.modalPresentationStyle = .fullScreen
+        self.present(secPage, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (changedFlag > 0) {
-            changedFlag -= 1
+        if (changedFlag > 0 || addFlag || modifyFlag) {
+            if (changedFlag > 0) {
+                changedFlag -= 1
+            }
+            if (addFlag) {
+                addFlag = false
+            }
+            if (modifyFlag) {
+                modifyFlag = false
+            }
             setButton()
             stuffsData = getAllStuff()
             reloadView()
             stuffAddButton.isHidden = !isAdmin
+            initView()
         }
     }
     
