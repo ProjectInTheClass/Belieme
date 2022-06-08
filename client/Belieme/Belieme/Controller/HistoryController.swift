@@ -39,8 +39,14 @@ class HistoryController: UIViewController {
         }
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
         historySections = (isAdmin)
-            ? getAllHistoriesByAdmin()
-            : getAllHistoriesOfUser(id: studentId)
+            ? getAllHistoriesByAdmin(exceptionHandler: basicHttpExceptionHandler())
+            : getAllHistoriesOfUser(id: studentId, exceptionHandler: basicHttpExceptionHandler())
+        
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return  
+        }
+        
         HistoryTable.reloadData()
     }
     
@@ -63,8 +69,8 @@ class HistoryController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if (changedFlag > 0) {
-            changedFlag -= 1
+        if (historyNeedToUpdate) {
+            historyNeedToUpdate = false
             refreshAction()
             initView()
         }
@@ -79,8 +85,15 @@ class HistoryController: UIViewController {
         let result = changeRentingToReturn(
             stuffName: item.stuffName,
             stuffNum: item.itemNum,
-            historyNum: item.historyNum
+            historyNum: item.historyNum,
+            exceptionHandler: basicHttpExceptionHandler()
         )
+        
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         let alert = UIAlertController(
             title : (result) ? "반납처리 되었습니다." : "다시 시도해 주세요.",
             message: nil,
@@ -104,8 +117,15 @@ class HistoryController: UIViewController {
         let result = changeRentingToCancel(
             stuffName: item.stuffName,
             stuffNum: item.itemNum,
-            historyNum: item.historyNum
+            historyNum: item.historyNum,
+            exceptionHandler: basicHttpExceptionHandler()
         )
+        
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         let alert = UIAlertController(
             title : (result) ? "취소처리 되었습니다." : "다시 시도해 주세요.",
             message: nil,
@@ -129,8 +149,15 @@ class HistoryController: UIViewController {
         let result = changeRequestToRenting(
             stuffName: item.stuffName,
             stuffNum: item.itemNum,
-            historyNum: item.historyNum
+            historyNum: item.historyNum,
+            exceptionHandler: basicHttpExceptionHandler()
         )
+        
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
+        }
+        
         let alert = UIAlertController(
             title : (result) ? "승인처리 되었습니다." : "다시 시도해 주세요.",
             message: nil,
@@ -280,6 +307,5 @@ extension CALayer {
         }
         
     }
-    
 }
 

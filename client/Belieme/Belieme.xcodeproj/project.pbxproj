@@ -42,6 +42,7 @@
 		60B6D82A28450EF8000B28E1 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 60B6D82928450EF8000B28E1 /* SwiftSMTP */; };
 		60B6D82D28450FCF000B28E1 /* SMTP_SET.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */; };
 		9B4300712848B2CE007885A2 /* SwiftSMTP in Frameworks */ = {isa = PBXBuildFile; productRef = 9B4300702848B2CE007885A2 /* SwiftSMTP */; };
+		9B5066312850CF5B00452316 /* ControllerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5066302850CF5B00452316 /* ControllerUtil.swift */; };
 		9BC3B15B2811A47D002E1313 /* StuffDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */; };
 		9BC3B15D2811BEB4002E1313 /* StuffDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,7 @@
 		60B6D82028329B45000B28E1 /* StuffAdd.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffAdd.storyboard; sourceTree = "<group>"; };
 		60B6D82428329C07000B28E1 /* StuffAddController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffAddController.swift; sourceTree = "<group>"; };
 		60B6D82C28450FCF000B28E1 /* SMTP_SET.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMTP_SET.swift; sourceTree = "<group>"; };
+		9B5066302850CF5B00452316 /* ControllerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerUtil.swift; sourceTree = "<group>"; };
 		9BC3B15A2811A47D002E1313 /* StuffDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StuffDetail.storyboard; sourceTree = "<group>"; };
 		9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StuffDetailController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -225,6 +227,7 @@
 				9BC3B15C2811BEB4002E1313 /* StuffDetailController.swift */,
 				37831F8B282FDA990027B804 /* UserController.swift */,
 				60B6D82428329C07000B28E1 /* StuffAddController.swift */,
+				9B5066302850CF5B00452316 /* ControllerUtil.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				37BDEB2D2808154F00443075 /* HistoryController.swift in Sources */,
 				37BDEB312808158600443075 /* StuffTabController.swift in Sources */,
 				37038D98284B5A6C00B69183 /* StuffDetailRequest.swift in Sources */,
+				9B5066312850CF5B00452316 /* ControllerUtil.swift in Sources */,
 				370549F52826AEBB0012AE5D /* StuffInfoModel.swift in Sources */,
 				60B6D82D28450FCF000B28E1 /* SMTP_SET.swift in Sources */,
 				37BDEAED2808111B00443075 /* MainController.swift in Sources */,

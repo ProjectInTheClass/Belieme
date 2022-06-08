@@ -7,13 +7,13 @@
 
 import Foundation
 
-private func getAllHistory(api : String) -> [HistorySection] {
+private func getAllHistory(api : String, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> [HistorySection] {
     var historySections : [HistorySection] = [
         HistorySection(status: .WAITING, items: []),
         HistorySection(status: .RENTING, items: []),
         HistorySection(status: .RETURNED, items: [])
     ]
-    guard let jsonData = requestGet(api: api) else {
+    guard let jsonData = requestGet(api: api, exceptionHandler : exceptionHandler) else {
         return historySections
     }
     guard let datas : [StuffInfo] = try? JSONDecoder().decode([StuffInfo].self, from: jsonData) else {
@@ -52,16 +52,16 @@ private func getAllHistory(api : String) -> [HistorySection] {
     return historySections
 }
 
-func getAllHistoriesByAdmin() -> [HistorySection] {
-    return getAllHistory(api: "histories/")
+func getAllHistoriesByAdmin(exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> [HistorySection] {
+    return getAllHistory(api: "histories/", exceptionHandler: exceptionHandler)
 }
 
-func getAllHistoriesOfUser(id: String) -> [HistorySection] {
-    return getAllHistory(api: "histories/?studentId=\(id)")
+func getAllHistoriesOfUser(id: String, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> [HistorySection] {
+    return getAllHistory(api: "histories/?studentId=\(id)", exceptionHandler: exceptionHandler)
 }
 
-private func changeHistory(api : String, status : String) -> Bool {
-    guard let jsonData = requestPost(api: api, method: "PATCH", param: [:]) else {
+private func changeHistory(api : String, status : String, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
+    guard let jsonData = requestPost(api: api, method: "PATCH", param: [:], exceptionHandler: exceptionHandler) else {
         return false
     }
     guard let data : StuffInfo = try? JSONDecoder().decode(StuffInfo.self, from: jsonData) else {
@@ -70,17 +70,17 @@ private func changeHistory(api : String, status : String) -> Bool {
     return (data.status == status)
 }
 
-func changeRequestToRenting(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
+func changeRequestToRenting(stuffName: String, stuffNum: Int, historyNum: Int, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/approve/"
-    return changeHistory(api: api, status: "USING")
+    return changeHistory(api: api, status: "USING", exceptionHandler: exceptionHandler)
 }
 
-func changeRentingToReturn(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
+func changeRentingToReturn(stuffName: String, stuffNum: Int, historyNum: Int, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/return/"
-    return changeHistory(api: api, status: "RETURNED")
+    return changeHistory(api: api, status: "RETURNED", exceptionHandler: exceptionHandler)
 }
 
-func changeRentingToCancel(stuffName: String, stuffNum: Int, historyNum: Int) -> Bool {
+func changeRentingToCancel(stuffName: String, stuffNum: Int, historyNum: Int, exceptionHandler : @escaping (_ : URLResponse?) -> Bool) -> Bool {
     let api = "stuffs/\(stuffName)/items/\(stuffNum)/histories/\(historyNum)/cancel/"
-    return changeHistory(api: api, status: "EXPIRED")
+    return changeHistory(api: api, status: "EXPIRED", exceptionHandler: exceptionHandler)
 }

@@ -8,7 +8,8 @@
 import Foundation
 import UIKit
 
-var changedFlag : Int = 0
+var historyNeedToUpdate : Bool = false
+var stuffNeedUpdate : Bool = false
 
 class SettingController: UIViewController{
     
@@ -20,7 +21,9 @@ class SettingController: UIViewController{
     @IBAction func changeMode(_ sender: UIButton) {
         let str = getModeChageString()
         isAdmin = (!isAdmin)
-        changedFlag = 2
+        UserDefaults.standard.set(true, forKey: "login-to-admin-mode")
+        historyNeedToUpdate = true
+        stuffNeedUpdate = true
         sender.setTitle(getModeChageString(), for: .normal)
         let startIndex = str.index(str.startIndex,offsetBy: 0)
         let endIndex = str.index(str.startIndex,offsetBy: 5)
@@ -43,10 +46,12 @@ class SettingController: UIViewController{
         curUser.permission = nil
         UserDefaults.standard.removeObject(forKey: "user-token")
         
-        if let tabBarController = self.tabBarController as? TabBarController {
-            tabBarController.fromLogin = true
-        }
-        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        isAdmin = false
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+        let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_LoginTab")
+        targetViewController.modalPresentationStyle = .fullScreen
+        self.present(targetViewController, animated : false)
+//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         return
     }
     
@@ -54,7 +59,6 @@ class SettingController: UIViewController{
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        changeModeBtn.setTitle(getModeChageString(), for: .normal)
         AccountSetting.layer.cornerRadius = 10;
         AccountSetting.layer.borderColor = UIColor.systemBlue.cgColor;
         AccountSetting.layer.borderWidth = 1;
@@ -63,10 +67,20 @@ class SettingController: UIViewController{
         AppSetting.layer.borderColor = UIColor.systemBlue.cgColor;
         AppSetting.layer.borderWidth = 1;
         
-        changeModeBtn.setTitle(getModeChageString(), for: .reserved)
+        changeModeBtn.isHidden = true
      
         //backbutton 색상 변경
         self.navigationController?.navigationBar.tintColor = .black
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if curUser.permission == "STAFF" || curUser.permission == "MASTER" || curUser.permission == "DEVELOPER"{
+            changeModeBtn.isHidden = false
+            changeModeBtn.setTitle(getModeChageString(), for: .normal)
+        } else {
+            changeModeBtn.isHidden = true
+        }
     }
     
     func getModeChageString() -> String {
