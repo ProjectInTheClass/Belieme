@@ -62,7 +62,7 @@ class StuffTabController: UIViewController {
                 checkTokenExpiredAndSendAlert(viewController : self)
                 return
             }
-            
+            historyNeedToUpdate = true
             self.reloadView()
             self.stuffAddButton.isHidden = !isAdmin
         }
