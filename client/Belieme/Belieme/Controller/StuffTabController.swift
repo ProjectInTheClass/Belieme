@@ -123,7 +123,7 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
             targetViewController.paramImage = selectedStuff.emoji
             targetViewController.paramCount = selectedStuff.amount
             
-            self.navigationController?.pushViewController(targetViewController, animated: false)
+            self.navigationController?.pushViewController(targetViewController, animated: true)
         }
     }
 }
