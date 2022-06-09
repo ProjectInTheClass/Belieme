@@ -105,6 +105,9 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         cell.name.text = stuff.name
         if (!isAdmin) {
             cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray : .systemBlue
+            cell.lentalBtn.layer.cornerRadius = 5
+            cell.lentalBtn.layer.borderWidth = 1
+            cell.lentalBtn.layer.borderColor = UIColor.black.cgColor
         }
         cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
