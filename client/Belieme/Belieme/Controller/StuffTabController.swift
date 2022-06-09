@@ -104,10 +104,13 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         cell.emoji.text = stuff.emoji
         cell.name.text = stuff.name
         if (!isAdmin) {
-            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray : .systemBlue
+            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray6 : .systemBlue
             cell.lentalBtn.layer.cornerRadius = 5
             cell.lentalBtn.layer.borderWidth = 1
             cell.lentalBtn.layer.borderColor = UIColor.black.cgColor
+            if (stuff.count == 0) {
+                cell.lentalBtn.isEnabled = false
+            }
         }
         cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
