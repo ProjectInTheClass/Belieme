@@ -50,8 +50,7 @@ class SettingController: UIViewController{
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_LoginTab")
         targetViewController.modalPresentationStyle = .fullScreen
-        self.present(targetViewController, animated : false)
-//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         return
     }
     
