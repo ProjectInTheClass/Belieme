@@ -69,8 +69,10 @@ class SettingController: UIViewController{
         
         changeModeBtn.isHidden = true
      
-        //backbutton 색상 변경
+        //backbutton 색상,텍스트 변경
         self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.title = "설정"
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {

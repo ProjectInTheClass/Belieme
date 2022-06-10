@@ -103,7 +103,8 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         
         cell.emoji.text = stuff.emoji
         cell.name.text = stuff.name
-        cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
+        cell.lentalBtn.setTitle("\(stuff.count) / \(stuff.amount)", for: .normal)
+        cell.lentalBtn.titleLabel!.font = .systemFont(ofSize: 100)  //크기 안변해...
         cell.lentalBtn.tag = indexPath.row
         cell.tag = indexPath.row
        
@@ -165,6 +166,8 @@ extension StuffTabController {
 
         reloadView()
         initView()
+        self.navigationController?.navigationBar.topItem?.title = "물품목록"
+
 //        print("BREAK2")
     }
     

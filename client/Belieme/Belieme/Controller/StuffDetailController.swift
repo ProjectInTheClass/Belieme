@@ -208,6 +208,7 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         let name : String = "\(stuffName.text!)#\(stuffArray[indexPath.row].num)"
         cell.textLabel?.text = (stuffArray[indexPath.row].status == "INACTIVE") ? "\(name) (분실)" : name
         cell.contentView.backgroundColor = (stuffArray[indexPath.row].status == "INACTIVE") ? .systemPink : .white
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
         return cell
     }
     
@@ -256,6 +257,8 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
         stuffImage.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        
+        
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
