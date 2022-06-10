@@ -33,7 +33,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         stuffLabel.isUserInteractionEnabled = false
         stuffNum.isUserInteractionEnabled = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        
     
     }
     @IBAction func labelClicked(_ sender: UITextField) {
@@ -139,7 +139,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         stuffIcon.placeholder = "이모지 등록"
         stuffLabel.placeholder = "물품이름 등록"
         stuffNum.placeholder = "물품개수 등록"
-        stuffIcon.delegate = self
+        
         
         
 //        stuffNum.returnKeyType = .done
@@ -220,6 +220,8 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification , object: nil)
            // 키보드가 사라질 때 앱에게 알리는 메서드 추가
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardDidChangeFrame(_:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
      
     }
 
@@ -229,6 +231,9 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification , object: nil)
         // 키보드가 사라질 때 앱에게 알리는 메서드 제거
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+   
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+
     }
    
     // 키보드가 나타났다는 알림을 받으면 실행할 메서드
@@ -259,7 +264,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
     @objc func keyboardDidChangeFrame(_ noti: NSNotification) {
         //if let keyboard = (noti.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] {
             
-            self.view.frame.origin.y -= 25
+            self.view.frame.origin.y -= 10
         NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
     
