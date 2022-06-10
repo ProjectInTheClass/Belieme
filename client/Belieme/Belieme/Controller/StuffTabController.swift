@@ -174,6 +174,8 @@ extension StuffTabController {
 
         reloadView()
         initView()
+        self.navigationController?.navigationBar.topItem?.title = "물품목록"
+
 //        print("BREAK2")
     }
     
