@@ -63,10 +63,7 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         guard let numText = numTextField.text else {
             return
         }
-        guard let amount = Int(numText) else {
-            self.showToast(message: "숫자를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
-            return
-        }
+        
         if (!emoji.isSingleEmoji) {
             self.showToast(message: "이모지를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
             return
@@ -75,6 +72,11 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
             self.showToast(message: "물품명을 등록해 주세요.", font: .systemFont(ofSize: 12.0))
             return
         }
+        guard let amount = Int(numText) else {
+            self.showToast(message: "숫자를 등록해 주세요.", font: .systemFont(ofSize: 12.0))
+            return
+        }
+        
         let result : Bool = createNewStuff(name: name, emoji: emoji, amount: amount, exceptionHandler: basicHttpExceptionHandler())
         if(tokenExpired) {
             checkTokenExpiredAndSendAlert(viewController : self)
@@ -175,15 +177,6 @@ class StuffAddController: UIViewController,UIPickerViewDelegate, UIPickerViewDat
         self.numTextField.text = self.num[row]
         self.numTextField.resignFirstResponder()
     }
-    
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//
-//        textField.resignFirstResponder()  //if desired
-//
-//        return true
-//    }
-
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(false)
