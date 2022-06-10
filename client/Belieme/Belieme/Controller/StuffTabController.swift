@@ -104,21 +104,26 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         cell.emoji.text = stuff.emoji
         cell.name.text = stuff.name
         if (!isAdmin) {
-            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray6 : .systemBlue
-            cell.lentalBtn.layer.cornerRadius = 5
-            cell.lentalBtn.layer.borderWidth = 1
-            cell.lentalBtn.layer.borderColor = UIColor.black.cgColor
+            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray6 : UIColor(red: 89, green: 172, blue: 255, alpha: 0)
+            cell.lentalBtn.layer.cornerRadius = 10
+           // cell.lentalBtn.layer.borderWidth = 1
+           // cell.lentalBtn.layer.borderColor = UIColor.black.cgColor
             if (stuff.count == 0) {
                 cell.lentalBtn.isEnabled = false
             }
         }
-        cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
+        cell.lentalBtn.setTitle("\(stuff.count) / \(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
         cell.tag = indexPath.row
        
         cell.selectionStyle = .none
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 50.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -32,11 +32,11 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="축구공" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ifR-C5-7ia">
-                                                <rect key="frame" x="101" y="34" width="160" height="57.5"/>
+                                                <rect key="frame" x="101" y="43" width="160" height="39.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="160" id="gpc-8H-Exr"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
                                                     <action selector="stuffNameChanged:" destination="nFT-PB-ZMv" eventType="editingDidEnd" id="9Dy-1k-wrw"/>
