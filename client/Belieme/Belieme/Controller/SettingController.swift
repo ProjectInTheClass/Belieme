@@ -50,8 +50,7 @@ class SettingController: UIViewController{
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_LoginTab")
         targetViewController.modalPresentationStyle = .fullScreen
-        self.present(targetViewController, animated : false)
-//        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
+        self.view.window!.rootViewController?.dismiss(animated: false, completion: nil)
         return
     }
     
@@ -69,8 +68,10 @@ class SettingController: UIViewController{
         
         changeModeBtn.isHidden = true
      
-        //backbutton 색상 변경
+        //backbutton 색상,텍스트 변경
         self.navigationController?.navigationBar.tintColor = .black
+        self.navigationController?.navigationBar.topItem?.title = "설정"
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {

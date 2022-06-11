@@ -104,18 +104,24 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         cell.emoji.text = stuff.emoji
         cell.name.text = stuff.name
         if (!isAdmin) {
-            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray : .systemBlue
-            cell.lentalBtn.layer.cornerRadius = 5
-            cell.lentalBtn.layer.borderWidth = 1
-            cell.lentalBtn.layer.borderColor = UIColor.black.cgColor
+            cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray6 : UIColor(red: 89, green: 172, blue: 255, alpha: 0)
+            cell.lentalBtn.layer.cornerRadius = 10
+            if (stuff.count == 0) {
+                cell.lentalBtn.isEnabled = false
+            }
         }
-        cell.lentalBtn.setTitle("\(stuff.count)/\(stuff.amount)", for: .normal)
+        cell.lentalBtn.setTitle("\(stuff.count) / \(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
         cell.tag = indexPath.row
        
         cell.selectionStyle = .none
     
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 50.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -137,16 +143,18 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Override functions of UIViewController
 extension StuffTabController {
     @objc private func pullToRefresh(_ sender: Any) {
-        setButton()
-        stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
-        if(tokenExpired) {
-            checkTokenExpiredAndSendAlert(viewController : self)
-            return
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
+        {
+            self.setButton()
+            self.stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+            if(tokenExpired) {
+                checkTokenExpiredAndSendAlert(viewController : self)
+                return
+            }
+            
+            self.stuffAddButton.isHidden = !isAdmin
+            self.stuffTableView.refreshControl?.endRefreshing()
         }
-        
-        reloadView()
-        stuffAddButton.isHidden = !isAdmin
-        stuffTableView.refreshControl?.endRefreshing()
     }
     
     func initView() {
@@ -162,8 +170,6 @@ extension StuffTabController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        print("BREAK1")
-        //backbutton 색상변경
         self.navigationController?.navigationBar.tintColor = .black
         setButton()
         stuffAddButton.isHidden = !isAdmin
@@ -171,7 +177,8 @@ extension StuffTabController {
 
         reloadView()
         initView()
-//        print("BREAK2")
+        self.navigationController?.navigationBar.topItem?.title = "물품목록"
+
     }
     
     @IBAction func goToAdd(_ sender: UIButton) {

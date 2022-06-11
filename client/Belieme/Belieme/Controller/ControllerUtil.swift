@@ -27,7 +27,8 @@ func checkTokenExpiredAndSendAlert(viewController : UIViewController) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let targetViewController = storyboard.instantiateViewController(withIdentifier:"SB_LoginTab")
         targetViewController.modalPresentationStyle = .fullScreen
-        viewController.present(targetViewController, animated : false)
+//        viewController.present(targetViewController, animated : false)
+        viewController.navigationController?.pushViewController(targetViewController, animated: false)
         tokenExpired = false
         return
     }
