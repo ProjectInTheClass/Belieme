@@ -275,8 +275,6 @@ extension HistoryController: UITableViewDelegate, UITableViewDataSource {
             }
         }
         cell.nameLabel.text = target.stuffName
-        cell.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
-
     
         return cell
     }
