@@ -206,13 +206,24 @@ class StuffDetailController: UIViewController,UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ReusableCell", for: indexPath)
         let name : String = "\(stuffName.text!)#\(stuffArray[indexPath.row].num)"
-        cell.textLabel?.text = (stuffArray[indexPath.row].status == "INACTIVE") ? "\(name) (분실)" : name
-        cell.contentView.backgroundColor = (stuffArray[indexPath.row].status == "INACTIVE") ? .systemPink : .white
+        
+        cell.textLabel?.text = name
+        cell.contentView.backgroundColor = .white
+        if (stuffArray[indexPath.row].status == "INACTIVE") {
+            cell.textLabel?.text = "\(name) (분실)"
+            cell.contentView.backgroundColor = .systemPink
+        } else if (stuffArray[indexPath.row].status == "UNUSABLE") {
+            cell.textLabel?.text = "\(name) (사용중)"
+            cell.contentView.backgroundColor = .systemMint
+        }
         cell.textLabel?.font = UIFont.systemFont(ofSize: 15.0)
         return cell
     }
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        if (stuffArray[indexPath.row].status == "UNUSABLE") {
+            return nil
+        }
         let itemNum : Int = self.stuffArray[indexPath.row].num
         if (stuffArray[indexPath.row].status == "USABLE") {
             let miss = UIContextualAction(style: .normal, title: "분실") { (UIContextualAction, UIView, success: @escaping (Bool) -> Void) in
