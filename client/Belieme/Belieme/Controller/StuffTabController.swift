@@ -192,6 +192,7 @@ extension StuffTabController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if (stuffNeedUpdate || addFlag || modifyFlag) {
+            print("\(stuffNeedUpdate)")
             if (stuffNeedUpdate) {
                 stuffNeedUpdate = false
             }
