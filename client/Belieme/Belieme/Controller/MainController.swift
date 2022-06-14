@@ -12,9 +12,9 @@ class TabBarController: UITabBarController {
         super.viewDidLoad()
         self.selectedIndex = 0
 //        print("BREAK3")
-        stuffNeedUpdate = true
-        historyNeedToUpdate = true
         if (checkLogin(exceptionHandler: logingHttpExceptionHandler())) {
+            stuffNeedUpdate = true
+            historyNeedToUpdate = true
             isAdmin = UserDefaults.standard.bool(forKey: "login-to-admin-mode")
       
             let stuffController = self.viewControllers?[0] as? StuffTabController

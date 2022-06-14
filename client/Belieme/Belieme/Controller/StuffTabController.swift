@@ -188,6 +188,7 @@ extension StuffTabController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.topItem?.title = "물품목록"
         if (stuffNeedUpdate || addFlag || modifyFlag) {
+            print("\(stuffNeedUpdate)")
             if (stuffNeedUpdate) {
                 stuffNeedUpdate = false
             }
