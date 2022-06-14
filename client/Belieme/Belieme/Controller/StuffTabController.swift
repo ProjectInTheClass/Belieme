@@ -143,18 +143,15 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
 // MARK: - Override functions of UIViewController
 extension StuffTabController {
     @objc private func pullToRefresh(_ sender: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
-        {
-            self.setButton()
-            self.stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
-            if(tokenExpired) {
-                checkTokenExpiredAndSendAlert(viewController : self)
-                return
-            }
-            
-            self.stuffAddButton.isHidden = !isAdmin
-            self.stuffTableView.refreshControl?.endRefreshing()
+        self.setButton()
+        self.stuffsData = getAllStuff(exceptionHandler: basicHttpExceptionHandler())
+        if(tokenExpired) {
+            checkTokenExpiredAndSendAlert(viewController : self)
+            return
         }
+        
+        self.stuffAddButton.isHidden = !isAdmin
+        self.stuffTableView.refreshControl?.endRefreshing()
     }
     
     func initView() {
@@ -177,8 +174,6 @@ extension StuffTabController {
 
         reloadView()
         initView()
-        self.navigationController?.navigationBar.topItem?.title = "물품목록"
-
     }
     
     @IBAction func goToAdd(_ sender: UIButton) {
@@ -191,6 +186,7 @@ extension StuffTabController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.topItem?.title = "물품목록"
         if (stuffNeedUpdate || addFlag || modifyFlag) {
             if (stuffNeedUpdate) {
                 stuffNeedUpdate = false

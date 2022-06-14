@@ -51,11 +51,8 @@ class HistoryController: UIViewController {
     }
     
     @objc private func pullToRefresh(_ sender: Any) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0)
-        {
-            self.refreshAction()
-            self.HistoryTable.refreshControl?.endRefreshing()
-        }
+        self.refreshAction()
+        self.HistoryTable.refreshControl?.endRefreshing()
     }
     
     func initView() {
