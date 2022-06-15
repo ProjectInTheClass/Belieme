@@ -98,7 +98,6 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "stuffCell", for: indexPath) as! StuffCell
         let stuff = stuffsData[indexPath.row]
-        
         cell.setCellByUserMode(userMode: isAdmin)
         
         cell.emoji.text = stuff.emoji
@@ -106,9 +105,7 @@ extension StuffTabController: UITableViewDelegate, UITableViewDataSource {
         if (!isAdmin) {
             cell.lentalBtn.backgroundColor = (stuff.count == 0) ? .systemGray6 : UIColor(red: 89, green: 172, blue: 255, alpha: 0)
             cell.lentalBtn.layer.cornerRadius = 10
-            if (stuff.count == 0) {
-                cell.lentalBtn.isEnabled = false
-            }
+            cell.lentalBtn.isEnabled = (stuff.count > 0)
         }
         cell.lentalBtn.setTitle("\(stuff.count) / \(stuff.amount)", for: .normal)
         cell.lentalBtn.tag = indexPath.row
